@@ -1,0 +1,21 @@
+<div class="row" style="margin-top:40px; background-color:#eff0f2;
+-webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);">
+  <!-- <div class="col-sm-12" style="text-align:center;">
+    Register
+  </div> -->
+  <div class="col-sm-12">
+    <div *ngIf="apiService.loginMessage">
+      <div class="alert alert-success alert-dismissible" role="alert" style="text-align: center" data-dismiss="alert">
+        <strong>You have successfully logged in!</strong>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="jumbotron">
+      <h1 class="display-4">Hello, {{firstname}}!</h1>
+      <p class="lead">You have successfully logged in to our system.</p>
+    </div>
+  </div>
+</div>

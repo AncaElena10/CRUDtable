@@ -1,0 +1,50 @@
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p>Login Form</p>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="loginForm" #userDataLogin="ngForm">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+              [(ngModel)]="Formdata.uemail">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="passwordInput" aria-describedby="passHelp" placeholder="Enter Password"
+              [(ngModel)]="Formdata.upassword">
+            <small id="passHelp" class="form-text text-muted"></small>
+          </div>
+          <div class="row form-group">
+            <div class='col-sm-6 form-inline'>
+              <!-- <button type="submit" class="btn btn-dark">Log in</button> -->
+              <button type="button" class="btn btn-dark" (click)="login()" data-dismiss="modal">Log in</button>
+            </div>
+          </div>
+
+          <div *ngIf="!userDataLogin.valid && userDataLogin.submitted">
+            <div class="alert alert-danger" role="alert">
+              Wrong email or password.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input formControlName="remember" type="checkbox" (change)="rememberMe()" [(ngModel)]="Formdata.uremember">Remember me
+          </div>
+
+          <!-- <div>
+            <input type="checkbox" [(ngModel)]="Formdata.uremember"> Remember me
+          </div> -->
+
+          <!-- <div *ngIf="isLogged">
+            <a routerLink="/employees"></a>
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
