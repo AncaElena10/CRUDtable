@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
     // if (confirm('Are you sure you want to logout?') == true) {
       // this.apiService.isLogged = false;
       this.apiService.setLoggedIn(false);
+      
       this.apiService.logout()
         .subscribe(
           data => { console.log(data); this.router.navigate(['/employees']) },
@@ -31,12 +32,14 @@ export class NavbarComponent implements OnInit {
         )
       // this.isLogged = false;
       // localStorage.clear();
-      localStorage.removeItem('loggedIn');
       // this.logoutSession = true;
-    // } else {
-      // this.logoutSession = false;
-    // }
+      // } else {
+        // this.logoutSession = false;
+        // }
+        
+        localStorage.removeItem('loggedIn');
 
+    // localStorage.removeItem('currentUser');
   }
 
   // isUserLogged() {

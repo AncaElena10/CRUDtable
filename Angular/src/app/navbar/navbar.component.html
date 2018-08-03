@@ -17,8 +17,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <div *ngIf="!apiService.getLoggedIn()">
-        <button routerLink="/login" class="btn btn-outline-primary my-2 my-sm-0" data-target="#login-modal" data-toggle="modal" data-backdrop="static"
-          data-keyboard="false">Sign In</button>
+        <button routerLink="/login" class="btn btn-outline-primary my-2 my-sm-0">Sign In</button>
         <button routerLink="/register" class="btn btn-outline-success my-2 my-sm-0" data-target="#register-modal" data-toggle="modal"
           data-backdrop="static" data-keyboard="false">Sign Up</button>
       </div>
@@ -45,8 +44,8 @@
       </div>
     </form>
   </div>
-  <app-login></app-login>
-  <app-register></app-register>
+  <!-- <app-login></app-login> -->
+  <!-- <app-register></app-register> -->
 </nav>
 
 <div class="modal" id="potato-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class ApiService {
   // isLogged: boolean = false;
   // messageSuccess: boolean = false;
   loginMessage: boolean = false;
+  loginErrorMessage: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -27,8 +29,22 @@ export class ApiService {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
+    }).toPromise().then((x) => {
+      this.setLoggedIn(true);
     });
   }
+
+  // userLogin(user) {
+  //   return this.http.post<any>(this.rootURL + '/login', user).toPromise().then((x) => {
+  //     localStorage.setItem("email", x.email);
+  //   })
+  //     // .pipe(map(user => {
+  //     //   if (user) {
+  //     //     localStorage.setItem('currentUser', JSON.stringify(user));
+  //     //   }
+  //     //   return user;
+  //     // }));
+  // }
 
   user() {
     return this.http.get(this.rootURL + '/profile', {
@@ -49,15 +65,19 @@ export class ApiService {
   private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
   // private loggedInStatus = false
 
+  // private loggedInStatus = localStorage.getItem('loggedIn')
+
   setLoggedIn(value: boolean) {
     this.loggedInStatus = value;
-    localStorage.setItem("loggedIn", 'true');
+    // console.log("here " + this.loggedInStatus)
+    localStorage.setItem("loggedIn", this.loggedInStatus);
   }
- 
+
   getLoggedIn() {
     // return this.loggedInStatus;
     // console.log(JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString()))
     return JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString());
+    // return localStorage.getItem('loggedIn')
   }
 
   // get isLoggedIn() {

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  ngOnInit() {
+    document.body.classList.remove('bg-img-login'); 
+    document.body.classList.remove('bg-img-register');
+  }
 }

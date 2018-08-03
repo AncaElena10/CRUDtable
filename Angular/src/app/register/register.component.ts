@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
@@ -8,9 +8,10 @@ import { ApiService } from '../shared/api.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnChanges {
 
   isSubmitted: boolean = false;
+  bkreg
 
   registerForm: FormGroup = new FormGroup({
     firstname: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
@@ -43,6 +44,13 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.classList.remove('bg-img-login');
+    document.body.classList.add('bg-img-register');
+  }
+
+  ngOnChanges() {
+    // delete this.bkreg;
+    // document.body.classList.add('bg-img-login');
   }
 
   register() {

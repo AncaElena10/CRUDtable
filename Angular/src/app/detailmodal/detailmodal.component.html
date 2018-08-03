@@ -16,6 +16,8 @@
           <span class="bold_name">Position: </span>{{ selectedObj.position }}</p>
         <p>
           <span class="bold_name">Office Location: </span>{{ selectedObj.office }}</p>
+        <p *ngIf="apiService.getLoggedIn()">
+          <span class="bold_name">Salary: </span>{{ selectedObj.salary }}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

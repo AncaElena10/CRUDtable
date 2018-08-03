@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+.bg-img-login {
+  background-image: url('http://www.cashadvance6online.com/data/archive/img/361908084.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
+}
+
+.bg-img-register {
+  background-image: url('https://www.world-of-emergency.com/img/website/bg/full_hd_dark/diffusebackground.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
+}

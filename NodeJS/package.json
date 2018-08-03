@@ -17,6 +17,7 @@
     "mongoose": "^5.2.4",
     "ngx-order-pipe": "^2.0.1",
     "ngx-pagination": "^3.1.1",
+    "nodemailer": "^4.6.7",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
   }

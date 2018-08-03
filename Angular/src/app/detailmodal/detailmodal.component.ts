@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, OnChanges } from '@angular/core';
 import { EmployeeService } from '../shared/employee.service';
+import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'app-detailmodal',
@@ -19,7 +20,7 @@ export class DetailmodalComponent implements OnInit {
   };
 
   constructor(
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService, private apiService: ApiService
   ) { }
 
   ngOnInit() {

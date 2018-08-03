@@ -21,7 +21,7 @@ var passport = require('passport');
 var session = require('express-session');
 app.use(session({
   name: 'myname.sid',
-  resave: true,
+  resave: false,
   saveUninitialized: false,
   secret: 'secret',
   cookie: {

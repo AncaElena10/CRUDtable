@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
 import { Router } from '@angular/router';
+import { User } from '../shared/user.model';
 
 @Component({
   selector: 'app-userhome',
@@ -11,13 +12,18 @@ export class ProfileComponent implements OnInit {
 
   firstname: any = '';
   // isLogged = false;
+  profileAccess: boolean = true;
+  currentUser: User;
 
   constructor(private apiService: ApiService, private router: Router) {
     this.apiService.user()
       .subscribe(
-        data => this.addName(data),
-        error => this.router.navigate(['/employees']) // aici refirectez in cazul in care acceseaza /profile dar nu este logat
+        data => { this.profileAccess = true, this.addName(data), console.log("data ", data) },
+        error => { this.profileAccess = false, console.log("Please login to have access at your profile.") } // aici refirectez in cazul in care acceseaza /profile dar nu este logat
       )
+    
+    // console.log(this.currentUser)
+    // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   addName(data) { // data - este un obiect
@@ -28,6 +34,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    document.body.classList.remove('bg-img-login'); 
+    document.body.classList.remove('bg-img-register');
   }
 }

@@ -23,6 +23,8 @@ export class EmployeeComponent implements OnInit {
   // eoffice = [];
   // eparams = [];
 
+  // isLogged: boolean = false;
+
   constructor(
     private employeeService: EmployeeService, private router: Router, private apiService: ApiService) {
     // this.employeeService.employee()
@@ -75,9 +77,13 @@ export class EmployeeComponent implements OnInit {
   };
 
   ngOnInit() {
+    document.body.classList.remove('bg-img-login'); 
+    document.body.classList.remove('bg-img-register');
     this.employeeService.resetForm();
     this.employeeService.refreshEmployeeList();
     // console.log(this.apiService.getLoggedIn());
+
+    // console.log(this.apiService.getLoggedIn())
   }
 
   onEdit(emp: Employee) {
@@ -90,7 +96,7 @@ export class EmployeeComponent implements OnInit {
       this.employeeService.deleteEmployee(_id).subscribe((res) => {
         this.employeeService.refreshEmployeeList();
         this.employeeService.resetForm(form);
-        M.toast({ html: 'Deleted successfully', classes: 'rounded' });
+        // M.toast({ html: 'Deleted successfully', classes: 'rounded' });
       });
     }
   }
@@ -101,4 +107,12 @@ export class EmployeeComponent implements OnInit {
     }
     this.order = value;
   }
+
+  // checkIfLogged() {
+  //   if (this.apiService.getLoggedIn() == true) {
+  //     this.isLogged = true;
+  //   } else {
+  //     this.isLogged = false;
+  //   }
+  // }
 }
