@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     document.body.classList.remove('bg-img-login');
+    document.body.classList.remove('bg-img-home');
     document.body.classList.add('bg-img-register');
   }
 

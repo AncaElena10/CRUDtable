@@ -1,64 +1,65 @@
-<!-- <div class="card" style="width: 100%;">
-  <div class="card-body"> -->
-    <div class="table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th [class.active]="order === 'name'" (click)="setOrder('name')">
-              Name
-              <span [hidden]="reverse" class="material-icons">expand_more</span>
-              <span [hidden]="!reverse" class="material-icons">expand_less</span>
-            </th>
-            <th [class.active]="order === 'position'" (click)="setOrder('position')">
-              Position
-              <span [hidden]="reverse" class="material-icons">expand_more</span>
-              <span [hidden]="!reverse" class="material-icons">expand_less</span>
-            </th>
-            <th [class.active]="order === 'office'" (click)="setOrder('office')">
-              Office
-              <span [hidden]="reverse" class="material-icons">expand_more</span>
-              <span [hidden]="!reverse" class="material-icons">expand_less</span>
-            </th>
-            <th [class.active]="order === 'salary'" (click)="setOrder('salary')">
-              Salary
-              <span [hidden]="reverse" class="material-icons">expand_more</span>
-              <span [hidden]="!reverse" class="material-icons">expand_less</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let emp of employeeService.employees | orderBy: order:reverse:'case-insensitive' | paginate: { itemsPerPage: 5, currentPage: p }">
-            <td>{{ emp.name }}</td>
-            <td>{{ emp.position }}</td>
-            <td>{{ emp.office }}</td>
-            <td *ngIf="apiService.getLoggedIn()">{{ emp.salary }}</td>
-            <td *ngIf="!apiService.getLoggedIn()">NaN</td>
-            <td>
-              <a class="action-btn" (click)="onEdit(emp)">
-                <p *ngIf="apiService.getLoggedIn()" class="material-icons pointer" data-target="#edit-modal" data-toggle="modal">edit</p>
-              </a>
-              <a class="action-btn" (click)="onDelete(emp._id,employeeForm)">
-                <p *ngIf="apiService.getLoggedIn()" class="material-icons pointer">delete</p>
-              </a>
-            </td>
-          </tr>
-          <!-- </div> -->
-          <pagination-controls class="my-pagination" (pageChange)="p=$event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
-        </tbody>
-      </table>
-    </div>
-  <!-- </div> -->
-  <div class="table">
-    <a class="action-btn">
-      <p *ngIf="apiService.getLoggedIn()" class="material-icons pointer" data-target="#edit-modal" data-toggle="modal">person_add</p>
-    </a>
-  </div>
-  <div class="table">
-    <app-search></app-search>
-  </div>
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12"> -->
+      <div class="table-responsive">
+        <table class="table table-hover" style="background-color: white">
+          <thead>
+            <tr>
+              <th [class.active]="order === 'name'" (click)="setOrder('name')">
+                Name
+                <span [hidden]="reverse" class="material-icons">expand_more</span>
+                <span [hidden]="!reverse" class="material-icons">expand_less</span>
+              </th>
+              <th [class.active]="order === 'position'" (click)="setOrder('position')">
+                Position
+                <span [hidden]="reverse" class="material-icons">expand_more</span>
+                <span [hidden]="!reverse" class="material-icons">expand_less</span>
+              </th>
+              <th [class.active]="order === 'office'" (click)="setOrder('office')">
+                Office
+                <span [hidden]="reverse" class="material-icons">expand_more</span>
+                <span [hidden]="!reverse" class="material-icons">expand_less</span>
+              </th>
+              <th [class.active]="order === 'salary'" (click)="setOrder('salary')">
+                Salary
+                <span [hidden]="reverse" class="material-icons">expand_more</span>
+                <span [hidden]="!reverse" class="material-icons">expand_less</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of employeeService.employees | orderBy: order:reverse:'case-insensitive' | paginate: { itemsPerPage: 5, currentPage: p }">
+              <td>{{ emp.name }}</td>
+              <td>{{ emp.position }}</td>
+              <td>{{ emp.office }}</td>
+              <td *ngIf="apiService.getLoggedIn()">{{ emp.salary }}</td>
+              <td *ngIf="!apiService.getLoggedIn()">NaN</td>
+              <td>
+                <a class="action-btn" (click)="onEdit(emp)">
+                  <p *ngIf="apiService.getLoggedIn()" class="material-icons pointer" data-target="#edit-modal" data-toggle="modal">edit</p>
+                </a>
+                <a class="action-btn" (click)="onDelete(emp._id,employeeForm)">
+                  <p *ngIf="apiService.getLoggedIn()" class="material-icons pointer">delete</p>
+                </a>
+              </td>
+            </tr>
+            <pagination-controls class="my-pagination" (pageChange)="p=$event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+          </tbody>
+        </table>
+      </div>
 
+      <div class="table">
+        <a class="action-btn">
+          <p *ngIf="apiService.getLoggedIn()" class="material-icons pointer" data-target="#edit-modal" data-toggle="modal">person_add</p>
+        </a>
+      </div>
+      <div class="table">
+        <app-search></app-search>
+      </div>
+      <div *ngIf="selectedEmployee">
+        <app-modal [selectedObj]="selectedEmployee"></app-modal>
+      </div>
 
-  <div *ngIf="selectedEmployee">
-    <app-modal [selectedObj]="selectedEmployee"></app-modal>
+    <!-- </div>
   </div>
-<!-- </div> -->
+</div> -->

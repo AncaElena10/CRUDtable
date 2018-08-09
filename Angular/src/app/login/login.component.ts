@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     document.body.classList.remove('bg-img-register');
+    document.body.classList.remove('bg-img-home');
     document.body.classList.add('bg-img-login');
 
     this.loginForm = this.formBuilder.group({

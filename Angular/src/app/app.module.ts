@@ -23,7 +23,9 @@ import { ApiService } from './shared/api.service';
 import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
 import { CompareDirective } from './directives/compare.directive';
 import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,9 @@ import { HomeComponent } from './home/home.component'
     CompareDirective,
     ProfileComponent,
     HomeComponent,
+    ProfilePictureComponent,
+    FileSelectDirective,
+    FileDropDirective,
   ],
   imports: [
     BrowserModule,

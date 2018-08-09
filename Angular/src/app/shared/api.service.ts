@@ -13,7 +13,6 @@ export class ApiService {
   // isLogged: boolean = false;
   // messageSuccess: boolean = false;
   loginMessage: boolean = false;
-  loginErrorMessage: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -33,18 +32,6 @@ export class ApiService {
       this.setLoggedIn(true);
     });
   }
-
-  // userLogin(user) {
-  //   return this.http.post<any>(this.rootURL + '/login', user).toPromise().then((x) => {
-  //     localStorage.setItem("email", x.email);
-  //   })
-  //     // .pipe(map(user => {
-  //     //   if (user) {
-  //     //     localStorage.setItem('currentUser', JSON.stringify(user));
-  //     //   }
-  //     //   return user;
-  //     // }));
-  // }
 
   user() {
     return this.http.get(this.rootURL + '/profile', {
@@ -83,4 +70,11 @@ export class ApiService {
   // get isLoggedIn() {
   //   return this.loggedInStatus
   // }
+
+  uploadPicture(body: any) {
+    return this.http.post(this.rootURL + '/upload', body, {
+      observe: 'body',
+      headers: new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
 }

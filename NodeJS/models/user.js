@@ -62,15 +62,20 @@ var schema = new Schema({
   lastname: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  verify: { type: String, required: true }
+  verify: { type: String, required: true },
+  img: { data: Buffer, contentType: String },
+  // img: { type: String, required: false },
+  // picture: { type: Schema.Types.Mixed, required: true },
+  // gender: { type: String, required: true },
+  // createdAt: { type: Date, default: Date.now },
 });
 
-schema.statics.hashPassword = function hashPassword(password){
-    return bcrypt.hashSync(password,10);
+schema.statics.hashPassword = function hashPassword(password) {
+  return bcrypt.hashSync(password, 10);
 }
 
-schema.methods.isValid = function(hashedpassword){
-    return  bcrypt.compareSync(hashedpassword, this.password);
+schema.methods.isValid = function (hashedpassword) {
+  return bcrypt.compareSync(hashedpassword, this.password);
 }
 
 schema.pre('save', function (next) {
@@ -85,4 +90,12 @@ schema.pre('save', function (next) {
   });
 });
 
-module.exports = mongoose.model('User',schema);
+schema.pre('save', function (next) {
+  now = new Date();
+  if (!this.createdAt) {
+    this.createdAt = now;
+  }
+  next();
+});
+
+module.exports = mongoose.model('User', schema);
