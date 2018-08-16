@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { User } from './user.model';
+import { NgForm } from '../../../node_modules/@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +11,12 @@ import { map } from 'rxjs/operators';
 export class ApiService {
 
   rootURL = "http://localhost:3000/api";
+  userURL = "http://localhost:3000/users"
   msg: string = null;
   // isLogged: boolean = false;
   // messageSuccess: boolean = false;
   loginMessage: boolean = false;
+  selectedUser: User;
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +26,13 @@ export class ApiService {
       headers: new HttpHeaders().append('Content-Type', 'application/json')
     });
   }
+
+  // userEdit(body: any) {
+  //   return this.http.post(this.userURL + '/edit', body, {
+  //     observe: 'body',
+  //     headers: new HttpHeaders().append('Content-Type', 'application/json')
+  //   });
+  // }
 
   userLogin(body: any) {
     return this.http.post(this.rootURL + '/login', body, {
@@ -76,5 +87,49 @@ export class ApiService {
       observe: 'body',
       headers: new HttpHeaders().append('Content-Type', 'application/json')
     });
+  }
+
+  putUser(user: User) {
+    // console.log
+    // console.log("id user: ", user._id)
+    return this.http.put(this.rootURL + `/${user._id}`, user);
+  }
+
+  // getUser() {
+  //   return this.http.get(this.rootURL + "/profile");
+  // }
+
+  deleteUser(_id: string) {
+    return this.http.delete(this.rootURL + `/${_id}`);
+  }
+
+  refreshUser() {
+    // console.log("print in user " + JSON.stringify(this.getUser()))
+    this.user().subscribe((res) => {
+      this.selectedUser = res as User;
+
+    });
+    // console.log(this.selectedUser)
+  }
+
+  resetForm(form?: NgForm) {
+    if (form) {
+      form.reset();
+    }
+    this.selectedUser = {
+      _id: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      verify: "",
+      gender: "",
+      location: "",
+      twitterName: "",
+      githubName: "",
+      hobby: "",
+      bio: "",
+      profilePicture: "",
+    }
   }
 }

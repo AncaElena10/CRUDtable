@@ -24,9 +24,11 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
     this.employeeService.resetForm();
     this.employeeService.refreshEmployeeList();
-  }
 
+  }
+  
   onSubmit(form: NgForm) {
+    console.log("MODAL ", this.employeeService.employees)
     // functia asta se leaga de /NodeJS/controllers/employeeController.js -> router.post
     // se creaza o functie in employee.service.ts -> postEmployee
 
@@ -34,14 +36,15 @@ export class ModalComponent implements OnInit {
     // daca _id nu e empty, se face update
     if (form.value._id == "") { // insert
       this.employeeService.postEmployee(form.value).subscribe((res) => {
-        this.employeeService.resetForm(form);
+        // this.employeeService.resetForm(form);
         // functie de refresh - se da automat dupa submit
         this.employeeService.refreshEmployeeList();
         // M.toast({ html: 'Saved successfully', classes: 'rounded' });
       });
     } else { // update -> PUT
       this.employeeService.putEmployee(form.value).subscribe((res) => {
-        this.employeeService.resetForm(form);
+        // console.log("form value employee: " + JSON.stringify(form.value))
+        // this.employeeService.resetForm(form);
         this.employeeService.refreshEmployeeList();
         // M.toast({ html: 'Updated successfully', classes: 'rounded' });
       });

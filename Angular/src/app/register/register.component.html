@@ -9,12 +9,12 @@
               <input type='text' formControlName='firstname' class='form-control' placeholder='Firstname'>
               <div *ngIf="firstname.invalid && (firstname.dirty || isSubmitted)" class="text-danger">
                 <div *ngIf="firstname.errors.required">Firstname is required.</div>
-                <!-- <div *ngIf="firstname.errors.minlength">
-                        Firstname must be at least 4 characters long.
-                      </div>
-                      <div *ngIf="firstname.errors.maxlength">
-                        Firstname must not exceed 15 characters.
-                      </div> -->
+                <div *ngIf="firstname.errors.minlength">
+                  Firstname must be at least 2 characters long.
+                </div>
+                <div *ngIf="firstname.errors.maxlength">
+                  Firstname must not exceed 25 characters.
+                </div>
               </div>
             </div>
           </div>
@@ -25,12 +25,12 @@
               <input type='text' formControlName='lastname' class='form-control' placeholder='Lastname'>
               <div *ngIf="lastname.invalid && (lastname.dirty || isSubmitted)" class="text-danger">
                 <div *ngIf="lastname.errors.required">Lastname is required.</div>
-                <!-- <div *ngIf="lastname.errors.minlength">
-                        Lastname must be at least 4 characters long.
-                      </div>
-                      <div *ngIf="lastname.errors.maxlength">
-                        Lastname must not exceed 15 characters.
-                      </div> -->
+                <div *ngIf="lastname.errors.minlength">
+                  Lastname must be at least 2 characters long.
+                </div>
+                <div *ngIf="lastname.errors.maxlength">
+                  Lastname must not exceed 25 characters.
+                </div>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
         <div class='row'>
           <div class='col-sm-12'>
             <div class="form-group">
-              <input type='text' formControlName='email' email class='form-control' placeholder='Email'>
+              <input type='email' formControlName='email' class='form-control' placeholder='Email'>
               <div *ngIf="email.invalid && (email.dirty || isSubmitted)" class="text-danger">
                 <div *ngIf="email.errors.required">Email is required.</div>
                 <div *ngIf="email.errors.email && !email.errors.required">Invalid email.</div>

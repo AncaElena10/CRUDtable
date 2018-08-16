@@ -29,7 +29,7 @@ export class EmployeeService {
 
   // folosit pt update ----- PUT -----
   putEmployee(emp: Employee) {
-    // modificare in timp real
+    // console.log("id emp", emp._id)
     return this.http.put(this.baseURL + `/${emp._id}`, emp);
   }
 
@@ -42,9 +42,12 @@ export class EmployeeService {
   // in cazul in care se insereaza/updateaza
   // functie share-uita de cele 2 componente (modal + employee)
   refreshEmployeeList() {
+    // console.log("print in emp " + JSON.stringify(this.getEmployeeList()))
     this.getEmployeeList().subscribe((res) => {
       this.employees = res as Employee[];
+
     });
+    // console.log(this.employees)
   }
 
   // functie share-uita de cele 2 componente (modal + employee)

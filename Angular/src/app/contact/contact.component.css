@@ -1,0 +1,49 @@
+.jumbotron {
+  background-color: #ffffff;
+  padding: 4rem 4rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.jumbotron {
+  background-color: #ffffff;
+  padding: 4rem 4rem;
+}
+
+.list-unstyled {
+  list-style: none;
+  margin-left: 0;
+}
+
+.svg-icon {
+  vertical-align: bottom;
+}
+
+body.user-page #content * {
+  box-sizing: border-box;
+}
+
+.user-card .user-links ul li a:visited {
+  color: #666;
+}
+
+.user-card .user-links ul li a {
+  color: #666;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}

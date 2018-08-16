@@ -1,36 +1,46 @@
-<div class="row" style="margin-top:40px; background-color:#eff0f2;
--webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
--moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);">
-  <!-- <div class="col-sm-12" style="text-align:center;">
-    Register
-  </div> -->
-  <div class="col-sm-12">
-    <div *ngIf="apiService.loginMessage">
-      <div class="alert alert-success alert-dismissible" role="alert" style="text-align: center" data-dismiss="alert">
-        <strong>You have successfully logged in!</strong>
+<div class="container">
+  <nav class="navbar navbar-expand-sm">
+    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+      <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="true">Home</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="!apiService.getLoggedIn()" class="nav-link disabled" id="profile-tab" data-toggle="tab" href="#edit-settings" role="tab"
+              aria-controls="edit-settings" aria-selected="false">Edit Profile & Settings</a>
+            <a *ngIf="apiService.getLoggedIn()" class="nav-link" id="profile-tab" data-toggle="tab" href="#edit-settings" role="tab"
+              aria-controls="edit-settings" aria-selected="false">Edit Profile & Settings</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="!apiService.getLoggedIn()" class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+              aria-controls="contact" aria-selected="false">Contact</a>
+            <a *ngIf="apiService.getLoggedIn()" class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+              aria-selected="false">Contact</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-  <div *ngIf="profileAccess" class="col-sm-12">
-    <div class="jumbotron">
-      <h1 class="display-4">Hello, {{ firstname }}!</h1>
-      <p class="lead">You have successfully logged in to our system.</p>
+  </nav>
+
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="activity" role="tabpanel" aria-labelledby="home-tab">
+      <app-home></app-home>
+    </div>
+    <div class="tab-pane fade" id="edit-settings" role="tabpanel" aria-labelledby="profile-tab">
+      <app-edit-profile></app-edit-profile>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <app-contact></app-contact>
     </div>
   </div>
-  <div *ngIf="!profileAccess" class="col-sm-12">
-    <div class="jumbotron">
-      <h1 class="display-4">Hello, guest!</h1>
-      <p class="lead">Please login to have access to your profile.</p>
-    </div>
-  </div>
-</div>
 
-<div class="container">
 
+
+  <!-- <div class="container">
   <h2>Profile Picture Upload</h2>
-
   <img [src]="url" height="200">
   <input type="file" (change)="onFileSelected($event)">
   <button type="button" (click)="onUpload()">Upload</button>
+</div> -->
 </div>

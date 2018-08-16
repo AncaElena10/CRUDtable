@@ -1,0 +1,97 @@
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.onhover li:hover {
+  color: #6b6c6d;
+}
+
+#sidebar {
+  color: rgb(0, 0, 0);
+  transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  /* background: #4db1eb; */
+  font-size: 120%;
+}
+
+/* #sidebar ul li.active>a,
+a[aria-expanded="true"] {
+  color: #fff;
+} */
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+}
+
+#mainbar,
+.mainbar {
+  float: left;
+  padding: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.jumbotron {
+  background-color: #ffffff;
+  padding: 4rem 4rem;
+}
+
+div.hobbylist {
+  background-color: lightblue;
+  width: 110px;
+  height: 110px;
+  overflow: auto;
+}
+
+div.hobbylist {
+  width: 100%;
+  height: 110px;
+  overflow: auto;
+}
+
+div.hobbylist[_ngcontent-c4] {
+  background-color: transparent;
+}

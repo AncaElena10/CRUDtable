@@ -79,6 +79,7 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     document.body.classList.remove('bg-img-login'); 
     document.body.classList.remove('bg-img-register');
+    document.body.classList.remove('bg-img-profile');
     document.body.classList.add('bg-img-home'); 
     this.employeeService.resetForm();
     this.employeeService.refreshEmployeeList();

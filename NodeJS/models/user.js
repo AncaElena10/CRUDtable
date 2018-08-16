@@ -63,16 +63,19 @@ var schema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   verify: { type: String, required: true },
-  img: { data: Buffer, contentType: String },
-  // img: { type: String, required: false },
-  // picture: { type: Schema.Types.Mixed, required: true },
-  // gender: { type: String, required: true },
-  // createdAt: { type: Date, default: Date.now },
+  profilePicture: { type: String, required: false },
+  // profilePicture: { data: Buffer, contentType: String },
+  gender: { type: String, required: false },
+  bio: { type: String, required: false },
+  location: { type: String, required: false },
+  hobby : { type: String, required: false },
+  twitterName: { type: String, required: false },
+  githubName: { type: String, required: false },
 });
 
-schema.statics.hashPassword = function hashPassword(password) {
-  return bcrypt.hashSync(password, 10);
-}
+// schema.statics.hashPassword = function hashPassword(password) {
+//   return bcrypt.hashSync(password, 10);
+// }
 
 schema.methods.isValid = function (hashedpassword) {
   return bcrypt.compareSync(hashedpassword, this.password);
@@ -80,22 +83,36 @@ schema.methods.isValid = function (hashedpassword) {
 
 schema.pre('save', function (next) {
   var user = this;
-  bcrypt.hash(user.password, 10, function (err, hash) {
-    if (err) {
-      return next(err);
-    }
-    user.password = hash;
-    user.verify = hash;
-    next();
+
+  // only hash the password if it has been modified (or is new)
+  if (!user.isModified('password')) return next();
+
+  // generate a salt
+  bcrypt.genSalt(10, function (err, salt) {
+    if (err) return next(err);
+
+    // hash the password along with our new salt
+    bcrypt.hash(user.password, salt, function (err, hash) {
+      if (err) return next(err);
+
+      // override the cleartext password with the hashed one
+      user.password = hash;
+      user.verify = hash
+      next();
+    });
   });
 });
 
-schema.pre('save', function (next) {
-  now = new Date();
-  if (!this.createdAt) {
-    this.createdAt = now;
-  }
-  next();
-});
+// schema.pre('save', function (next) {
+//   var user = this;
+//   bcrypt.hash(user.password, 10, function (err, hash) {
+//     if (err) {
+//       return next(err);
+//     }
+//     user.password = hash;
+//     user.verify = hash;
+//     next();
+//   });
+// });
 
 module.exports = mongoose.model('User', schema);

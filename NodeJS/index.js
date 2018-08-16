@@ -14,6 +14,7 @@ var register = require('./controllers/users.js');
 var login = require('./controllers/users.js');
 var profile = require('./controllers/users.js');
 var upload = require('./controllers/users.js');
+// var edit = require('./controllers/users.js');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 
@@ -60,4 +61,5 @@ app.use('/bla', test);
 app.use('/api', register);
 app.use('/api', login);
 app.use('/api', profile);
-app.use('/api', upload)
+app.use('/api', upload);
+// app.use('/users', edit);

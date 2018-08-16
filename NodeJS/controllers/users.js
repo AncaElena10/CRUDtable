@@ -5,21 +5,28 @@ var passport = require('passport');
 var nodemailer = require('nodemailer');
 const multer = require("multer");
 var fs = require('fs');
+var ObjectId = require('mongoose').Types.ObjectId;
+var _ = require('lodash');
 
 router.post('/register', function (req, res, next) {
   addToDB(req, res);
 });
 
-
+// aici se face adaugarea in baza de date cu toate campurile
 async function addToDB(req, res) {
   var user = new User({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
-    // password: User.hashPassword(req.body.password),
-    // verify: User.hashPassword(req.body.verify)
     password: req.body.password,
-    verify: req.body.verify
+    verify: req.body.verify,
+    gender: req.body.gender,
+    bio: req.body.bio,
+    location: req.body.location,
+    hobby: req.body.hobby,
+    profilePicture: req.body.profilePicture,
+    twitterName: req.body.twitterName,
+    githubName: req.body.githubName,
   });
 
   try {
@@ -30,6 +37,28 @@ async function addToDB(req, res) {
     return res.status(501).json(err);
   }
 }
+
+// router.post('/edit', function (req, res, next) {
+//   addToDBpersonalInfo(req, res);
+// });
+
+// async function addToDBpersonalInfo(req, res) {
+//   var user = new User({
+//     img: req.body.img,
+//     gender: req.body.gender,
+//     bio: req.body.bio,
+//     location: req.body.location,
+//     hobby: req.body.hobby,
+//   });
+
+//   try {
+//     doc = await user.save();
+//     return res.status(201).json(doc);
+//   }
+//   catch (err) {
+//     return res.status(501).json(err);
+//   }
+// }
 
 router.post('/login', function (req, res, next) {
   passport.authenticate('local', function (err, user, info) {
@@ -42,11 +71,11 @@ router.post('/login', function (req, res, next) {
   })(req, res, next);
 });
 
-router.get('/profile', isValidUser, function (req, res, next) {
+router.get('/profile', function (req, res, next) {
   return res.status(200).json(req.user);
 });
 
-router.get('/logout', isValidUser, function (req, res, next) {
+router.get('/logout', function (req, res, next) {
   req.logout();
   return res.status(200).json({ message: 'Logout Success' });
 })
@@ -58,6 +87,58 @@ function isValidUser(req, res, next) {
     return res.status(401).json({ message: 'Unauthorized Request' });
   }
 }
+
+// update user info
+router.put('/:id', function (req, res, next) {
+  // fetch user
+  User.findById(req.params.id, function (err, post) {
+    if (err) return next(err);
+
+    _.assign(post, req.body); // update user
+    post.save(function (err) {
+      if (err) return next(err);
+      return res.json(200, post);
+    })
+  });
+});
+
+// router.put('/:id', function (req, res, next) {
+//   User.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+//     if (err) {
+//       console.log('Error in user update: ' + JSON.stringify(err, undefined, 2));
+//       return next(err);
+//     }
+//     res.json(post);
+//   });
+// });
+
+router.get('/:id', (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).send(`No record with given id: ${req.params.id}`);
+  }
+  User.findById(req.params.id, (err, docs) => {
+    if (!err) {
+      console.log(docs)
+      res.send(docs);
+    } else {
+      console.log('Error in retriving user: ' + JSON.stringify(err, undefined, 2));
+    }
+  });
+});
+
+// delete account
+router.delete('/:id', (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).send(`No record with given id: ${req.params.id}`);
+  }
+  User.findByIdAndRemove(req.params.id, (err, docs) => {
+    if (!err) {
+      res.send(docs);
+    } else {
+      console.log('Error in user delete: ' + JSON.stringify(err, undefined, 2));
+    }
+  });
+});
 
 // PROFILE PICTURE
 // var storage = multer.diskStorage({
@@ -100,28 +181,48 @@ function isValidUser(req, res, next) {
 //   });
 // });
 
+const storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, '../uploads/images/');
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.originalname);
+  }
+});
 
+const fileFilter = (req, file, callback) => {
+  // reject file
+  if (file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    callback(null, true);
+  } else {
+    callback(null, false);
+  }
+}
 
 const upload = multer({
-  dest: '../uploads/images/',
-  limits: { fileSize: 10000000, files: 1 },
-  fileFilter: (req, file, callback) => {
-    if (!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
-      return callback(new Error('Only Images are allowed !'), false)
-    }
-    callback(null, true);
-  }
-}).single('image')
+  storage: storage, limits: {
+    fileSize: 1024 * 1042 * 5 // 5mb
+  },
+  fileFilter: fileFilter
+});
 
-router.post('/upload', (req, res) => {
-  upload(req, res, function (err) {
-    if (err) {
-      res.status(400).json({ message: err.message })
-    } else {
-      let path = `../uploads/images/${req.file.filename}`
-      res.status(200).json({ message: 'Image Uploaded Successfully !', img: path })
-    }
-  })
+router.post('/upload', upload.single('profilePicture'), (req, res) => {
+  // console.log(req.file);
+  addProfilePic(req, res);
 })
+
+async function addProfilePic(req, res) {
+  var user = new User({
+    profilePicture: req.file.path
+  });
+
+  try {
+    doc = await user.save();
+    return res.status(201).json(doc);
+  }
+  catch (err) {
+    return res.status(501).json(err);
+  }
+}
 
 module.exports = router;

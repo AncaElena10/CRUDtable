@@ -26,6 +26,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ContactComponent } from './contact/contact.component';
+import { GooglePlacesDirective } from './directives/google-places.directive';
+import { FilterPipe } from './shared/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,10 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
     ProfilePictureComponent,
     FileSelectDirective,
     FileDropDirective,
+    EditProfileComponent,
+    ContactComponent,
+    GooglePlacesDirective,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
