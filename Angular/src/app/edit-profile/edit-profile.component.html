@@ -90,16 +90,48 @@
             </form>
           </div>
 
-          <div *ngIf="showProfilePic">
-            <!-- <form> -->
-              <h2>Profile Picture Upload</h2>
+          <!-- <div *ngIf="showProfilePic">
+            <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload()">
               <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+              <h2>Profile Picture Upload</h2>
               <img *ngIf="!isSelectedProfilePic" [src]="'https://pbs.twimg.com/media/C8QlKN7V0AA3zlG.jpg'" height="200">
               <img *ngIf="isSelectedProfilePic" [src]="url" height="200">
               <input type="file" (change)="onFileSelected($event)" name="profilePicture">
-              <!-- <button type="button" (click)="onUpload()">Upload</button> -->
-              <button type="button" (click)="onUpload()">Upload</button>
-            <!-- </form> -->
+              <button type="submit">Upload</button>
+            </form>
+          </div> -->
+
+          <!-- <div *ngIf="showProfilePic">
+            <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload()">
+              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+              <h2>Profile Picture Upload</h2>
+              <img [src]="imageUrl" height="200">
+              <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" name="profilePicture">
+              <button type="submit">Upload</button>
+            </form>
+          </div> -->
+
+          <!-- <div *ngIf="showProfilePic">
+            <form #userFormProfilePicture="ngForm">
+              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+              <h2>Profile Picture Upload</h2>
+              <img [src]="imageUrl" height="200">
+              <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" name="profilePicture">
+              <button type="submit" (click)="onUpload(_id)">Upload</button>
+            </form>
+          </div> -->
+
+          <div *ngIf="showProfilePic">
+            <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload(userFormProfilePicture)">
+              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+              <h2>Profile Picture Upload</h2>
+              <img [src]="imageUrl" height="200">
+              <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files, _id)" name="profilePicture">
+              <button class="btn btn-primary right" type="submit">Upload</button>
+              <div *ngIf="success" class="alert alert-success" role="alert">
+                Success!
+              </div>
+            </form>
           </div>
 
           <div *ngIf="showOtherInfo">
@@ -123,12 +155,6 @@
                 <input google-place type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput6" name="location"
                   #name="ngModel" [(ngModel)]="userLocation" placeholder="No location has been set" (onSelect)="setAddress($event)"
                   (change)="apiService.selectedUser.location">
-                <!-- <ul style="list-style-type: none;">
-                    <li *ngFor="let key of addrKeys">
-                      <span style="font-weight: bold">{{key}}</span>:
-                      <span>{{addr[key]}}</span>
-                    </li>
-                  </ul> -->
               </div>
 
               <div class="form-group">
@@ -149,27 +175,48 @@
                   [(ngModel)]="githubName">
               </div>
 
+              <!-- <form #userFormHobby="ngForm" [formGroup]="hobbyForm" (ngSubmit)="onEditInfo(userFormHobby)">
+                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+                <div class="form-group">
+                  <label class="mr-sm-2" for="exampleFormControlInput9">Hobbies
+                    <i class="fa fa-gamepad"></i>
+                  </label>
+                  <input type="text" formControlName="hobby" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput9" [(ngModel)]="userHobby"
+                    name="hobby" placeholder="e.g. cycling">
+                  <div *ngIf="userHobby">
+                    <div class="hobbylist">
+                      <ul class="list-group pointer">
+                        <li (click)="selectValue(hobbyItem)" *ngFor="let hobbyItem of hobbyList | filter : userHobby" class="list-group-item list-group-item-action"
+                          (click)="saveUserHobby($event)">
+                          {{ hobbyItem }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary right" type="submit">Submit</button>
+                </div>
+              </form> -->
+
               <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput9">Hobbies
+                <label class="mr-sm-2" for="exampleFormControlInput9">Programming language
                   <i class="fa fa-gamepad"></i>
                 </label>
-                <!-- <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput9" name="hobby" #name="ngModel"
-                  [(ngModel)]="userHobby">
-                <div *ngIf="userHobby">
-                  <div *ngFor="let hobbyItem of hobbyList | filter:hobbyItem">
-                    {{ hobbyItem }}
-                  </div>
-                </div> -->
-                <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput9" [(ngModel)]="userHobby" name="hobby">
-                <div *ngIf="userHobby">
+                <!-- <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput9" [(ngModel)]="selectedHobby"
+                  name="hobby">
+                <div *ngIf="selectedHobby">
                   <div class="hobbylist">
                     <ul class="list-group pointer">
-                      <li *ngFor="let hobbyItem of hobbyList | filter : userHobby" class="list-group-item list-group-item-action" (click)="saveUserHobby($event)">
+                      <li *ngFor="let hobbyItem of hobbyList | filter : selectedHobby" class="list-group-item list-group-item-action" (click)="saveUserHobby($event)">
                         {{ hobbyItem }}
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
+                <ng-multiselect-dropdown name="hobby" [placeholder]="'e.g. Python'" [data]="hobbyList" [(ngModel)]="selectedHobby" [settings]="hobbySettings"
+                  (onSelect)="saveUserHobby($event)">
+                </ng-multiselect-dropdown>
               </div>
 
               <div class="form-group">

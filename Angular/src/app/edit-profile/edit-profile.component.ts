@@ -2,9 +2,15 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { ApiService } from '../shared/api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BehaviorSubject } from '../../../node_modules/rxjs';
-import { FilterPipe} from '../shared/filter.pipe';
+import { FilterPipe } from '../shared/filter.pipe';
+
+// declare global {
+//   interface FormData {
+//     entries(): Iterator<[USVString, USVString | Blob]>;
+//   }
+// }
 
 @Component({
   selector: 'app-edit-profile',
@@ -24,6 +30,7 @@ export class EditProfileComponent implements OnInit {
   twitterName: any = "";
   githubName: any = "";
   userLocation: any = "";
+  profilePicture: any = "";
 
   showPersonalInfo: boolean = false;
   showBio: boolean = false;
@@ -41,23 +48,16 @@ export class EditProfileComponent implements OnInit {
   url = '';
   public editEnabled = true;
   public picurl: string;
-  hobbyList = [
-    'baking',
-    'computer programming',
-    'dancing',
-    'drawing',
-    'fashion',
-    'graphics',
-    'gaming',
-    'video gaming',
-    'driving',
-    'cycling',
-    'ice skating',
-    'skateboarding',
-    'photography',
-    'music',
-    'guitar playing'
-  ]
+  selectedHobby: any = [];
+
+  fd: any;
+
+  fileToUpload: File = null;
+  imageUrl: string = "https://pbs.twimg.com/media/C8QlKN7V0AA3zlG.jpg";
+
+  hobbyList = [];
+  selectedHobbyItems = [];
+  hobbySettings = {};
 
   // google maps
   public title = 'Places';
@@ -101,7 +101,7 @@ export class EditProfileComponent implements OnInit {
   //   return this.editForm.get('verify2');
   // }
 
-  constructor(private apiService: ApiService, private router: Router, private http: HttpClient, private zone: NgZone) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private http: HttpClient, private zone: NgZone) {
     // this.apiService.refreshUser();
     this.apiService.user()
       .subscribe(
@@ -112,8 +112,24 @@ export class EditProfileComponent implements OnInit {
       )
     // console.log(this.currentUser)
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // this.apiService.userPic()
+    // .subscribe(
+    //   data => {
+    //     // this.extractInfo(data)
+    //     console.log("edit profile ", data)
+    //   }
+    // )
 
+    // autocomplete hobby
+    // this.initForm();
   }
+
+  // autocomplete hobby
+  // initForm(): FormGroup {
+  //   return this.hobbyForm = this.fb.group({
+  //     hobby: [null] // searchForHobby = formControlName
+  //   });
+  // }
 
   extractInfo(data) { // data - este un obiect
     this.firstname = data.firstname;
@@ -129,6 +145,10 @@ export class EditProfileComponent implements OnInit {
     this.githubName = data.githubName;
     this.twitterName = data.twitterName;
     this.gender = data.gender;
+    this.profilePicture = data.profilePicture;
+
+    // console.log(this.profilePicture) // ..\uploads\images\save-whatsapp-profile-picture-image3.jpg
+
     // this.hobby = data.hobby;
     // this.bio = data.bio;
     // localStorage.setItem('firstname', this.firstname);
@@ -141,12 +161,67 @@ export class EditProfileComponent implements OnInit {
     this.apiService.resetForm();
     this.apiService.refreshUser();
     // console.log(this.apiService.selectedUser)
+
+    this.hobbyList = [
+      // { item_id: 1, item_text: 'baking' },
+      // { item_id: 2, item_text: 'computer programming' },
+      // { item_id: 3, item_text: 'dancing' },
+      // { item_id: 4, item_text: 'drawing' },
+      // { item_id: 5, item_text: 'New fashion' },
+      // { item_id: 6, item_text: 'graphics' },
+      // { item_id: 7, item_text: 'gaming' },
+      // { item_id: 8, item_text: 'video gaming' },
+      // { item_id: 9, item_text: 'driving' },
+      // { item_id: 10, item_text: 'cycling' },
+      // { item_id: 11, item_text: 'ice skating' },
+      // { item_id: 12, item_text: 'skateboarding' },
+      // { item_id: 13, item_text: 'photography' },
+      // { item_id: 14, item_text: 'music' },
+      // { item_id: 15, item_text: 'guitar playing' }
+      'C',
+      'C++',
+      'C#',
+      'Haskell',
+      'Java',
+      'JavaScript',
+      'LaTeX',
+      'Octave',
+      'Python',
+      'PHP',
+      'Prolog',
+      'R',
+      'Racket',
+      'SQL',
+      'Verilog',
+      'VHDL'
+    ]
+    // this.selectedHobbyItems = [
+    //   {  item_text: 'baking' }
+    // ]
+    this.hobbySettings = {
+      singleSelection: false,
+      idField: 'id',
+      // textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true,
+      enableCheckAll: false,
+      limitSelection: 3
+    };
+  }
+
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
   }
 
   onEditInfo(form: NgForm) {
     // // console.log("EDIT")
     // this.success = true;
-    // // console.log(form.value)
+    console.log(form.value)
     // this.apiService.putUser(form.value).subscribe((res) => {
     //   // console.log("form value user: " + JSON.stringify(form.value))
     //   this.apiService.refreshUser();
@@ -156,15 +231,69 @@ export class EditProfileComponent implements OnInit {
 
     this.success = true;
     if (form.value._id != "") { // insert
-      this.apiService.putUser(form.value).subscribe((res) => {
-        // console.log("form value employee: " + JSON.stringify(form.value))
-        // this.apiService.resetForm(form);
-        this.apiService.refreshUser();
-        // M.toast({ html: 'Updated successfully', classes: 'rounded' });
-      });
+      this.apiService.putUser(form.value)
+        .subscribe((res) => {
+          // console.log("form value employee: " + JSON.stringify(form.value))
+          // this.apiService.resetForm(form);
+          this.apiService.refreshUser();
+          // M.toast({ html: 'Updated successfully', classes: 'rounded' });
+        });
     }
 
     // console.log(this.apiService.selectedUser)
+  }
+
+  onUpload(form: NgForm, _id) {
+    const fd = new FormData();
+
+    fd.append('profilePicture', this.fileToUpload, this.fileToUpload.name);
+
+    // adaugata ulterior
+    fd.append('_id', form.value._id)
+
+    // this.apiService.type = this.fileToUpload.type; // "image/tip_poza"
+
+    this.success = true;
+
+    // console.log("print aici" + this.apiService.type)
+
+    // console.log(this.fileToUpload)
+    // console.log(_id)
+    // fd.append(form.value._id, this.fileToUpload, this.fileToUpload.name)
+
+    // console.log("form value pic update " + form.value._id )
+
+    // console.log(this.fileToUpload)
+    // console.log(this.fileToUpload.name)
+
+    // console.log("here", fd.get('_id'))
+
+    // for (var pair of fd.entries()) {
+    //   console.log(pair[0]);
+    // }
+
+    // console.log(fd)
+
+    // metoda 1
+    // this.http.post(this.rootURL + '/upload', fd)
+    //   .subscribe(res => {
+    //   });
+
+    // metoda 2
+    this.apiService
+      .uploadPicture(fd)
+      .subscribe(
+        res => {
+          // response => { // download file
+          //   var blob = new Blob([response.blob()], { type: 'application/pdf' });
+          //   var filename = 'file.pdf';
+          //   saveAs(blob, filename);
+          // this.apiService.resetForm(form);
+          this.apiService.refreshUser();
+        },
+      );
+    this.isSelectedProfilePic = true;
+    // console.log(this.profilePicture)
   }
 
   // onEditEmail(event) {
@@ -175,9 +304,10 @@ export class EditProfileComponent implements OnInit {
     if (confirm('Are you sure you want to permanently delete this account?') == true) {
       this.apiService.deleteUser(_id).subscribe((res) => {
         // this.apiService.refreshUser();
-
+        // this.apiService.resetForm();
       });
       this.apiService.setLoggedIn(false);
+      this.router.navigateByUrl('/employees');
     }
   }
 
@@ -185,35 +315,21 @@ export class EditProfileComponent implements OnInit {
     this.picurl = '';
   }
 
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
+  // onFileSelected(event) {
+  // this.selectedFile = <File>event.target.files[0];
 
-    console.log(this.selectedFile)
-    // if (event.target.files && event.target.files[0]) {
-    //   var reader = new FileReader();
+  // console.log(this.selectedFile)
+  // if (event.target.files && event.target.files[0]) {
+  //   var reader = new FileReader();
 
-    //   reader.readAsDataURL(event.target.files[0]);
+  //   reader.readAsDataURL(event.target.files[0]);
 
-    //   reader.onload = (event) => {
-    //     this.url = event.target.result;
-    //   }
+  //   reader.onload = (event) => {
+  //     this.url = event.target.result;
+  //   }
 
-    // }
-  }
-
-  onUpload() {
-    const fd = new FormData();
-    fd.append('profilePicture', this.selectedFile, this.selectedFile.name);
-
-    // console.log("here", this.selectedFile.name)
-    // console.log("there", fd)
-
-    this.http.post(this.rootURL + '/upload', fd)
-      .subscribe(res => {
-        console.log(res);
-      });
-    this.isSelectedProfilePic = true;
-  }
+  // }
+  // }
 
   deleteChecked(event) {
     if (event.target.checked) {
@@ -263,7 +379,27 @@ export class EditProfileComponent implements OnInit {
     // console.log(event.target.innerText)
 
     // this.hobby = event.target.innerText;
+
+    // console.log("here: " + event)
+    // this.selectedHobby = event.target.innerText;
+    this.selectedHobby = event;
   }
+
+  handleFileInput(file: FileList) {
+    // console.log("id", _id)
+    this.fileToUpload = file.item(0);
+    // console.log(this.fileToUpload.name)
+
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
+
+    // console.log("here ", this.fileToUpload)
+  }
+
+  // TODO - trebuie sa trimit cumva id-ul la node
 
   personalInfo() {
     this.showPersonalInfo = true;

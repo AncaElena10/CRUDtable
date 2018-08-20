@@ -79,7 +79,7 @@ ul ul a {
   padding: 4rem 4rem;
 }
 
-div.hobbylist {
+/* div.hobbylist {
   background-color: lightblue;
   width: 110px;
   height: 110px;
@@ -88,10 +88,9 @@ div.hobbylist {
 
 div.hobbylist {
   width: 100%;
-  height: 110px;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 div.hobbylist[_ngcontent-c4] {
   background-color: transparent;
-}
+} */

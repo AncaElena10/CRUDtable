@@ -30,6 +30,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { GooglePlacesDirective } from './directives/google-places.directive';
 import { FilterPipe } from './shared/filter.pipe';
+import { ClickoutsideDirective } from './directives/clickoutside.directive';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { FilterPipe } from './shared/filter.pipe';
     ContactComponent,
     GooglePlacesDirective,
     FilterPipe,
+    ClickoutsideDirective,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ import { FilterPipe } from './shared/filter.pipe';
     Ng2SearchPipeModule,
     RouterModule.forRoot([{ path: "", component: SearchComponent, pathMatch: 'full'}]),
     Ng4LoadingSpinnerModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

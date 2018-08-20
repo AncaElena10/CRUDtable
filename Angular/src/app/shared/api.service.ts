@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { User } from './user.model';
 import { NgForm } from '../../../node_modules/@angular/forms';
+import {ResponseContentType } from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class ApiService {
   // messageSuccess: boolean = false;
   loginMessage: boolean = false;
   selectedUser: User;
+  type: any = "";
 
   constructor(private http: HttpClient) { }
 
@@ -83,8 +85,19 @@ export class ApiService {
   // }
 
   uploadPicture(body: any) {
+    // console.log(this.type)
     return this.http.post(this.rootURL + '/upload', body, {
+      // observe: 'body', 
+      // observe: 'response',
+      responseType: 'blob',
+      // headers: new HttpHeaders().append('Content-Type', 'application/form-data'),
+    });
+  }
+
+  userPic() {
+    return this.http.get(this.rootURL + '/upload', {
       observe: 'body',
+      withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
     });
   }
@@ -129,7 +142,7 @@ export class ApiService {
       githubName: "",
       hobby: "",
       bio: "",
-      profilePicture: "",
+      profilePicture: null,
     }
   }
 }

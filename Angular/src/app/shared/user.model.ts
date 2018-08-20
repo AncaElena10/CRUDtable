@@ -11,5 +11,5 @@ export class User {
   githubName: string;
   hobby: string;
   bio: string;
-  profilePicture: string;
+  profilePicture: "blob";
 }
