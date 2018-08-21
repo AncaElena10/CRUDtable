@@ -68,9 +68,11 @@ var schema = new Schema({
   gender: { type: String, required: false },
   bio: { type: String, required: false },
   location: { type: String, required: false },
-  hobby : { type: String, required: false },
+  hobby: { type: String, required: false },
   twitterName: { type: String, required: false },
   githubName: { type: String, required: false },
+  birthday: { type: Date, required: false },
+  publicBirthday: { type: Boolean, required: false },
 });
 
 // schema.statics.hashPassword = function hashPassword(password) {
@@ -102,6 +104,12 @@ schema.pre('save', function (next) {
     });
   });
 });
+
+// schema.methods.changeDate = function changeDate(dateString) {
+//   dateString = new Date(dateString).toUTCString();
+//   dateString = dateString.split("T").slice(0, 4).join(' ');
+//   console.log(dateString);
+// }
 
 // schema.pre('save', function (next) {
 //   var user = this;

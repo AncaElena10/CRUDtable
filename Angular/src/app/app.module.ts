@@ -32,6 +32,8 @@ import { GooglePlacesDirective } from './directives/google-places.directive';
 import { FilterPipe } from './shared/filter.pipe';
 import { ClickoutsideDirective } from './directives/clickoutside.directive';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
+import { ContactMeComponent } from './contact-me/contact-me.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     GooglePlacesDirective,
     FilterPipe,
     ClickoutsideDirective,
+    DateTimePickerComponent,
+    ContactMeComponent,
   ],
   imports: [
     BrowserModule,

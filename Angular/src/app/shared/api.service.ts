@@ -19,6 +19,7 @@ export class ApiService {
   loginMessage: boolean = false;
   selectedUser: User;
   type: any = "";
+  // publicBirthday: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -143,6 +144,8 @@ export class ApiService {
       hobby: "",
       bio: "",
       profilePicture: null,
+      birthday: null,
+      publicBirthday: false,
     }
   }
 }

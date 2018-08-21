@@ -52,6 +52,7 @@ async function addToDB(req, res) {
     // profilePicture: req.body.contentType,
     // twitterName: req.body.twitterName,
     // githubName: req.body.githubName,
+    // birthday: changeDate(req.body.birthday),
   });
 
   // console.log(user.firstname)

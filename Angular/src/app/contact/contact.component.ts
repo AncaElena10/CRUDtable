@@ -20,6 +20,7 @@ export class ContactComponent implements OnInit {
   isUndefined: any = "";
   isNOTUndefined: boolean = false;
 
+
   constructor(private apiService: ApiService, private sanitizer: DomSanitizer) {
     this.apiService.user()
       .subscribe(
@@ -28,8 +29,8 @@ export class ContactComponent implements OnInit {
         }
       )
 
-      // this.picType = this.apiService.type;
-      // console.log(this.picType)
+    // this.picType = this.apiService.type;
+    // console.log(this.picType)
   }
 
   // firstname: any = '';
@@ -45,6 +46,7 @@ export class ContactComponent implements OnInit {
   // userLocation: any = "";
   buildUrlTwitter: any = "";
   buildUrlGithub: any = "";
+  birthday: any = null;
 
   extractInfo(data) {
     // this.firstname = data.firstname;
@@ -58,6 +60,7 @@ export class ContactComponent implements OnInit {
     // this.gender = data.gender;
     // this.hobby = data.hobby;
     this.profilePicture = data.profilePicture;
+    this.birthday = data.birthday;
 
     // console.log("aici" + this.apiService.type)
     // this.profilePicURL = 'data:' + this.apiService.type + ';base64,' + this.profilePicture;
@@ -73,11 +76,13 @@ export class ContactComponent implements OnInit {
     // console.log(this.profilePicURL)
 
     // console.log(this.profilePicture) // ..\uploads\images\save-whatsapp-profile-picture-image3.jpg
+    // console.log("here " + this.birthday)
   }
 
   ngOnInit() {
     this.apiService.resetForm();
     this.apiService.refreshUser();
+
   }
 
   goToGitUrl() {

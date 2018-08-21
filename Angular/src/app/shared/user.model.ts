@@ -12,4 +12,6 @@ export class User {
   hobby: string;
   bio: string;
   profilePicture: "blob";
+  birthday: Date;
+  publicBirthday: boolean;
 }

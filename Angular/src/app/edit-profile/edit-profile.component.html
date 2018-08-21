@@ -17,7 +17,7 @@
                     <a (click)="personalInfo()" class="pointer">Edit Profile</a>
                   </li>
                   <li>
-                    <a (click)="changeBio()" class="pointer">Edit Bio</a>
+                    <a (click)="changeBio()" class="pointer">Edit Bio and Birth date</a>
                   </li>
                   <li>
                     <a (click)="changeProfilePicture()" class="pointer">Edit Profile Picture</a>
@@ -80,6 +80,16 @@
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">About me</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="250" name="bio" #name="ngModel" [(ngModel)]="bio"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="datePickerArea">Birthday</label>
+                <!-- <gijgo-datepicker #datepicker [configuration]="configuration" name="birthday" id="datePickerArea"></gijgo-datepicker> Selected Date: {{ date }} -->
+                <!-- <input id="datePickerArea" name="birthday" #name="ngModel" [(ngModel)]="birthday" class="form-control" type="date"> -->
+                <div>
+                  <input type="date" id="datePickerArea" name="birthday" [ngModel]="birthday | date:'yyyy-MM-dd'" (ngModelChange)="birthday=$event"
+                    [value]="birthday | date:'yyyy-MM-dd'" class="form-control">
+                  <input type="checkbox" (change)="showBirthdayOnProfile($event)" name="publicBirthday" #name="ngModel" [(ngModel)]="publicBirthday"> Public
+                </div>
               </div>
               <div class="form-group">
                 <button class="btn btn-primary right" type="submit">Submit</button>
@@ -153,8 +163,8 @@
                   <i class="fa fa-location-arrow"></i>
                 </label>
                 <input google-place type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput6" name="location"
-                  #name="ngModel" [(ngModel)]="userLocation" placeholder="No location has been set" (onSelect)="setAddress($event)"
-                  (change)="apiService.selectedUser.location">
+                  #name="ngModel" [(ngModel)]="userLocation" (ngModelChange)="userLocation=$event" placeholder="No location has been set"
+                  (onSelect)="setAddress($event)" (change)="apiService.selectedUser.location" [value]="userLocation">
               </div>
 
               <div class="form-group">

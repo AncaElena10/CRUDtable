@@ -1,10 +1,12 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, VERSION, ViewChild } from '@angular/core';
 import { ApiService } from '../shared/api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BehaviorSubject } from '../../../node_modules/rxjs';
 import { FilterPipe } from '../shared/filter.pipe';
+import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
+import * as types from 'gijgo';
 
 // declare global {
 //   interface FormData {
@@ -19,6 +21,14 @@ import { FilterPipe } from '../shared/filter.pipe';
 })
 export class EditProfileComponent implements OnInit {
 
+  @ViewChild("datepicker")
+
+  datepicker: DateTimePickerComponent;
+  configuration: types.DatePickerSettings;
+  date = '03/08/2018';
+
+  eventLog: string = '';
+
   firstname: any = '';
   lastname: any = '';
   email: any = '';
@@ -31,6 +41,8 @@ export class EditProfileComponent implements OnInit {
   githubName: any = "";
   userLocation: any = "";
   profilePicture: any = "";
+  birthday: any = "";
+  publicBirthday: boolean = false;
 
   showPersonalInfo: boolean = false;
   showBio: boolean = false;
@@ -63,6 +75,7 @@ export class EditProfileComponent implements OnInit {
   public title = 'Places';
   public addrKeys: string[];
   public addr: object;
+  public newDate: any = "";
 
   // selectedUser = {
   //   _id: "",
@@ -122,7 +135,31 @@ export class EditProfileComponent implements OnInit {
 
     // autocomplete hobby
     // this.initForm();
+    // this.configuration = {
+    //   value: this.date,
+    //   // uiLibrary: 'bootstrap4',
+    //   // width: 200,
+    //   open: (e) => {
+    //     // this.eventLog += 'Open is fired.';
+    //   },
+    //   close: (e) => {
+    //     // this.eventLog += 'Close is fired.';
+    //   },
+    //   change: (e) => {
+    //     this.date = this.datepicker.instance.value().toString();
+    //     // this.eventLog += 'Change is fired. ';
+    //   }
+    // };
+    
   }
+
+  // setValue() {
+  //   this.datepicker.instance.value('03/12/2018');
+  // }
+
+  // setValueForLocation() {
+  //   this.location.instance.value(this.userLocation);
+  // }
 
   // autocomplete hobby
   // initForm(): FormGroup {
@@ -146,13 +183,18 @@ export class EditProfileComponent implements OnInit {
     this.twitterName = data.twitterName;
     this.gender = data.gender;
     this.profilePicture = data.profilePicture;
+    this.birthday = data.birthday;
+    this.publicBirthday = data.publicBirthday;
+
+    // this.newDate = JSON.stringify(data.birthday);
+    // this.birthday = this.newDate.split('T')[0];
 
     // console.log(this.profilePicture) // ..\uploads\images\save-whatsapp-profile-picture-image3.jpg
 
     // this.hobby = data.hobby;
     // this.bio = data.bio;
     // localStorage.setItem('firstname', this.firstname);
-    // console.log(this.firstname);
+    // console.log(this.birthday);
 
     // console.log("here" + this.location)
   }
@@ -221,7 +263,7 @@ export class EditProfileComponent implements OnInit {
   onEditInfo(form: NgForm) {
     // // console.log("EDIT")
     // this.success = true;
-    console.log(form.value)
+    // console.log(form.value)
     // this.apiService.putUser(form.value).subscribe((res) => {
     //   // console.log("form value user: " + JSON.stringify(form.value))
     //   this.apiService.refreshUser();
@@ -230,6 +272,7 @@ export class EditProfileComponent implements OnInit {
     // // console.log("EDIT PROFILE ", this.apiService.selectedUser)
 
     this.success = true;
+
     if (form.value._id != "") { // insert
       this.apiService.putUser(form.value)
         .subscribe((res) => {
@@ -336,6 +379,14 @@ export class EditProfileComponent implements OnInit {
       this.blockDelete = true;
     } else {
       this.blockDelete = false;
+    }
+  }
+
+  showBirthdayOnProfile(event) {
+    if (event.target.checked) {
+      this.publicBirthday = true;
+    } else {
+      this.publicBirthday = false;
     }
   }
 
