@@ -63,6 +63,13 @@ export class ApiService {
     });
   }
 
+  sendEmail(body: any) {
+    return this.http.post(this.rootURL + '/send', body, {
+      observe: 'body',
+      headers: new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
+
   private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
   // private loggedInStatus = false
 
@@ -141,11 +148,14 @@ export class ApiService {
       location: "",
       twitterName: "",
       githubName: "",
+      facebookName: "",
+      youtubeName: "",
       hobby: "",
       bio: "",
       profilePicture: null,
       birthday: null,
       publicBirthday: false,
+      phoneNumber: 0,
     }
   }
 }

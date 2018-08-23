@@ -271,4 +271,48 @@ router.post('/upload', function (req, res) {
 //   });
 // });
 
+router.post("/send", (req, res) => {
+  console.log(req.body)
+  const output = `
+    <p>You have a new contact req</p>
+    <h3>Contact Details</h3>
+    <ul>
+      <li>Name: ${req.body.nameSender}</li>
+      <li>Email: ${req.body.emailSender}</li>
+      <li>Phone: ${req.body.phoneSender}</li>
+    </ul>
+    <h3>Message</h3>
+    <p>${req.body.messageSender}</p>
+  `;
+
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+      user: 'potatotest10@gmail.com', // intermediar - cel care trimite mailurile la mine
+      pass: 'parola123;'
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  });
+
+  let mailOptions = {
+    from: '"Nodemailer Contact" <potatotest10@gmail.com>', // intermediar - cel care trimite mailurile la mine
+    to: req.body.emailReceiver, // list of receivers // <--- trebuie schimbat cu email user
+    subject: 'Hello ✔', // Subject line
+    text: 'Hello world?', // plain text body
+    html: output // html body
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+  });
+})
+
 module.exports = router;

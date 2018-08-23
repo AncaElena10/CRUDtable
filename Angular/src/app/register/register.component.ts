@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
     githubName: new FormControl(null, ),
     profilePicture: new FormControl(null, ),
     birthday: new FormControl(null, ),
+    phoneNumber: new FormControl(null, ),
   })
   constructor(private router: Router, private apiService: ApiService) { }
 

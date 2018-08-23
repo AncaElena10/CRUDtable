@@ -44,8 +44,8 @@ export class ContactComponent implements OnInit {
   // twitterName: any = "";
   // githubName: any = "";
   // userLocation: any = "";
-  buildUrlTwitter: any = "";
-  buildUrlGithub: any = "";
+  // buildUrlTwitter: any = "";
+  // buildUrlGithub: any = "";
   birthday: any = null;
 
   extractInfo(data) {
@@ -85,14 +85,14 @@ export class ContactComponent implements OnInit {
 
   }
 
-  goToGitUrl() {
-    // console.log("here" + this.apiService.selectedUser['githubName'])
-    this.buildUrlGithub = "https://github.com/" + this.apiService.selectedUser['githubName'];
-    window.location.href = this.buildUrlGithub;
-  }
+  // goToGitUrl() {
+  //   // console.log("here" + this.apiService.selectedUser['githubName'])
+  //   this.buildUrlGithub = "https://github.com/" + this.apiService.selectedUser['githubName'];
+  //   window.location.href = this.buildUrlGithub;
+  // }
 
-  goToTwitterUrl() {
-    this.buildUrlTwitter = "https://twitter.com/" + this.apiService.selectedUser['twitterName'];
-    window.location.href = this.buildUrlTwitter;
-  }
+  // goToTwitterUrl() {
+  //   this.buildUrlTwitter = "https://twitter.com/" + this.apiService.selectedUser['twitterName'];
+  //   window.location.href = this.buildUrlTwitter;
+  // }
 }

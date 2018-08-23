@@ -34,6 +34,8 @@ import { ClickoutsideDirective } from './directives/clickoutside.directive';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
+import { AgmCoreModule } from '@agm/core';
+import { NguiMapModule } from '@ngui/map';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,7 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
@@ -71,10 +73,15 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
     NgxPaginationModule,
     OrderModule,
     Ng2SearchPipeModule,
-    RouterModule.forRoot([{ path: "", component: SearchComponent, pathMatch: 'full'}]),
+    RouterModule.forRoot([{ path: "", component: SearchComponent, pathMatch: 'full' }]),
     Ng4LoadingSpinnerModule.forRoot(),
     AppRoutingModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyB3a71eakX1ji_aFPmQpGf5gWD278RRl4o",
+      // libraries: ["places"]
+    }),
+    // NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyB3a71eakX1ji_aFPmQpGf5gWD278RRl4o' }),
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

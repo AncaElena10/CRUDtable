@@ -7,6 +7,9 @@ import { BehaviorSubject } from '../../../node_modules/rxjs';
 import { FilterPipe } from '../shared/filter.pipe';
 import { DateTimePickerComponent } from '../date-time-picker/date-time-picker.component';
 import * as types from 'gijgo';
+import { TemplateDefinitionBuilder } from '@angular/compiler/src/render3/view/template';
+import { AgmCoreModule } from '@agm/core';
+import { NgModule } from '@angular/core';
 
 // declare global {
 //   interface FormData {
@@ -19,6 +22,13 @@ import * as types from 'gijgo';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
+
+@NgModule({
+  imports: [
+    AgmCoreModule
+  ]
+})
+
 export class EditProfileComponent implements OnInit {
 
   @ViewChild("datepicker")
@@ -43,6 +53,9 @@ export class EditProfileComponent implements OnInit {
   profilePicture: any = "";
   birthday: any = "";
   publicBirthday: boolean = false;
+  phoneNumber: number = null;
+  facebookName: any = "";
+  youtubeName: any = "";
 
   showPersonalInfo: boolean = false;
   showBio: boolean = false;
@@ -54,6 +67,7 @@ export class EditProfileComponent implements OnInit {
   success: boolean = false;
   isSelectedProfilePic: boolean = false;
   blockDelete: boolean = false;
+  showSocial: boolean = false;
 
   selectedFile: File = null;
   rootURL = "http://localhost:3000/api";
@@ -150,7 +164,7 @@ export class EditProfileComponent implements OnInit {
     //     // this.eventLog += 'Change is fired. ';
     //   }
     // };
-    
+
   }
 
   // setValue() {
@@ -185,6 +199,9 @@ export class EditProfileComponent implements OnInit {
     this.profilePicture = data.profilePicture;
     this.birthday = data.birthday;
     this.publicBirthday = data.publicBirthday;
+    this.phoneNumber = data.phoneNumber;
+    this.facebookName = data.facebookName;
+    this.youtubeName = data.youtubeName;
 
     // this.newDate = JSON.stringify(data.birthday);
     // this.birthday = this.newDate.split('T')[0];
@@ -415,7 +432,7 @@ export class EditProfileComponent implements OnInit {
       this.userLocation = this.addr['formatted_address'];
 
       // console.log(this.userLocation)
-      // console.log("addr: " + addrObj)
+      // console.log("addr: " + JSON.stringify(addrObj))
 
     });
     // this.location = this.userLocation;
@@ -461,6 +478,7 @@ export class EditProfileComponent implements OnInit {
     this.showProfilePic = false;
     this.showOtherInfo = false;
     this.success = false;
+    this.showSocial = false;
     // console.log(this.showPersonalInfo)
   }
 
@@ -473,6 +491,7 @@ export class EditProfileComponent implements OnInit {
     this.showProfilePic = false;
     this.showOtherInfo = false;
     this.success = false;
+    this.showSocial = false;
   }
 
   changeEmail() {
@@ -484,6 +503,7 @@ export class EditProfileComponent implements OnInit {
     this.showProfilePic = false;
     this.showOtherInfo = false;
     this.success = false;
+    this.showSocial = false;
   }
 
   changePassword() {
@@ -495,6 +515,7 @@ export class EditProfileComponent implements OnInit {
     this.showProfilePic = false;
     this.showOtherInfo = false;
     this.success = false;
+    this.showSocial = false;
   }
 
   deleteUser() {
@@ -506,6 +527,7 @@ export class EditProfileComponent implements OnInit {
     this.showProfilePic = false;
     this.showOtherInfo = false;
     this.success = false;
+    this.showSocial = false;
   }
 
   changeProfilePicture() {
@@ -517,10 +539,24 @@ export class EditProfileComponent implements OnInit {
     this.showEmail = false;
     this.showOtherInfo = false;
     this.success = false;
+    this.showSocial = false;
   }
 
   changeOtherInfo() {
     this.showOtherInfo = true;
+    this.showProfilePic = false;
+    this.showDelete = false;
+    this.showPassword = false;
+    this.showPersonalInfo = false;
+    this.showBio = false;
+    this.showEmail = false;
+    this.success = false;
+    this.showSocial = false;
+  }
+
+  changeSocial() {
+    this.showSocial = true;
+    this.showOtherInfo = false;
     this.showProfilePic = false;
     this.showDelete = false;
     this.showPassword = false;

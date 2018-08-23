@@ -9,9 +9,12 @@ export class User {
   location: string;
   twitterName: string;
   githubName: string;
+  facebookName: string;
+  youtubeName: string;
   hobby: string;
   bio: string;
   profilePicture: "blob";
   birthday: Date;
   publicBirthday: boolean;
+  phoneNumber: Number;
 }

@@ -23,6 +23,9 @@
                     <a (click)="changeProfilePicture()" class="pointer">Edit Profile Picture</a>
                   </li>
                   <li>
+                    <a (click)="changeSocial()" class="pointer">Social</a>
+                  </li>
+                  <li>
                     <a (click)="changeOtherInfo()" class="pointer">Other Info</a>
                   </li>
                 </ul>
@@ -88,7 +91,7 @@
                 <div>
                   <input type="date" id="datePickerArea" name="birthday" [ngModel]="birthday | date:'yyyy-MM-dd'" (ngModelChange)="birthday=$event"
                     [value]="birthday | date:'yyyy-MM-dd'" class="form-control">
-                  <input type="checkbox" (change)="showBirthdayOnProfile($event)" name="publicBirthday" #name="ngModel" [(ngModel)]="publicBirthday"> Public
+                  <input type="checkbox" (change)="showBirthdayOnProfile($event)" name="publicBirthday" #name="ngModel" [(ngModel)]="publicBirthday">                  Public
                 </div>
               </div>
               <div class="form-group">
@@ -168,21 +171,21 @@
               </div>
 
               <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput7">Twitter username
-                  <i class="fa fa-twitter"></i>
+                <label class="mr-sm-2" for="exampleFormControlInput10">Phone Number
+                  <i class="fa fa-phone"></i>
                 </label>
                 <div class="inner-addon left-addon">
-                  <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput7" name="twitterName" #name="ngModel"
-                    [(ngModel)]="twitterName">
+                  <!-- <input type="tel" maxlength="9" class="form-control mr-sm-2" id="exampleFormControlInput10" name="phoneNumber" #name="ngModel"
+                      [(ngModel)]="phoneNumber"> -->
+                  <!-- <input type="text" value="(+40)" class="form-control mr-sm-1" disabled style="max-width: 30%;">
+                  <input type="tel" id="exampleFormControlInput10" maxlength="9" name="phoneNumber" style="max-width: 70%; vertical-align:top;" class="form-control" pattern="[0-9]{9}" />
+                  <span class="validity"></span> -->
+                  <div class="form-row">
+                    <input type="text" value="(+40)" class="form-group form-control" disabled style="max-width: 24%;">
+                    <input type="number" id="exampleFormControlInput10" name="phoneNumber" style="max-width: 75%;" class="form-group form-control"
+                      pattern="[0-9]{9}" #name="ngModel" [(ngModel)]="phoneNumber" />
+                  </div>
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput8">GitHub username
-                  <i class="fa fa-github"></i>
-                </label>
-                <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput8" name="githubName" #name="ngModel"
-                  [(ngModel)]="githubName">
               </div>
 
               <!-- <form #userFormHobby="ngForm" [formGroup]="hobbyForm" (ngSubmit)="onEditInfo(userFormHobby)">
@@ -227,6 +230,52 @@
                 <ng-multiselect-dropdown name="hobby" [placeholder]="'e.g. Python'" [data]="hobbyList" [(ngModel)]="selectedHobby" [settings]="hobbySettings"
                   (onSelect)="saveUserHobby($event)">
                 </ng-multiselect-dropdown>
+              </div>
+
+              <div class="form-group">
+                <button class="btn btn-primary right" type="submit">Submit</button>
+                <div *ngIf="success" class="alert alert-success" role="alert">
+                  Success!
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div *ngIf="showSocial">
+            <form #userFormSocial="ngForm" (ngSubmit)="onEditInfo(userFormSocial)">
+              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+              <div class="form-group">
+                <label class="mr-sm-2" for="exampleFormControlInput7">Twitter username
+                  <i class="fa fa-twitter"></i>
+                </label>
+                <div class="inner-addon left-addon">
+                  <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput7" name="twitterName" #name="ngModel"
+                    [(ngModel)]="twitterName">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="mr-sm-2" for="exampleFormControlInput8">GitHub username
+                  <i class="fa fa-github"></i>
+                </label>
+                <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput8" name="githubName" #name="ngModel"
+                  [(ngModel)]="githubName">
+              </div>
+
+              <div class="form-group">
+                <label class="mr-sm-2" for="exampleFormControlInput11">Facebook link to your account
+                  <i class="fa fa-facebook"></i>
+                </label>
+                <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput11" name="facebookName" #name="ngModel"
+                  [(ngModel)]="facebookName">
+              </div>
+
+              <div class="form-group">
+                <label class="mr-sm-2" for="exampleFormControlInput12">Youtube channel
+                  <i class="fa fa-youtube-play"></i>
+                </label>
+                <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput12" name="youtubeName" #name="ngModel"
+                  [(ngModel)]="youtubeName">
               </div>
 
               <div class="form-group">

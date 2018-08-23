@@ -71,8 +71,11 @@ var schema = new Schema({
   hobby: { type: String, required: false },
   twitterName: { type: String, required: false },
   githubName: { type: String, required: false },
+  facebookName: { type: String, required: false },
+  youtubeName: { type: String, required: false },
   birthday: { type: Date, required: false },
   publicBirthday: { type: Boolean, required: false },
+  phoneNumber: { type: Number, required: false },
 });
 
 // schema.statics.hashPassword = function hashPassword(password) {
