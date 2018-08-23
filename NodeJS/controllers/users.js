@@ -290,8 +290,8 @@ router.post("/send", (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: 'potatotest10@gmail.com', // intermediar - cel care trimite mailurile la mine
-      pass: 'parola123;'
+      user: 'test@example.com', // intermediar - cel care trimite mailurile la mine
+      pass: 'password;'
     },
     tls: {
       rejectUnauthorized: false
@@ -299,7 +299,7 @@ router.post("/send", (req, res) => {
   });
 
   let mailOptions = {
-    from: '"Nodemailer Contact" <potatotest10@gmail.com>', // intermediar - cel care trimite mailurile la mine
+    from: '"Nodemailer Contact" <test@example.com>', // intermediar - cel care trimite mailurile la mine
     to: req.body.emailReceiver, // list of receivers // <--- trebuie schimbat cu email user
     subject: 'Hello ✔', // Subject line
     text: 'Hello world?', // plain text body
