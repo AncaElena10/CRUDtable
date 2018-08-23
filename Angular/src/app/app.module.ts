@@ -34,8 +34,9 @@ import { ClickoutsideDirective } from './directives/clickoutside.directive';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { NguiMapModule } from '@ngui/map';
+import { SafePipePipe } from './shared/safe-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { NguiMapModule } from '@ngui/map';
     ClickoutsideDirective,
     DateTimePickerComponent,
     ContactMeComponent,
+    SafePipePipe,
   ],
   imports: [
     BrowserModule,
@@ -79,11 +81,12 @@ import { NguiMapModule } from '@ngui/map';
     NgMultiSelectDropDownModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyB3a71eakX1ji_aFPmQpGf5gWD278RRl4o",
-      // libraries: ["places"]
+      libraries: ["places"]
     }),
     // NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyB3a71eakX1ji_aFPmQpGf5gWD278RRl4o' }),
+    // AgmCoreModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService, GoogleMapsAPIWrapper,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

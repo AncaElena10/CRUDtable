@@ -63,101 +63,103 @@
         <div class="col-md-6" style="margin-top: 20px;">
           <div class="container">
             <!-- <iframe width="100%" height="350" frameborder="0" scrolling="no" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=aqua%20soft%20bucharest+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe> -->
-            <!-- <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
+            <!-- <iframe width="100%" height="350" frameborder="0" scrolling="no" [src]="googleMapsUrl | safe"></iframe> -->
+
+            <agm-map [latitude]="lat" [longitude]="lng">
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+
+            <!-- ------------------------------------------ Afisare locatia curenta ---------------------------------------------------- -->
+            <!-- <agm-map style="width: 100%; height: 350px" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom"
+              [fullscreenControl]="true" [mapTypeId]="'hybrid'">
               <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-            </agm-map> -->
-            <!-- <ngui-map center="Brampton, Canada"></ngui-map> -->
+            </agm-map>
+            <div class="row">
+              <div class="form-group">
+                <label for="text">Lat:</label>
+                <input type="password" class="form-control" placeholder=" {{ latitude}}" disabled="true">
+              </div>
+              <div class="form-group">
+                <label for="text">Lng:</label>
+                <input type="text" class="form-control" placeholder=" {{ longitude}}" disabled="true">
+              </div>
+            </div> -->
+            <!-- ----------------------------------------------------------------------------------------------------------------------- -->
 
-            <!-- ------------------------------------------------------------------------------ -->
+            <!-- ----------------------------------------------------------------------------------------------------------------------- -->
 
-            <h2>Google maps reverse geocoding With Angular 4</h2>
-            <div class="well" style="margin-top:10%">
-              <agm-map [latitude]="lat" [longitude]="lng">
-                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-              </agm-map>
-            </div>
+            
 
-
-
-
-
-
-
-
-
-
-
-            <!-- ------------------------------------------------------------------------------ -->
+            <!-- ----------------------------------------------------------------------------------------------------------------------- -->
 
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-12">
-    <hr>
-    <div class="row">
-      <div class="col-md-6">
-        <ul class="list-unstyled">
-          <h3>My Social Sites</h3>
-          <li *ngIf="apiService.selectedUser.githubName != ''">
-            <svg aria-hidden="true" class="svg-icon" style="color: #6a737c;" width="28" height="28" viewBox="0 0 18 18">
-              <title>Github</title>
-              <path d="M9 1a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 9 1z"></path></svg>
-            <a (click)="goToGitUrl()" rel="me" class="url pointer" title="https://github.com/{{apiService.selectedUser.githubName}}"
-              style="font-size: 15px; font-weight: bold;">
-              {{ apiService.selectedUser.githubName }} </a>
-          </li>
+    <div class="col-md-12">
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-unstyled">
+            <h3>My Social Sites</h3>
+            <li *ngIf="apiService.selectedUser.githubName != ''">
+              <svg aria-hidden="true" class="svg-icon" style="color: #6a737c;" width="28" height="28" viewBox="0 0 18 18">
+                <title>Github</title>
+                <path d="M9 1a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 9 1z"></path></svg>
+              <a (click)="goToGitUrl()" rel="me" class="url pointer" title="https://github.com/{{apiService.selectedUser.githubName}}"
+                style="font-size: 15px; font-weight: bold;">
+                {{ apiService.selectedUser.githubName }} </a>
+            </li>
 
-          <li *ngIf="apiService.selectedUser.twitterName != ''">
-            <svg aria-hidden="true" class="svg-icon iconTwitter" width="28" height="28" viewBox="0 0 18 18">
-              <title>Twitter Account</title>
-              <path d="M17 4.04c-.59.26-1.22.43-1.88.51a3.3 3.3 0 0 0 1.44-1.81c-.64.37-1.34.64-2.09.79a3.28 3.28 0 0 0-5.6 2.99A9.3 9.3 0 0 1 2.12 3.1a3.28 3.28 0 0 0 1.02 4.38 3.28 3.28 0 0 1-1.49-.4v.03a3.29 3.29 0 0 0 2.64 3.22 3.34 3.34 0 0 1-1.48.06 3.29 3.29 0 0 0 3.07 2.28 6.58 6.58 0 0 1-4.85 1.36 9.33 9.33 0 0 0 5.04 1.47c6.04 0 9.34-5 9.34-9.33v-.42a6.63 6.63 0 0 0 1.63-1.7L17 4.04z"
-                fill="#2AA3EF"></path></svg>
-            <a (click)="goToTwitterUrl()" rel="me" class="url pointer" title="https://twitter.com/{{apiService.selectedUser.twitterName}}"
-              style="font-size: 15px; font-weight: bold;">
-              {{ apiService.selectedUser.twitterName }}
-            </a>
-          </li>
+            <li *ngIf="apiService.selectedUser.twitterName != ''">
+              <svg aria-hidden="true" class="svg-icon iconTwitter" width="28" height="28" viewBox="0 0 18 18">
+                <title>Twitter Account</title>
+                <path d="M17 4.04c-.59.26-1.22.43-1.88.51a3.3 3.3 0 0 0 1.44-1.81c-.64.37-1.34.64-2.09.79a3.28 3.28 0 0 0-5.6 2.99A9.3 9.3 0 0 1 2.12 3.1a3.28 3.28 0 0 0 1.02 4.38 3.28 3.28 0 0 1-1.49-.4v.03a3.29 3.29 0 0 0 2.64 3.22 3.34 3.34 0 0 1-1.48.06 3.29 3.29 0 0 0 3.07 2.28 6.58 6.58 0 0 1-4.85 1.36 9.33 9.33 0 0 0 5.04 1.47c6.04 0 9.34-5 9.34-9.33v-.42a6.63 6.63 0 0 0 1.63-1.7L17 4.04z"
+                  fill="#2AA3EF"></path></svg>
+              <a (click)="goToTwitterUrl()" rel="me" class="url pointer" title="https://twitter.com/{{apiService.selectedUser.twitterName}}"
+                style="font-size: 15px; font-weight: bold;">
+                {{ apiService.selectedUser.twitterName }}
+              </a>
+            </li>
 
-          <li *ngIf="apiService.selectedUser.facebookName != ''">
-            <i class="fa fa-facebook-official" style="font-size:28px; color:#29487d" title="Facebook Account"></i>
-            <a (click)="goToFacebookUrl()" rel="me" class="url pointer" title="{{ apiService.selectedUser.facebookName }}" style="font-size: 15px; font-weight: bold;">
-              facebook
-            </a>
-          </li>
+            <li *ngIf="apiService.selectedUser.facebookName != ''">
+              <i class="fa fa-facebook-official" style="font-size:28px; color:#29487d" title="Facebook Account"></i>
+              <a (click)="goToFacebookUrl()" rel="me" class="url pointer" title="{{ apiService.selectedUser.facebookName }}" style="font-size: 15px; font-weight: bold;">
+                facebook
+              </a>
+            </li>
 
-          <li *ngIf="apiService.selectedUser.youtubeName != ''">
-            <i class="fa fa-youtube-play" style="font-size:28px; color:red" title="Youtube Channel"></i>
-            <a (click)="goToYoutubeUrl()" rel="me" class="url pointer" title="{{ apiService.selectedUser.youtubeName }}" style="font-size: 15px; font-weight: bold;">
-              youtube
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <ul class="list-unstyled">
-          <h3>Contact</h3>
-          <li *ngIf="apiService.selectedUser.location != ''">
-            <i class="material-icons" style="font-size: inherit;" title="Location">location_on</i>
-            <strong>{{ apiService.selectedUser.location }}</strong>
-          </li>
-          <li>
-            <i class="material-icons" style="font-size: inherit;" title="Phone Number">person</i>
-            {{ apiService.selectedUser.firstname }}, {{ apiService.selectedUser.lastname }}
-          </li>
-          <li *ngIf="apiService.selectedUser.email != ''">
-            <i class="material-icons" style="font-size: inherit;" title="Email">email</i>
-            {{ apiService.selectedUser.email }}
-          </li>
-          <li *ngIf="apiService.selectedUser.phoneNumber != ''">
-            <i class="material-icons" style="font-size: inherit;" title="Phone Number">phone</i>
-            {{ apiService.selectedUser.phoneNumber }}
-          </li>
-        </ul>
+            <li *ngIf="apiService.selectedUser.youtubeName != ''">
+              <i class="fa fa-youtube-play" style="font-size:28px; color:red" title="Youtube Channel"></i>
+              <a (click)="goToYoutubeUrl()" rel="me" class="url pointer" title="{{ apiService.selectedUser.youtubeName }}" style="font-size: 15px; font-weight: bold;">
+                youtube
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-unstyled">
+            <h3>Contact</h3>
+            <li *ngIf="apiService.selectedUser.location != ''">
+              <i class="material-icons" style="font-size: inherit;" title="Location">location_on</i>
+              <strong>{{ apiService.selectedUser.location }}</strong>
+            </li>
+            <li>
+              <i class="material-icons" style="font-size: inherit;" title="Phone Number">person</i>
+              {{ apiService.selectedUser.firstname }}, {{ apiService.selectedUser.lastname }}
+            </li>
+            <li *ngIf="apiService.selectedUser.email != ''">
+              <i class="material-icons" style="font-size: inherit;" title="Email">email</i>
+              {{ apiService.selectedUser.email }}
+            </li>
+            <li *ngIf="apiService.selectedUser.phoneNumber != ''">
+              <i class="material-icons" style="font-size: inherit;" title="Phone Number">phone</i>
+              {{ apiService.selectedUser.phoneNumber }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-
 </div>

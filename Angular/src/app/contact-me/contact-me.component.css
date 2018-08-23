@@ -60,7 +60,8 @@ body.user-page #content * {
 }
 
 agm-map {
-  height: 250px;
+  height: 350px;
+  width: 100%;
 }
 
 .container {

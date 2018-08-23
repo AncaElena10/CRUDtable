@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map } from "rxjs/operators";
 import { User } from './user.model';
 import { NgForm } from '../../../node_modules/@angular/forms';
-import {ResponseContentType } from '@angular/http';
+import { ResponseContentType } from '@angular/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,35 @@ export class ApiService {
   type: any = "";
   // publicBirthday: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  API_KEY: string;
+  API_URL: string;
+
+  constructor(private http: HttpClient) {
+
+    this.API_KEY = 'AIzaSyB3a71eakX1ji_aFPmQpGf5gWD278RRl4o'
+    this.API_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${this.API_KEY}&address=`;
+
+  }
+
+  findFromAddress(address: string): Observable<any> {
+    let compositeAddress = [address];
+
+    // console.log("aici1 " + compositeAddress)
+
+    // if (postalCode) compositeAddress.push(postalCode);
+    // if (place) compositeAddress.push(place);
+    // if (province) compositeAddress.push(province);
+    // if (region) compositeAddress.push(region);
+    
+    // if (country) compositeAddress.push(country);
+
+    // console.log("aici " + compositeAddress)
+
+    let url = `${this.API_URL}${compositeAddress.join(',')}`;
+
+    return this.http.get(url)
+    .pipe(map(response => <any> response));
+  }
 
   userRegister(body: any) {
     return this.http.post(this.rootURL + '/register', body, {
@@ -158,4 +187,8 @@ export class ApiService {
       phoneNumber: 0,
     }
   }
+
+
+
+
 }
