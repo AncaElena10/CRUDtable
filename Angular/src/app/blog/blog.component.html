@@ -37,6 +37,7 @@
       <h3 class="mb-2">Comments</h3>
       <div *ngIf="!newPost">
         <div *ngFor="let blog of blogPosts">
+          <hr>
           <div class="comment mb-2 row">
             <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
               <a href=""><img class="mx-auto rounded-circle img-fluid" [src]="'https://pbs.twimg.com/media/C8QlKN7V0AA3zlG.jpg'"

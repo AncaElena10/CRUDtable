@@ -300,13 +300,8 @@ router.post("/send", (req, res) => {
   });
 
   let mailOptions = {
-<<<<<<< HEAD
     from: '"Nodemailer Contact" <potatotest10@gmail.com>', // intermediar - cel care trimite mailurile la mine
     to: "ancaem10@gmail.com", // list of receivers // <--- trebuie schimbat cu email user
-=======
-    from: '"Nodemailer Contact" <test@example.com>', // intermediar - cel care trimite mailurile la mine
-    to: req.body.emailReceiver, // list of receivers // <--- trebuie schimbat cu email user
->>>>>>> 54ea255540994e5aa78bd5c30f4de29998b01d56
     subject: 'Hello ✔', // Subject line
     text: 'Hello world?', // plain text body
     html: output // html body
