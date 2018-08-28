@@ -1,11 +1,11 @@
-<h1 class="mb-2">Tell us what you think!</h1>
 <div class="container">
+  <h1 class="mb-2">Tell us what you think!</h1>
   <div class="col-md-9">
     <form [formGroup]="form" name="blogForm" (submit)="onBlogSubmit()" *ngIf="newPost">
       <div class="form-group">
         <label for="title">Title</label>
         <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
-          <input type="text" name="title" class="form-control" placeholder="*Blog Title" autocomplete="off" formControlName="title"
+          <input type="text" name="title" class="form-control" placeholder="*Comment Title" autocomplete="off" formControlName="title"
           />
           <ul class="help-block">
             <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
@@ -44,11 +44,11 @@
                   alt="avatar"></a>
             </div>
             <div class="comment-content col-md-11 col-sm-10">
-              <h6 class="small comment-meta"><a href="#">{{ blog.createdBy }}</a> {{ blog.createdAt | date:'MMM dd, yyyy'
-                }}
+              <h6 class="small comment-meta" style="color:#9199a1"><a href="#">{{ blog.createdBy }}</a> {{ blog.createdAt
+                | date:'MMM dd, yyyy' }}
               </h6>
-              <h3 class="panel-title">{{ blog.title }}</h3>
-              <p>
+              <h4 class="panel-title" style="color: #07C;">{{ blog.title }}</h4>
+              <p style="font-size: 15px;">
                 {{ blog.body }}
               </p>
             </div>
@@ -58,7 +58,8 @@
       <div class="row pt-2">
         <div class="col-12">
           <button *ngIf="apiService.getLoggedIn() && !newPost" type="button" name="button" class="btn btn-warning" (click)="newBlogForm()">New
-            Post</button>
+            Post
+          </button>
           <button *ngIf="!apiService.getLoggedIn()" type="button" name="button" class="btn btn-warning disabled">New Post</button>
         </div>
       </div>
