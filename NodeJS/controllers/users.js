@@ -78,6 +78,7 @@ router.post('/login', function (req, res, next) {
 });
 
 router.get('/profile', function (req, res, next) {
+  // console.log("profile " + req.user)
   return res.status(200).json(req.user);
 });
 
@@ -103,7 +104,7 @@ router.put('/:id', function (req, res, next) {
     _.assign(post, req.body); // update user
     post.save(function (err) {
       if (err) return next(err);
-      return res.json(200, post);
+      return res.json({ success: true, message: 'Record successfully updated!' })
     })
   });
 });
@@ -300,7 +301,7 @@ router.post("/send", (req, res) => {
 
   let mailOptions = {
     from: '"Nodemailer Contact" <potatotest10@gmail.com>', // intermediar - cel care trimite mailurile la mine
-    to: req.body.emailReceiver, // list of receivers // <--- trebuie schimbat cu email user
+    to: "ancaem10@gmail.com", // list of receivers // <--- trebuie schimbat cu email user
     subject: 'Hello ✔', // Subject line
     text: 'Hello world?', // plain text body
     html: output // html body

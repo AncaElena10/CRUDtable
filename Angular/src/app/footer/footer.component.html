@@ -1,0 +1,56 @@
+<section id="footer">
+  <div class="container">
+    <div class="row text-center text-xs-center text-sm-left text-md-left">
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <h5>Quick access</h5>
+        <ul class="list-unstyled quick-links">
+          <li><a routerLink="/home" class="pointer"><i class="fa fa-angle-double-right"></i>Home</a></li>
+          <li><a routerLink="/employees" class="pointer"><i class="fa fa-angle-double-right"></i>Employees</a></li>
+          <li><a routerLink="/contact" class="pointer"><i class="fa fa-angle-double-right"></i>Contact</a></li>
+          <li><a *ngIf="apiService.getLoggedIn()" routerLink="/profile" class="pointer"><i class="fa fa-angle-double-right"></i>Profile</a></li>
+          <li><a *ngIf="!apiService.getLoggedIn()" routerLink="/login" class="pointer"><i class="fa fa-angle-double-right"></i>Profile</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <h5>Docs</h5>
+        <ul class="list-unstyled quick-links">
+          <li><a (click)="mongodb()" class="pointer"><i class="fa fa-angle-double-right"></i>MongoDB</a></li>
+          <li><a (click)="express()" class="pointer"><i class="fa fa-angle-double-right"></i>Express</a></li>
+          <li><a (click)="angular6()" class="pointer"><i class="fa fa-angle-double-right"></i>Angular6</a></li>
+          <li><a (click)="nodejs()" class="pointer"><i class="fa fa-angle-double-right"></i>NodeJS</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <h5>Contact</h5>
+        <ul class="list-unstyled quick-links">
+          <li *ngIf="location != ''">
+            <i class="material-icons" style="font-size: inherit; color: white" title="Location">location_on</i> 
+            <span style="color: white" class="pointer">{{ adminLocation }}</span>
+          </li>
+          <li>
+            <i class="material-icons" style="font-size: inherit; color: white" title="Phone Number">person</i> 
+            <span style="color: white" class="pointer">{{ adminFirstname }}, {{ adminLastname }}</span>
+          </li>
+          <li *ngIf="adminEmail != ''">
+            <i class="material-icons" style="font-size: inherit; color: white" title="Email">email</i> 
+            <span style="color: white" class="pointer">{{ adminEmail }}</span>
+          </li>
+          <li *ngIf="adminPhone != ''">
+            <i class="material-icons" style="font-size: inherit; color: white" title="Phone Number">phone</i> 
+            <span style="color: white" class="pointer">{{ adminPhone }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+        <ul class="list-unstyled list-inline social text-center">
+          <li class="list-inline-item"><a (click)="goToFacebookUrl()"><i class="fa fa-facebook"></i></a></li>
+          <li class="list-inline-item"><a (click)="goToTwitterUrl()"><i class="fa fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a (click)="goToGitUrl()"><i class="fa fa-github"></i></a></li>
+          <li class="list-inline-item"><a (click)="goToYoutubeUrl()"><i class="fa fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

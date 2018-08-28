@@ -1,5 +1,6 @@
 const { mongoose } = require('./db.js'); // <--- NU STERGE ASTA!!!
 const express = require('express');
+// const router = express.Router(); // Creates a new router object.
 const bodyParser = require('body-parser');
 const cors = require('cors');
 var path = require('path');
@@ -14,8 +15,11 @@ var register = require('./controllers/users.js');
 var login = require('./controllers/users.js');
 var profile = require('./controllers/users.js');
 var upload = require('./controllers/users.js');
+var comment_details = require('./controllers/comments.js');
+const blogs = require('./controllers/comments.js'); // Import Blog Routes
 // var picture = require('./controllers/users.js');
 // var edit = require('./controllers/users.js');
+var comment = require('./controllers/comments.js');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 
@@ -63,5 +67,8 @@ app.use('/api', register);
 app.use('/api', login);
 app.use('/api', profile);
 app.use('/api', upload);
-// app.use('/api', picture);
-// app.use('/users', edit);
+
+// app.use('/section', comment)
+// app.use('/section', comment_details)
+
+app.use('/blogs', blogs); // Use Blog routes in application

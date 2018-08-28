@@ -37,6 +37,9 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { NguiMapModule } from '@ngui/map';
 import { SafePipePipe } from './shared/safe-pipe.pipe';
+import { CommentSectionComponent } from './comment-section/comment-section.component';
+import { BlogComponent } from './blog/blog.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { SafePipePipe } from './shared/safe-pipe.pipe';
     DateTimePickerComponent,
     ContactMeComponent,
     SafePipePipe,
+    CommentSectionComponent,
+    BlogComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

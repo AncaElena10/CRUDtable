@@ -25,6 +25,11 @@ export class ProfileComponent implements OnInit {
 
     // console.log(this.currentUser)
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!apiService.getLoggedIn()) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/profile']);
+    }
   }
 
   // addName(data) { // data - este un obiect
@@ -35,9 +40,11 @@ export class ProfileComponent implements OnInit {
   // }
 
   ngOnInit() {
-    document.body.classList.add('bg-img-profile');
     document.body.classList.remove('bg-img-login');
+    // document.body.classList.remove('bg-img-home');
+    // document.body.classList.remove('bg-img-comment-section');
+    // document.body.classList.remove('bg-img-contact');
     document.body.classList.remove('bg-img-register');
-    document.body.classList.remove('bg-img-home');
+    // document.body.classList.add('bg-img-profile');
   }
 }

@@ -20,13 +20,13 @@
 
         <div class="col-md-4 d-flex align-items-center">
           <ul class="list-unstyled">
-            <!-- <li *ngIf="apiService.selectedUser.location != ''">
+            <li *ngIf="apiService.selectedUser.location != ''">
               <svg aria-hidden="true" class="svg-icon" style="color: #6a737c;" width="18" height="18" viewBox="0 0 18 18">
                 <title>Location</title>
                 <path d="M8.1 17.7S2 9.9 2 6.38A6.44 6.44 0 0 1 8.5 0C12.09 0 15 2.86 15 6.38 15 9.91 8.9 17.7 8.9 17.7c-.22.29-.58.29-.8 0zm.4-8.45a2.75 2.75 0 1 0 0-5.5 2.75 2.75 0 0 0 0 5.5z"></path></svg>
               {{ apiService.selectedUser.location }}
-            </li> -->
-            <!-- <li *ngIf="apiService.selectedUser.githubName != ''">
+            </li>
+            <li *ngIf="apiService.selectedUser.githubName != ''">
               <svg aria-hidden="true" class="svg-icon iconGitHub" width="18" height="18" viewBox="0 0 18 18">
                 <title>Github Account</title>
                 <path d="M9 1a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 9 1z"></path></svg>
@@ -41,7 +41,20 @@
               <a (click)="goToTwitterUrl()" rel="me" class="url" title="https://twitter.com/{{apiService.selectedUser.twitterName}}"> {{
                 apiService.selectedUser.twitterName }}
               </a>
-            </li> -->
+            </li>
+            <li *ngIf="apiService.selectedUser.facebookName != ''">
+              <i class="fa fa-facebook-official" style="color:#29487d" title="Facebook Account"></i>
+              <a (click)="goToFacebookUrl()" rel="me" class="url pointer" title="{{ apiService.selectedUser.facebookName }}">
+                facebook
+              </a>
+            </li>
+
+            <li *ngIf="apiService.selectedUser.youtubeName != ''">
+              <i class="fa fa-youtube-play" style="color:red" title="Youtube Channel"></i>
+              <a (click)="goToYoutubeUrl()" rel="me" class="url pointer" title="{{ apiService.selectedUser.youtubeName }}">
+                youtube
+              </a>
+            </li>
             <li *ngIf="apiService.selectedUser.hobby != ''">
               <i class="fa fa-gamepad" width="18" height="18" viewBox="0 0 18 18" title="Hobbies"></i>
               {{ apiService.selectedUser.hobby }}
@@ -55,6 +68,16 @@
           </ul>
         </div>
       </div>
+
     </div>
   </div>
+  <div class="col-md-12">
+    <div class="container" style="margin-bottom: 50px;">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]=15>
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+
+
 </div>

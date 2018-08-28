@@ -5,3 +5,14 @@
 .myfont {
   font-style: normal;
 }
+
+ul {
+  overflow: hidden;
+  overflow-y: scroll;
+  /* background-color: lightblue; */
+  width: 100%;
+  height: 150px;
+  overflow: scroll;
+  position: relative;
+  display: inline-block;
+}

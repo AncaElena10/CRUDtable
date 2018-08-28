@@ -3,6 +3,7 @@ import { ApiService } from '../shared/api.service';
 import { DOCUMENT } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 @Component({
   selector: 'app-contact',
@@ -20,6 +21,12 @@ export class ContactComponent implements OnInit {
   isUndefined: any = "";
   isNOTUndefined: boolean = false;
 
+  addressToDisplay: any = "";
+  lat: number
+  lng: number
+
+  buildUrlTwitter: any = "";
+  buildUrlGithub: any = "";
 
   constructor(private apiService: ApiService, private sanitizer: DomSanitizer) {
     this.apiService.user()
@@ -77,12 +84,15 @@ export class ContactComponent implements OnInit {
 
     // console.log(this.profilePicture) // ..\uploads\images\save-whatsapp-profile-picture-image3.jpg
     // console.log("here " + this.birthday)
+
+    this.addressToDisplay = data.location;
+    this.updateLatLngFromAddress();
   }
 
   ngOnInit() {
     this.apiService.resetForm();
     this.apiService.refreshUser();
-
+    this.setCurrentPosition();
   }
 
   // goToGitUrl() {
@@ -95,4 +105,58 @@ export class ContactComponent implements OnInit {
   //   this.buildUrlTwitter = "https://twitter.com/" + this.apiService.selectedUser['twitterName'];
   //   window.location.href = this.buildUrlTwitter;
   // }
+
+  updateLatLngFromAddress() {
+    // console.log(this.addressToDisplay)
+    this.apiService
+      .findFromAddress(this.addressToDisplay)
+      .subscribe(response => {
+        // console.log("LATITUDE " + response.results[0].geometry.location.lat)
+        if (response.status == 'OK') {
+          this.lat = response.results[0].geometry.location.lat;
+          this.lng = response.results[0].geometry.location.lng;
+
+          // console.log("aici lat" + this.lat)
+        } else if (response.status == 'ZERO_RESULTS') {
+          console.log("eroare1")
+          console.log('geocodingAPIService', 'ZERO_RESULTS', response.status);
+        } else {
+          console.log("eroare2")
+          console.log('geocodingAPIService', 'Other error', response.status);
+        }
+      });
+  }
+
+  latitudeCrt: any = "";
+  longitudeCrt: any = "";
+  zoom: any = "";
+
+  setCurrentPosition() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitudeCrt = position.coords.latitude;
+        this.longitudeCrt = position.coords.longitude;
+        this.zoom = 15;
+      });
+    }
+  }
+
+  goToGitUrl() {
+    // console.log("here" + this.apiService.selectedUser['githubName'])
+    this.buildUrlGithub = "https://github.com/" + this.apiService.selectedUser['githubName'];
+    window.location.href = this.buildUrlGithub;
+  }
+
+  goToTwitterUrl() {
+    this.buildUrlTwitter = "https://twitter.com/" + this.apiService.selectedUser['twitterName'];
+    window.location.href = this.buildUrlTwitter;
+  }
+
+  goToFacebookUrl() {
+    window.location.href = this.apiService.selectedUser['facebookName'];
+  }
+
+  goToYoutubeUrl() {
+    window.location.href = this.apiService.selectedUser['youtubeName'];
+  }
 }

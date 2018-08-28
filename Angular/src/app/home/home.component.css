@@ -2,3 +2,18 @@
   background-color: #ffffff;
   padding: 4rem 4rem;
 }
+
+.container {
+  padding-bottom: 70px;
+  padding-top: 100px;
+}
+
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}

@@ -18,9 +18,11 @@ export class SearchComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private router: Router) {
-  }
 
-  ngOnInit() {
+    }
+    
+    ngOnInit() {
+      // console.log(this.employeeService.employees)
 
   }
 

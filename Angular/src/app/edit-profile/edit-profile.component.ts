@@ -75,6 +75,8 @@ export class EditProfileComponent implements OnInit {
   public editEnabled = true;
   public picurl: string;
   selectedHobby: any = [];
+  successMsg
+  messageClass
 
   fd: any;
 
@@ -292,11 +294,31 @@ export class EditProfileComponent implements OnInit {
 
     if (form.value._id != "") { // insert
       this.apiService.putUser(form.value)
-        .subscribe((res) => {
-          // console.log("form value employee: " + JSON.stringify(form.value))
-          // this.apiService.resetForm(form);
-          this.apiService.refreshUser();
-          // M.toast({ html: 'Updated successfully', classes: 'rounded' });
+        .subscribe((data) => {
+          // console.log("aici " + JSON.stringify(data))
+          // this.apiService.refreshUser();
+          // this.messageClass = 'alert alert-success';
+          // this.successMsg = "Record successfully updated!";
+          // setTimeout(() => {
+          //   this.successMsg = false;
+          //   this.apiService.refreshUser();
+          // }, 2000);
+
+          // console.log(data)
+
+          if (!data['success']) {
+            this.messageClass = 'alert alert-danger';
+            this.successMsg = data['message'];
+            this.apiService.refreshUser();
+          } else {
+            this.messageClass = 'alert alert-success';
+            this.successMsg = data['message'];
+            setTimeout(() => {
+              this.success = false;
+              this.successMsg = false;
+              this.apiService.refreshUser();
+            }, 2000);
+          }
         });
     }
 
@@ -349,7 +371,6 @@ export class EditProfileComponent implements OnInit {
           //   var filename = 'file.pdf';
           //   saveAs(blob, filename);
           // this.apiService.resetForm(form);
-          this.apiService.refreshUser();
         },
       );
     this.isSelectedProfilePic = true;

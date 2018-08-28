@@ -19,15 +19,15 @@ export class RegisterComponent implements OnInit {
     email: new FormControl(null, [Validators.email, Validators.required]),
     password: new FormControl(null, Validators.required),
     verify: new FormControl(null, Validators.required),
-    bio: new FormControl(null, ),
-    gender: new FormControl(null, ),
-    hobby: new FormControl(null, ),
-    location: new FormControl(null, ),
-    twitterName: new FormControl(null, ),
-    githubName: new FormControl(null, ),
-    profilePicture: new FormControl(null, ),
-    birthday: new FormControl(null, ),
-    phoneNumber: new FormControl(null, ),
+    bio: new FormControl(null),
+    gender: new FormControl(null),
+    hobby: new FormControl(null),
+    location: new FormControl(null),
+    twitterName: new FormControl(null),
+    githubName: new FormControl(null),
+    profilePicture: new FormControl(null),
+    birthday: new FormControl(null),
+    phoneNumber: new FormControl(null),
   })
   constructor(private router: Router, private apiService: ApiService) { }
 
@@ -78,8 +78,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     document.body.classList.remove('bg-img-login');
-    document.body.classList.remove('bg-img-home');
-    document.body.classList.remove('bg-img-profile');
+    // document.body.classList.remove('bg-img-home');
+    // document.body.classList.remove('bg-img-profile');
+    // document.body.classList.remove('bg-img-comment-section');
+    // document.body.classList.remove('bg-img-contact');
     document.body.classList.add('bg-img-register');
   }
 

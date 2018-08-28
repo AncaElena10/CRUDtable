@@ -18,20 +18,38 @@
   background-color: #999;
 }
 
-.bg-img-home {
-  background-image: url('https://heksray.com/static/pictures/stock/original/main-L.jpg');
+/* .bg-img-home {
+  background-image: url('https://images4.alphacoders.com/688/688097.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #999;
-}
+} */
 
-.bg-img-profile {
+/* .bg-img-profile {
   background-image: url('http://notgoaway.com/wp-content/uploads/2017/07/Background-75.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #999;
-}
+} */
+
+/* .bg-img-comment-section {
+  background-image: url('https://heksray.com/static/pictures/stock/original/main-L.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
+} */
+
+/* .bg-img-contact {
+  background-image: url('https://images3.alphacoders.com/212/thumb-1920-212395.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
+} */

@@ -1,0 +1,53 @@
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-6">
+      <section data-ng-controller="ArticlesController">
+        <div class="page-header">
+          <h1>Comments Section</h1>
+        </div>
+        <div class="col-md-12">
+          <form #userComment="ngForm" [formGroup]='commentForm' (ngSubmit)='register($event)'>
+              <input type="hidden" formControlName='_id_user'>
+            <div class="form-group">
+              <label class="control-label" for="title">Title</label>
+              <div class="controls">
+                <input formControlName='title' type="text" id="title" class="form-control" placeholder="Title" required>
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+          <label class="control-label" for="content">Content</label>
+          <div class="controls">
+            <textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+          </div>
+        </div> -->
+
+            <div class="form-group">
+              <label class="control-label" for="comment"></label>
+              <div class="controls">
+                <textarea formControlName='comment' id="comment" class="form-control" cols="30" rows="10" placeholder="Comment"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-default">
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <div class="card" style="height: 350px;">
+      <div class="col-md-6">
+        <div class="media mb-4">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">{{ apiService.selectedUser._id }}</h5>
+            comment
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

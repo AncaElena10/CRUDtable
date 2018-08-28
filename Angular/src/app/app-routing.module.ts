@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ContactComponent } from './contact/contact.component';
+import { ContactMeComponent } from './contact-me/contact-me.component';
 
 const routes: Routes = [
   { path: 'test', component: TestComponentComponent },
@@ -18,9 +19,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: '', component: EmployeeComponent },
-  { path: 'profile/contact', component: ContactComponent },
-  { path: 'profile/editprofile', component: EditProfileComponent },
-  { path: 'profile/home', component: HomeComponent },
+  { path: 'contact', component: ContactMeComponent },
+  // { path: 'profile', component: EditProfileComponent },
+  { path: 'home', component: HomeComponent },
 ];
 @NgModule({
   imports: [

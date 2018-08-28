@@ -21,13 +21,19 @@ declare var ol: any;
 
 export class ContactMeComponent implements OnInit {
 
-  firstname: any = "";
   buildUrlTwitter: any = "";
   buildUrlGithub: any = "";
   messageSengMsg: boolean = false;
   isSubmitted: boolean = false;
 
-  addressToDisplay: any = "";
+  adminFirstname = "Anca";
+  adminLastname = "Moisa";
+  adminLocation = "Strada Solstițiului, Popești-Leordeni 077160, România";
+  adminPhone = "(+40) 749 153 648";
+  adminEmail = "moisa.anca10@gmail.com";
+  adminGithub = "AncaElena10";
+  adminTwitter = "anca_moisa";
+
   lat: number
   lng: number
 
@@ -57,24 +63,25 @@ export class ContactMeComponent implements OnInit {
   }
 
   constructor(private apiService: ApiService) {
-    this.apiService.user()
-      .subscribe(
-        data => {
-          this.extractInfo(data)
-          // console.log("edit profile ", data)
-        }
-      )
+    this.updateLatLngFromAddress();
+    // this.apiService.user()
+    //   .subscribe(
+    //     data => {
+    //       this.extractInfo(data)
+    //       // console.log("edit profile ", data)
+    //     }
+    //   )
   }
 
   extractInfo(data) { // data - este un obiect
-    this.addressToDisplay = data.location;
+    // this.addressToDisplay = data.location;
     this.updateLatLngFromAddress();
   }
 
   updateLatLngFromAddress() {
     // console.log(this.addressToDisplay)
     this.apiService
-      .findFromAddress(this.addressToDisplay)
+      .findFromAddress(this.adminLocation)
       .subscribe(response => {
         // console.log("LATITUDE " + response.results[0].geometry.location.lat)
         if (response.status == 'OK') {
@@ -92,28 +99,47 @@ export class ContactMeComponent implements OnInit {
       });
   }
 
+  latitudeCrt: any = "";
+  longitudeCrt: any = "";
+  zoom: any = "";
+
+  setCurrentPosition() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitudeCrt = position.coords.latitude;
+        this.longitudeCrt = position.coords.longitude;
+        this.zoom = 13;
+      });
+    }
+  }
+
   ngOnInit() {
-    this.apiService.resetForm();
-    this.apiService.refreshUser();
+    document.body.classList.remove('bg-img-login');
+    // document.body.classList.remove('bg-img-home');
+    // document.body.classList.remove('bg-img-profile');
+    // document.body.classList.remove('bg-img-comment-section');
+    document.body.classList.remove('bg-img-register');
+    // document.body.classList.add('bg-img-contact');
+    this.setCurrentPosition();
   }
 
   goToGitUrl() {
     // console.log("here" + this.apiService.selectedUser['githubName'])
-    this.buildUrlGithub = "https://github.com/" + this.apiService.selectedUser['githubName'];
+    this.buildUrlGithub = "https://github.com/" + this.adminGithub
     window.location.href = this.buildUrlGithub;
   }
 
   goToTwitterUrl() {
-    this.buildUrlTwitter = "https://twitter.com/" + this.apiService.selectedUser['twitterName'];
+    this.buildUrlTwitter = "https://twitter.com/" + this.adminTwitter;
     window.location.href = this.buildUrlTwitter;
   }
 
   goToFacebookUrl() {
-    window.location.href = this.apiService.selectedUser['facebookName'];
+    window.location.href = "https://www.facebook.com";
   }
 
   goToYoutubeUrl() {
-    window.location.href = this.apiService.selectedUser['youtubeName'];
+    window.location.href = "https://www.youtube.com/channel/UCgOMsJs1DKfemuPGqCqAJDw?view_as=subscriber"
   }
 
   send() {

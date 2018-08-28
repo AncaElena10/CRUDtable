@@ -70,8 +70,13 @@
               </div>
               <div class="form-group">
                 <button class="btn btn-primary right" type="submit">Submit</button>
-                <div *ngIf="success" class="alert alert-success" role="alert">
-                  Success!
+                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                  {{ successMsg }}
+                </div> -->
+                <div class="row show-hide-message" *ngIf="successMsg && success">
+                  <div [ngClass]="messageClass">
+                    {{ successMsg }}
+                  </div>
                 </div>
               </div>
             </form>
@@ -96,8 +101,13 @@
               </div>
               <div class="form-group">
                 <button class="btn btn-primary right" type="submit">Submit</button>
-                <div *ngIf="success" class="alert alert-success" role="alert">
-                  Success!
+                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                  {{ successMsg }}
+                </div> -->
+                <div class="row show-hide-message" *ngIf="successMsg && success">
+                  <div [ngClass]="messageClass">
+                    {{ successMsg }}
+                  </div>
                 </div>
               </div>
             </form>
@@ -141,8 +151,13 @@
               <img [src]="imageUrl" height="200">
               <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files, _id)" name="profilePicture">
               <button class="btn btn-primary right" type="submit">Upload</button>
-              <div *ngIf="success" class="alert alert-success" role="alert">
-                Success!
+              <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                {{ successMsg }}
+              </div> -->
+              <div class="row show-hide-message" *ngIf="successMsg && success">
+                <div [ngClass]="messageClass">
+                  {{ successMsg }}
+                </div>
               </div>
             </form>
           </div>
@@ -234,8 +249,13 @@
 
               <div class="form-group">
                 <button class="btn btn-primary right" type="submit">Submit</button>
-                <div *ngIf="success" class="alert alert-success" role="alert">
-                  Success!
+                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                  {{ successMsg }}
+                </div> -->
+                <div class="row show-hide-message" *ngIf="successMsg && success">
+                  <div [ngClass]="messageClass">
+                    {{ successMsg }}
+                  </div>
                 </div>
               </div>
             </form>
@@ -280,8 +300,13 @@
 
               <div class="form-group">
                 <button class="btn btn-primary right" type="submit">Submit</button>
-                <div *ngIf="success" class="alert alert-success" role="alert">
-                  Success!
+                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                  {{ successMsg }}
+                </div> -->
+                <div class="row show-hide-message" *ngIf="successMsg && success">
+                  <div [ngClass]="messageClass">
+                    {{ successMsg }}
+                  </div>
                 </div>
               </div>
             </form>
@@ -296,8 +321,13 @@
               </div>
               <div class="form-group">
                 <button class="btn btn-primary right" type="submit">Submit</button>
-                <div *ngIf="success" class="alert alert-success" role="alert">
-                  Success!
+                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                  {{ successMsg }}
+                </div> -->
+                <div class="row show-hide-message" *ngIf="successMsg && success">
+                  <div [ngClass]="messageClass">
+                    {{ successMsg }}
+                  </div>
                 </div>
               </div>
             </form>
@@ -318,8 +348,13 @@
               </div>
               <div class="form-group">
                 <button class="btn btn-primary right" type="submit">Submit</button>
-                <div *ngIf="success" class="alert alert-success" role="alert">
-                  Success!
+                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                  {{ successMsg }}
+                </div> -->
+                <div class="row show-hide-message" *ngIf="successMsg && success">
+                  <div [ngClass]="messageClass">
+                    {{ successMsg }}
+                  </div>
                 </div>
               </div>
             </form>

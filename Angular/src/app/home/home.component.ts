@@ -34,6 +34,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.classList.remove('bg-img-login');
+    // document.body.classList.remove('bg-img-home');
+    // document.body.classList.remove('bg-img-profile');
+    // document.body.classList.remove('bg-img-contact');
+    document.body.classList.remove('bg-img-register');
+    // document.body.classList.add('bg-img-comment-section');
+    
     this.apiService.resetForm();
     this.apiService.refreshUser();
   }
