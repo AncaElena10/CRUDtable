@@ -12,8 +12,8 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
 
-  rootURL = "http://localhost:3000/api";
-  userURL = "http://localhost:3000/users"
+  rootURL = "http://localhost:3030/api";
+  userURL = "http://localhost:3030/users"
   msg: string = null;
   // isLogged: boolean = false;
   // messageSuccess: boolean = false;

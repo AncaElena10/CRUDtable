@@ -44,7 +44,7 @@ export class CommentSectionService {
   options;
   // domain = this.apiService.domain;
 
-  rootURL = "http://localhost:3000/blogs";
+  rootURL = "http://localhost:3030/blogs";
   selectedComment: CommentModel;
 
   constructor(

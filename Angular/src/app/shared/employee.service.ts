@@ -11,9 +11,9 @@ declare var M: any; // pt mesaje
 export class EmployeeService {
   selectedEmployee: Employee; // folosit pt form (+post, +put(edit), +delete)
   employees: Employee[]; // folosit pt a afisa toti angajatii (+get)
-  readonly baseURL = 'http://localhost:3000/employees';
-  readonly baseURL2 = 'http://localhost:3000/bla';
-  rootUrl = "http://localhost:3000/";
+  readonly baseURL = 'http://localhost:3030/employees';
+  readonly baseURL2 = 'http://localhost3030/bla';
+  rootUrl = "http://localhost:3030/";
   constructor(private http: HttpClient) { }
 
   // returneaza un Observable
