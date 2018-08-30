@@ -106,3 +106,8 @@ input:valid + span:after {
   color: #26b72b;
   padding-left: 5px;
 }
+
+.container {
+  margin-bottom: 70px;
+  margin-top: 100px;
+}

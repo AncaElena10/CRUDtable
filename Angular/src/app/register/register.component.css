@@ -9,13 +9,13 @@
 
 .Absolute-Center.is-Responsive {
   width: 50%;
-  height: 50%;
+  height: 40%;
   min-width: 200px;
   max-width: 400px;
-  padding: 5%;
+  padding: 3%;
 }
 
 .text-danger {
-  color: #dc3545!important;
+  color: #dc3545 !important;
   font-size: 12px;
 }

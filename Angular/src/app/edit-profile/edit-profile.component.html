@@ -1,118 +1,119 @@
-<div class="row" style="margin-top:40px; background-color:#ffffff;
+<div class="container">
+  <div class="row" style="background-color:#ffffff;
         border-left: 1px solid #d6d9dc;
     border-right: 1px solid #d6d9dc;">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <div class="row">
-        <div class="col-md-6">
-          <nav id="sidebar">
-            <ul class="list-unstyled">
-              <li class="active">
-                <a href="#personalinfo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="color: orange">PERSONAL
-                  INFORMATION
-                </a>
-                <ul class="collapse list-unstyled onhover" id="personalinfo">
-                  <li>
-                    <a (click)="personalInfo()" class="pointer">Edit Profile</a>
-                  </li>
-                  <li>
-                    <a (click)="changeBio()" class="pointer">Edit Bio and Birth date</a>
-                  </li>
-                  <li>
-                    <a (click)="changeProfilePicture()" class="pointer">Edit Profile Picture</a>
-                  </li>
-                  <li>
-                    <a (click)="changeSocial()" class="pointer">Social</a>
-                  </li>
-                  <li>
-                    <a (click)="changeOtherInfo()" class="pointer">Other Info</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#emailsettings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="color: orange">EMAIL
-                  SETTINGS
-                </a>
-                <ul class="collapse list-unstyled onhover" id="emailsettings">
-                  <li>
-                    <a (click)="changeEmail()" class="pointer">Change Email</a>
-                  </li>
-                  <li>
-                    <a (click)="changePassword()" class="pointer">Change Password</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#sitesettings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="color: orange">SITE
-                  SETTINGS
-                </a>
-                <ul class="collapse list-unstyled onhover" id="sitesettings">
-                  <li>
-                    <a (click)="deleteUser()" class="pointer">Delete Profile</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="col-md-6 col-lg-5 ml-auto d-flex align-items-center mt-4 mt-md-0">
-          <div *ngIf="showPersonalInfo">
-            <form #userFormInfo="ngForm" (ngSubmit)="onEditInfo(userFormInfo)">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Display firstname</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="firstname" #name="ngModel" [(ngModel)]="firstname">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput2">Display lastname</label>
-                <input type="text" class="form-control" id="exampleFormControlInput2" name="lastname" #name="ngModel" [(ngModel)]="lastname">
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary right" type="submit">Submit</button>
-                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-md-6">
+            <nav id="sidebar">
+              <ul class="list-unstyled">
+                <li class="active">
+                  <a href="#personalinfo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="color: orange">PERSONAL
+                    INFORMATION
+                  </a>
+                  <ul class="collapse list-unstyled onhover" id="personalinfo">
+                    <li>
+                      <a (click)="personalInfo()" class="pointer">Edit Profile</a>
+                    </li>
+                    <li>
+                      <a (click)="changeBio()" class="pointer">Edit Bio and Birth date</a>
+                    </li>
+                    <li>
+                      <a (click)="changeProfilePicture()" class="pointer">Edit Profile Picture</a>
+                    </li>
+                    <li>
+                      <a (click)="changeSocial()" class="pointer">Social</a>
+                    </li>
+                    <li>
+                      <a (click)="changeOtherInfo()" class="pointer">Other Info</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#emailsettings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="color: orange">EMAIL
+                    SETTINGS
+                  </a>
+                  <ul class="collapse list-unstyled onhover" id="emailsettings">
+                    <li>
+                      <a (click)="changeEmail()" class="pointer">Change Email</a>
+                    </li>
+                    <li>
+                      <a (click)="changePassword()" class="pointer">Change Password</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#sitesettings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="color: orange">SITE
+                    SETTINGS
+                  </a>
+                  <ul class="collapse list-unstyled onhover" id="sitesettings">
+                    <li>
+                      <a (click)="deleteUser()" class="pointer">Delete Profile</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-6 col-lg-5 ml-auto d-flex align-items-center mt-4 mt-md-0">
+            <div *ngIf="showPersonalInfo">
+              <form #userFormInfo="ngForm" (ngSubmit)="onEditInfo(userFormInfo)">
+                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Display firstname</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" name="firstname" #name="ngModel" [(ngModel)]="firstname">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput2">Display lastname</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput2" name="lastname" #name="ngModel" [(ngModel)]="lastname">
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary right" type="submit">Submit</button>
+                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
                   {{ successMsg }}
                 </div> -->
-                <div class="row show-hide-message" *ngIf="successMsg && success">
-                  <div [ngClass]="messageClass">
-                    {{ successMsg }}
+                  <div class="row show-hide-message" *ngIf="successMsg && success">
+                    <div [ngClass]="messageClass">
+                      {{ successMsg }}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
-          <div *ngIf="showBio">
-            <form #userFormBio="ngForm" (ngSubmit)="onEditInfo(userFormBio)">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">About me</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="250" name="bio" #name="ngModel" [(ngModel)]="bio"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="datePickerArea">Birthday</label>
-                <!-- <gijgo-datepicker #datepicker [configuration]="configuration" name="birthday" id="datePickerArea"></gijgo-datepicker> Selected Date: {{ date }} -->
-                <!-- <input id="datePickerArea" name="birthday" #name="ngModel" [(ngModel)]="birthday" class="form-control" type="date"> -->
-                <div>
-                  <input type="date" id="datePickerArea" name="birthday" [ngModel]="birthday | date:'yyyy-MM-dd'" (ngModelChange)="birthday=$event"
-                    [value]="birthday | date:'yyyy-MM-dd'" class="form-control">
-                  <input type="checkbox" (change)="showBirthdayOnProfile($event)" name="publicBirthday" #name="ngModel" [(ngModel)]="publicBirthday">                  Public
+            <div *ngIf="showBio">
+              <form #userFormBio="ngForm" (ngSubmit)="onEditInfo(userFormBio)">
+                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">About me</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="250" name="bio" #name="ngModel" [(ngModel)]="bio"></textarea>
                 </div>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary right" type="submit">Submit</button>
-                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                <div class="form-group">
+                  <label for="datePickerArea">Birthday</label>
+                  <!-- <gijgo-datepicker #datepicker [configuration]="configuration" name="birthday" id="datePickerArea"></gijgo-datepicker> Selected Date: {{ date }} -->
+                  <!-- <input id="datePickerArea" name="birthday" #name="ngModel" [(ngModel)]="birthday" class="form-control" type="date"> -->
+                  <div>
+                    <input type="date" id="datePickerArea" name="birthday" [ngModel]="birthday | date:'yyyy-MM-dd'" (ngModelChange)="birthday=$event"
+                      [value]="birthday | date:'yyyy-MM-dd'" class="form-control">
+                    <input type="checkbox" (change)="showBirthdayOnProfile($event)" name="publicBirthday" #name="ngModel" [(ngModel)]="publicBirthday">                    Public
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary right" type="submit">Submit</button>
+                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
                   {{ successMsg }}
                 </div> -->
-                <div class="row show-hide-message" *ngIf="successMsg && success">
-                  <div [ngClass]="messageClass">
-                    {{ successMsg }}
+                  <div class="row show-hide-message" *ngIf="successMsg && success">
+                    <div [ngClass]="messageClass">
+                      {{ successMsg }}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
-          <!-- <div *ngIf="showProfilePic">
+            <!-- <div *ngIf="showProfilePic">
             <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload()">
               <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
               <h2>Profile Picture Upload</h2>
@@ -123,7 +124,7 @@
             </form>
           </div> -->
 
-          <!-- <div *ngIf="showProfilePic">
+            <!-- <div *ngIf="showProfilePic">
             <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload()">
               <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
               <h2>Profile Picture Upload</h2>
@@ -133,7 +134,7 @@
             </form>
           </div> -->
 
-          <!-- <div *ngIf="showProfilePic">
+            <!-- <div *ngIf="showProfilePic">
             <form #userFormProfilePicture="ngForm">
               <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
               <h2>Profile Picture Upload</h2>
@@ -143,66 +144,66 @@
             </form>
           </div> -->
 
-          <div *ngIf="showProfilePic">
-            <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload(userFormProfilePicture)">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <h2>Profile Picture Upload</h2>
-              <img [src]="imageUrl" height="200">
-              <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files, _id)" name="profilePicture">
-              <button class="btn btn-primary right" type="submit">Upload</button>
-              <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+            <div *ngIf="showProfilePic">
+              <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload(userFormProfilePicture)">
+                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+                <h2>Profile Picture Upload</h2>
+                <img [src]="imageUrl" height="200">
+                <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files, _id)" name="profilePicture">
+                <button class="btn btn-primary right" type="submit">Upload</button>
+                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
                 {{ successMsg }}
               </div> -->
-              <div class="row show-hide-message" *ngIf="successMsg && success">
-                <div [ngClass]="messageClass">
-                  {{ successMsg }}
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div *ngIf="showOtherInfo">
-            <form #userFormOtherInfo="ngForm" (ngSubmit)="onEditInfo(userFormOtherInfo)">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <div class="form-group">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">Select Gender
-                  <i class="fa fa-transgender"></i>
-                </label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="gender" #name="ngModel" [(ngModel)]="gender">
-                  <option value="m">Male</option>
-                  <option value="f">Female</option>
-                  <option value="o">Other</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput6">Location
-                  <i class="fa fa-location-arrow"></i>
-                </label>
-                <input google-place type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput6" name="location"
-                  #name="ngModel" [(ngModel)]="userLocation" (ngModelChange)="userLocation=$event" placeholder="No location has been set"
-                  (onSelect)="setAddress($event)" (change)="apiService.selectedUser.location" [value]="userLocation">
-              </div>
-
-              <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput10">Phone Number
-                  <i class="fa fa-phone"></i>
-                </label>
-                <div class="inner-addon left-addon">
-                  <!-- <input type="tel" maxlength="9" class="form-control mr-sm-2" id="exampleFormControlInput10" name="phoneNumber" #name="ngModel"
-                      [(ngModel)]="phoneNumber"> -->
-                  <!-- <input type="text" value="(+40)" class="form-control mr-sm-1" disabled style="max-width: 30%;">
-                  <input type="tel" id="exampleFormControlInput10" maxlength="9" name="phoneNumber" style="max-width: 70%; vertical-align:top;" class="form-control" pattern="[0-9]{9}" />
-                  <span class="validity"></span> -->
-                  <div class="form-row">
-                    <input type="text" value="(+40)" class="form-group form-control" disabled style="max-width: 24%;">
-                    <input type="number" id="exampleFormControlInput10" name="phoneNumber" style="max-width: 75%;" class="form-group form-control"
-                      pattern="[0-9]{9}" #name="ngModel" [(ngModel)]="phoneNumber" />
+                <div class="row show-hide-message" *ngIf="successMsg && success">
+                  <div [ngClass]="messageClass">
+                    {{ successMsg }}
                   </div>
                 </div>
-              </div>
+              </form>
+            </div>
 
-              <!-- <form #userFormHobby="ngForm" [formGroup]="hobbyForm" (ngSubmit)="onEditInfo(userFormHobby)">
+            <div *ngIf="showOtherInfo">
+              <form #userFormOtherInfo="ngForm" (ngSubmit)="onEditInfo(userFormOtherInfo)">
+                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+                <div class="form-group">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect">Select Gender
+                    <i class="fa fa-transgender"></i>
+                  </label>
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="gender" #name="ngModel" [(ngModel)]="gender">
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
+                    <option value="o">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="mr-sm-2" for="exampleFormControlInput6">Location
+                    <i class="fa fa-location-arrow"></i>
+                  </label>
+                  <input google-place type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput6" name="location"
+                    #name="ngModel" [(ngModel)]="userLocation" (ngModelChange)="userLocation=$event" placeholder="No location has been set"
+                    (onSelect)="setAddress($event)" (change)="apiService.selectedUser.location" [value]="userLocation">
+                </div>
+
+                <div class="form-group">
+                  <label class="mr-sm-2" for="exampleFormControlInput10">Phone Number
+                    <i class="fa fa-phone"></i>
+                  </label>
+                  <div class="inner-addon left-addon">
+                    <!-- <input type="tel" maxlength="9" class="form-control mr-sm-2" id="exampleFormControlInput10" name="phoneNumber" #name="ngModel"
+                      [(ngModel)]="phoneNumber"> -->
+                    <!-- <input type="text" value="(+40)" class="form-control mr-sm-1" disabled style="max-width: 30%;">
+                  <input type="tel" id="exampleFormControlInput10" maxlength="9" name="phoneNumber" style="max-width: 70%; vertical-align:top;" class="form-control" pattern="[0-9]{9}" />
+                  <span class="validity"></span> -->
+                    <div class="form-row">
+                      <input type="text" value="(+40)" class="form-group form-control" disabled style="max-width: 24%;">
+                      <input type="number" id="exampleFormControlInput10" name="phoneNumber" style="max-width: 75%;" class="form-group form-control"
+                        pattern="[0-9]{9}" #name="ngModel" [(ngModel)]="phoneNumber" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <form #userFormHobby="ngForm" [formGroup]="hobbyForm" (ngSubmit)="onEditInfo(userFormHobby)">
                 <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
                 <div class="form-group">
                   <label class="mr-sm-2" for="exampleFormControlInput9">Hobbies
@@ -226,11 +227,11 @@
                 </div>
               </form> -->
 
-              <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput9">Programming language
-                  <i class="fa fa-gamepad"></i>
-                </label>
-                <!-- <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput9" [(ngModel)]="selectedHobby"
+                <div class="form-group">
+                  <label class="mr-sm-2" for="exampleFormControlInput9">Programming language
+                    <i class="fa fa-gamepad"></i>
+                  </label>
+                  <!-- <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput9" [(ngModel)]="selectedHobby"
                   name="hobby">
                 <div *ngIf="selectedHobby">
                   <div class="hobbylist">
@@ -241,134 +242,134 @@
                     </ul>
                   </div>
                 </div> -->
-                <ng-multiselect-dropdown name="hobby" [placeholder]="'e.g. Python'" [data]="hobbyList" [(ngModel)]="selectedHobby" [settings]="hobbySettings"
-                  (onSelect)="saveUserHobby($event)">
-                </ng-multiselect-dropdown>
-              </div>
+                  <ng-multiselect-dropdown name="hobby" [placeholder]="'e.g. Python'" [data]="hobbyList" [(ngModel)]="selectedHobby" [settings]="hobbySettings"
+                    (onSelect)="saveUserHobby($event)">
+                  </ng-multiselect-dropdown>
+                </div>
 
-              <div class="form-group">
-                <button class="btn btn-primary right" type="submit">Submit</button>
-                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                <div class="form-group">
+                  <button class="btn btn-primary right" type="submit">Submit</button>
+                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
                   {{ successMsg }}
                 </div> -->
-                <div class="row show-hide-message" *ngIf="successMsg && success">
-                  <div [ngClass]="messageClass">
-                    {{ successMsg }}
+                  <div class="row show-hide-message" *ngIf="successMsg && success">
+                    <div [ngClass]="messageClass">
+                      {{ successMsg }}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
-          <div *ngIf="showSocial">
-            <form #userFormSocial="ngForm" (ngSubmit)="onEditInfo(userFormSocial)">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput7">Twitter username
-                  <i class="fa fa-twitter"></i>
-                </label>
-                <div class="inner-addon left-addon">
-                  <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput7" name="twitterName" #name="ngModel"
-                    [(ngModel)]="twitterName">
+            <div *ngIf="showSocial">
+              <form #userFormSocial="ngForm" (ngSubmit)="onEditInfo(userFormSocial)">
+                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+                <div class="form-group">
+                  <label class="mr-sm-2" for="exampleFormControlInput7">Twitter username
+                    <i class="fa fa-twitter"></i>
+                  </label>
+                  <div class="inner-addon left-addon">
+                    <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput7" name="twitterName" #name="ngModel"
+                      [(ngModel)]="twitterName">
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput8">GitHub username
-                  <i class="fa fa-github"></i>
-                </label>
-                <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput8" name="githubName" #name="ngModel"
-                  [(ngModel)]="githubName">
-              </div>
+                <div class="form-group">
+                  <label class="mr-sm-2" for="exampleFormControlInput8">GitHub username
+                    <i class="fa fa-github"></i>
+                  </label>
+                  <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput8" name="githubName" #name="ngModel"
+                    [(ngModel)]="githubName">
+                </div>
 
-              <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput11">Facebook link to your account
-                  <i class="fa fa-facebook"></i>
-                </label>
-                <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput11" name="facebookName" #name="ngModel"
-                  [(ngModel)]="facebookName">
-              </div>
+                <div class="form-group">
+                  <label class="mr-sm-2" for="exampleFormControlInput11">Facebook link to your account
+                    <i class="fa fa-facebook"></i>
+                  </label>
+                  <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput11" name="facebookName" #name="ngModel"
+                    [(ngModel)]="facebookName">
+                </div>
 
-              <div class="form-group">
-                <label class="mr-sm-2" for="exampleFormControlInput12">Youtube channel
-                  <i class="fa fa-youtube-play"></i>
-                </label>
-                <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput12" name="youtubeName" #name="ngModel"
-                  [(ngModel)]="youtubeName">
-              </div>
+                <div class="form-group">
+                  <label class="mr-sm-2" for="exampleFormControlInput12">Youtube channel
+                    <i class="fa fa-youtube-play"></i>
+                  </label>
+                  <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput12" name="youtubeName" #name="ngModel"
+                    [(ngModel)]="youtubeName">
+                </div>
 
-              <div class="form-group">
-                <button class="btn btn-primary right" type="submit">Submit</button>
-                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+                <div class="form-group">
+                  <button class="btn btn-primary right" type="submit">Submit</button>
+                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
                   {{ successMsg }}
                 </div> -->
-                <div class="row show-hide-message" *ngIf="successMsg && success">
-                  <div [ngClass]="messageClass">
-                    {{ successMsg }}
+                  <div class="row show-hide-message" *ngIf="successMsg && success">
+                    <div [ngClass]="messageClass">
+                      {{ successMsg }}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
-          <div *ngIf="showEmail">
-            <form #userFormEmail="ngForm" (ngSubmit)="onEditInfo(userFormEmail)">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <div class="form-group">
-                <label for="exampleFormControlInput3">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput3" name="email" #name="ngModel" [(ngModel)]="email">
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary right" type="submit">Submit</button>
-                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+            <div *ngIf="showEmail">
+              <form #userFormEmail="ngForm" (ngSubmit)="onEditInfo(userFormEmail)">
+                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+                <div class="form-group">
+                  <label for="exampleFormControlInput3">Email address</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput3" name="email" #name="ngModel" [(ngModel)]="email">
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary right" type="submit">Submit</button>
+                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
                   {{ successMsg }}
                 </div> -->
-                <div class="row show-hide-message" *ngIf="successMsg && success">
-                  <div [ngClass]="messageClass">
-                    {{ successMsg }}
+                  <div class="row show-hide-message" *ngIf="successMsg && success">
+                    <div [ngClass]="messageClass">
+                      {{ successMsg }}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
-          <div *ngIf="showPassword">
-            <form #userFormPassword="ngForm" (ngSubmit)="onEditInfo(userFormPassword)">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <div class="form-group mb-2">
-                <label for="exampleFormControlInput4">Password</label>
-                <input type='password' class='form-control' id="exampleFormControlInput4" advs-compare="verify" name="password" #name="ngModel"
-                  [(ngModel)]="password" parent='true' placeholder='Password'>
-              </div>
-              <div class="form-group mb-2">
-                <label for="exampleFormControlInput5">Password again</label>
-                <input type='password' class='form-control' id="exampleFormControlInput5" name="verify" #name="ngModel" [(ngModel)]="verify"
-                  advs-compare="password" parent='false' placeholder='Verify Password'>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary right" type="submit">Submit</button>
-                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
+            <div *ngIf="showPassword">
+              <form #userFormPassword="ngForm" (ngSubmit)="onEditInfo(userFormPassword)">
+                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
+                <div class="form-group mb-2">
+                  <label for="exampleFormControlInput4">Password</label>
+                  <input type='password' class='form-control' id="exampleFormControlInput4" advs-compare="verify" name="password" #name="ngModel"
+                    [(ngModel)]="password" parent='true' placeholder='Password'>
+                </div>
+                <div class="form-group mb-2">
+                  <label for="exampleFormControlInput5">Password again</label>
+                  <input type='password' class='form-control' id="exampleFormControlInput5" name="verify" #name="ngModel" [(ngModel)]="verify"
+                    advs-compare="password" parent='false' placeholder='Verify Password'>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary right" type="submit">Submit</button>
+                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
                   {{ successMsg }}
                 </div> -->
-                <div class="row show-hide-message" *ngIf="successMsg && success">
-                  <div [ngClass]="messageClass">
-                    {{ successMsg }}
+                  <div class="row show-hide-message" *ngIf="successMsg && success">
+                    <div [ngClass]="messageClass">
+                      {{ successMsg }}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
-          <div *ngIf="showDelete">
-            <p>
-              <input type="checkbox" (change)="deleteChecked($event)"> If you press this button, your account will be permanently
-              DELETED.
-            </p>
-            <a *ngIf="!blockDelete" data-toggle="modal" data-target="#delete-account" class="btn btn-danger disabled">Delete</a>
-            <a *ngIf="blockDelete" data-toggle="modal" data-target="#delete-account" class="btn btn-danger" (click)="onDelete(_id)">Delete</a>
-          </div>
+            <div *ngIf="showDelete">
+              <p>
+                <input type="checkbox" (change)="deleteChecked($event)"> If you press this button, your account will be permanently
+                DELETED.
+              </p>
+              <a *ngIf="!blockDelete" data-toggle="modal" data-target="#delete-account" class="btn btn-danger disabled">Delete</a>
+              <a *ngIf="blockDelete" data-toggle="modal" data-target="#delete-account" class="btn btn-danger" (click)="onDelete(_id)">Delete</a>
+            </div>
 
-          <!-- <div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -385,8 +386,11 @@
             </div>
           </div> -->
 
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <app-footer></app-footer> -->

@@ -9,17 +9,18 @@
 
 .Absolute-Center.is-Responsive {
   width: 50%;
-  height: 50%;
+  height: 30%;
   min-width: 200px;
   max-width: 400px;
-  padding: 5%;
+  padding: 3%;
 }
 
 .align-items-center {
-  -ms-flex-align: center!important;
-  align-items: center!important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
 }
+
 .d-flex {
-  display: -ms-flexbox!important;
-  display: flex!important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }

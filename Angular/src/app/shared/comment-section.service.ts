@@ -74,6 +74,19 @@ export class CommentSectionService {
     });
   }
 
+  postComment(id, comment) {
+    const body = {
+      id: id,
+      comment: comment
+    }
+    return this.http.post(this.rootURL + '/comment', body, {
+      observe: 'body',
+      withCredentials: true,
+      headers: new HttpHeaders().append('Content-Type', 'application/json')
+    });
+
+  }
+
   // comment() {
   //   return this.http.get(this.rootURL + '/allBlogs', {
   //     observe: 'body',
@@ -82,13 +95,13 @@ export class CommentSectionService {
   //   });
   // }
 
-  // getSingleBlog(id) {
-  //   return this.http.get(this.rootURL + '/singleBlog/' + id, {
-  //     observe: 'body',
-  //     withCredentials: true,
-  //     headers: new HttpHeaders().append('Content-Type', 'application/json')
-  //   });
-  // }
+  getSingleBlog(id) {
+    return this.http.get(this.rootURL + '/singleBlog/' + id, {
+      observe: 'body',
+      withCredentials: true,
+      headers: new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
 
   // refreshComment(id) {
   //   // console.log("print in user " + JSON.stringify(this.getUser()))

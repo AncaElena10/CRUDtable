@@ -174,4 +174,19 @@ export class BlogComponent implements OnInit {
   extractInfo(data) {
     this.username = data.firstname;
   }
+
+  postComment(id) {
+    this.disableCommentForm();
+    this.processing = true;
+    const comment = this.commentForm.get('comment').value;
+    this.blogService.postComment(id, comment).subscribe(data => {
+      this.getAllBlogs();
+      const index = this.newComment.indexOf(id);
+      this.newComment.splice(index, 1);
+      this.enableCommentForm();
+      this.commentForm.reset();
+      this.processing = false;
+      if (this.enabledComments.indexOf(id) < 0) this.expand(id); // Expand comments for user on comment submission
+    });
+  }
 }

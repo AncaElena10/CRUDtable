@@ -1,5 +1,5 @@
 <section id="footer">
-  <div class="container">
+  <div class="container Absolute-Center is-Responsive">
     <div class="row text-center text-xs-center text-sm-left text-md-left">
       <div class="col-xs-12 col-sm-4 col-md-4">
         <h5>Quick access</h5>
@@ -24,19 +24,19 @@
         <h5>Contact</h5>
         <ul class="list-unstyled quick-links">
           <li *ngIf="location != ''">
-            <i class="material-icons" style="font-size: inherit; color: white" title="Location">location_on</i> 
+            <i class="material-icons" style="font-size: inherit; color: white" title="Location">location_on</i>
             <span style="color: white" class="pointer">{{ adminLocation }}</span>
           </li>
           <li>
-            <i class="material-icons" style="font-size: inherit; color: white" title="Phone Number">person</i> 
+            <i class="material-icons" style="font-size: inherit; color: white" title="Phone Number">person</i>
             <span style="color: white" class="pointer">{{ adminFirstname }}, {{ adminLastname }}</span>
           </li>
           <li *ngIf="adminEmail != ''">
-            <i class="material-icons" style="font-size: inherit; color: white" title="Email">email</i> 
+            <i class="material-icons" style="font-size: inherit; color: white" title="Email">email</i>
             <span style="color: white" class="pointer">{{ adminEmail }}</span>
           </li>
           <li *ngIf="adminPhone != ''">
-            <i class="material-icons" style="font-size: inherit; color: white" title="Phone Number">phone</i> 
+            <i class="material-icons" style="font-size: inherit; color: white" title="Phone Number">phone</i>
             <span style="color: white" class="pointer">{{ adminPhone }}</span>
           </li>
         </ul>

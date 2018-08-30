@@ -116,7 +116,10 @@ const blogSchema = new Schema({
   body: { type: String, required: true, validate: bodyValidators },
   createdBy: { type: String },
   createdAt: { type: Date, default: Date.now() },
-  // profilePicture: { data: Buffer, contentType: String, required: false },
+  comments: [{
+    comment: { type: String, validate: commentValidators },
+    // commentator: { type: String }
+  }]
 });
 
 // Export Module/Schema
