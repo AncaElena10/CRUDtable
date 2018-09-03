@@ -177,21 +177,7 @@ var upload = multer({
 
 router.post('/upload', function (req, res) {
   upload(req, res, function (err) {
-    if (err) {
-      if (err.code === 'LIMIT_FILE_SIZE') {
-        res.json({ success: false, message: 'File size is too large. Max limit is 10MB' });
-      } else if (err.code === 'filetype') {
-        res.json({ success: false, message: 'Filetype is invalid. Must be .png, .jpg or .jpeg' });
-      } else {
-        res.json({ success: false, message: 'Unable to upload file' });
-      }
-    } else {
-      if (!req.file) {
-        res.json({ success: false, message: 'No file was selected' });
-      } else {
-        res.json({ success: true, message: 'File uploaded!' });
-      }
-    }
+
 
     // console.log("AICI IAR: ", res._id)
     // console.log("AICI: ", req.file.path)
@@ -256,9 +242,24 @@ router.post('/upload', function (req, res) {
         profilePicture: fs.readFileSync(req.file.path)
         // data: fs.readFileSync(req.file.path),
         // contentType: req.file.mimetype,
-      }, function (err, affected, resp) {
-        // console.log(resp);
-      })
+      }, (err) => {
+        if (err) {
+          if (err.code === 'LIMIT_FILE_SIZE') {
+            res.json({ success: false, message: 'File size is too large. Max limit is 10MB' });
+          } else if (err.code === 'filetype') {
+            res.json({ success: false, message: 'Filetype is invalid. Must be .png, .jpg or .jpeg' });
+          } else {
+            res.json({ success: false, message: 'Unable to upload file' });
+          }
+        } else {
+          if (!req.file) {
+            res.json({ success: false, message: 'No file was selected' });
+          } else {
+            res.json({ success: true, message: 'File uploaded!' });
+          }
+        }
+      }
+    );
   });
 });
 

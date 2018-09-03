@@ -25,3 +25,102 @@
 h6 {
   color: #9199a1;
 }
+
+.inner {
+  display: inline-block;
+}
+
+.comment-form {
+  padding: 0 6px 0 7px;
+  vertical-align: text-top;
+}
+
+.form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.mt8 {
+  margin-top: 8px !important;
+}
+
+.jc-end {
+  justify-content: flex-end !important;
+}
+
+.fw-wrap {
+  flex-wrap: wrap !important;
+}
+
+.w75 {
+  width: 50% !important;
+}
+
+.pb4 {
+  padding-bottom: 4px !important;
+}
+
+.mb16 {
+  margin-bottom: 16px !important;
+}
+
+.jc-space-between {
+  justify-content: space-between !important;
+}
+
+.fl-grow1 {
+  flex-grow: 1;
+}
+
+.fd-column {
+  flex-direction: column !important;
+}
+
+body:not(.no-grid-comments) ul.comments-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+}
+
+ul.comments-list {
+  list-style-type: none;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+.comment-form form {
+  position: relative;
+}
+
+.comment-form>form input {
+  margin-left: 10px;
+  margin-top: 1px;
+}
+
+input {
+  margin: 5px 0;
+}
+
+.comments {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #e4e6e8
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 95%;
+}

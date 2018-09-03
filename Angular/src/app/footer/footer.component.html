@@ -42,7 +42,8 @@
         </ul>
       </div>
     </div>
-    <div class="row">
+
+    <!-- <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
         <ul class="list-unstyled list-inline social text-center">
           <li class="list-inline-item"><a (click)="goToFacebookUrl()"><i class="fa fa-facebook"></i></a></li>
@@ -51,6 +52,18 @@
           <li class="list-inline-item"><a (click)="goToYoutubeUrl()"><i class="fa fa-youtube"></i></a></li>
         </ul>
       </div>
+    </div> -->
+
+    <div>
+      <!-- <hr style="color: #28a745; border-color: #28a745; background-color: #28a745"> -->
+      <p class="follow">Follow me:</p>
+      <ul class="social_ul">
+        <li class="social_li"><a (click)="goToFacebookUrl()"><i class="fa fa-facebook pointer" aria-hidden="true" style="color: white"></i></a></li>
+        <li class="social_li"><a (click)="goToTwitterUrl()"><i class="fa fa-twitter pointer" aria-hidden="true" style="color: white"></i></a></li>
+        <li class="social_li"><a (click)="goToYoutubeUrl()"><i class="fa fa-youtube-play pointer" aria-hidden="true" style="color: white"></i></a></li>
+        <li class="social_li"><a (click)="goToGitUrl()"><i class="fa fa-github pointer" aria-hidden="true" style="color: white"></i></a></li>
+      </ul>
     </div>
+
   </div>
 </section>

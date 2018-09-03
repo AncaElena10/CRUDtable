@@ -55,7 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 
 // app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(cors({
-  origin: ['http://localhost:4200', 'http://192.168.8.36:4200'],
+  origin: ['http://localhost:4200', 'http://127.0.0.1:4200'],
   credentials: true,
 }));
 app.use(bodyParser.json());

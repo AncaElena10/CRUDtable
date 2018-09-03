@@ -41,7 +41,7 @@ export class ApiService {
     // if (place) compositeAddress.push(place);
     // if (province) compositeAddress.push(province);
     // if (region) compositeAddress.push(region);
-    
+
     // if (country) compositeAddress.push(country);
 
     // console.log("aici " + compositeAddress)
@@ -49,7 +49,7 @@ export class ApiService {
     let url = `${this.API_URL}${compositeAddress.join(',')}`;
 
     return this.http.get(url)
-    .pipe(map(response => <any> response));
+      .pipe(map(response => <any>response));
   }
 
   userRegister(body: any) {
@@ -179,7 +179,7 @@ export class ApiService {
       githubName: "",
       facebookName: "",
       youtubeName: "",
-      hobby: "",
+      hobby: null,
       bio: "",
       profilePicture: null,
       birthday: null,
@@ -187,8 +187,4 @@ export class ApiService {
       phoneNumber: 0,
     }
   }
-
-
-
-
 }

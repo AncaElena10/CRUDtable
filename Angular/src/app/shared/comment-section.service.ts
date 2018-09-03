@@ -87,14 +87,6 @@ export class CommentSectionService {
 
   }
 
-  // comment() {
-  //   return this.http.get(this.rootURL + '/allBlogs', {
-  //     observe: 'body',
-  //     withCredentials: true,
-  //     headers: new HttpHeaders().append('Content-Type', 'application/json')
-  //   });
-  // }
-
   getSingleBlog(id) {
     return this.http.get(this.rootURL + '/singleBlog/' + id, {
       observe: 'body',
@@ -103,26 +95,28 @@ export class CommentSectionService {
     });
   }
 
-  // refreshComment(id) {
-  //   // console.log("print in user " + JSON.stringify(this.getUser()))
+  putComment(comment: CommentModel) {
+    // console.log
+    // console.log("id user: ", user._id)
+    return this.http.put(this.rootURL + `/${comment._id}`, comment);
+  }
+
+  // refreshComment() {
   //   this.getAllBlogs().subscribe((res) => {
   //     this.selectedComment = res as CommentModel;
-
   //   });
-  //   // console.log(this.selectedUser)
   // }
 
-  // resetForm(form?: NgForm) {
-  //   if (form) {
-  //     form.reset();
-  //   }
-  //   this.selectedComment = {
-  //     _id: "",
-  //     title: "",
-  //     body: "",
-  //     createdBy: "",
-  //     profilePicture: null,
-  //     createdAt: null
-  //   }
-  // }
+  resetForm(form?: NgForm) {
+    if (form) {
+      form.reset();
+    }
+    this.selectedComment = {
+      _id: "",
+      title: "",
+      body: "",
+      createdBy: "",
+      createdAt: null
+    }
+  }
 }

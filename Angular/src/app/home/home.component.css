@@ -17,3 +17,11 @@
   display: -ms-flexbox !important;
   display: flex !important;
 }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  /* margin-left: -15px; */
+  padding: 45px 50px;
+}

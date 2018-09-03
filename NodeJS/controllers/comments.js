@@ -164,4 +164,38 @@ router.post('/comment', (req, res) => {
   }
 });
 
+
+// router.put('/editComment', (req, res) => {
+//   // console.log("AICI")
+//   // console.log(req.body.id)
+//   if (!req.body.comment) {
+//     res.json({ success: false, message: 'No comment provided' }); // Return error message
+//   } else {
+//     if (!req.body.id) {
+//       res.json({ success: false, message: 'No id was provided' }); // Return error message
+//     } else {
+//       Blog.findOne({ _id: req.body.id }, (err, blog) => {
+//         if (err) {
+//           res.json({ success: false, message: 'Invalid blog id' }); // Return error message
+//         } else {
+//           if (!blog) {
+//             res.json({ success: false, message: 'Blog not found.' }); // Return error message
+//           } else {
+
+//             Blog.findById(req.params.id, function (err, post) {
+//               if (err) return next(err);
+//               _.assign(post, req.body);
+//               post.save(function (err) {
+//                 if (err) return next(err);
+//                 return res.json({ success: true, message: 'Comment successfully updated!' })
+//               })
+//             });
+
+//           }
+//         }
+//       });
+//     }
+//   }
+// });
+
 module.exports = router;

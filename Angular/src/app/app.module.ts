@@ -40,6 +40,7 @@ import { SafePipePipe } from './shared/safe-pipe.pipe';
 import { CommentSectionComponent } from './comment-section/comment-section.component';
 import { BlogComponent } from './blog/blog.component';
 import { FooterComponent } from './footer/footer.component';
+import { SlideshowModule } from 'ng-simple-slideshow';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { FooterComponent } from './footer/footer.component';
     }),
     // NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyB3a71eakX1ji_aFPmQpGf5gWD278RRl4o' }),
     // AgmCoreModule,
+    SlideshowModule,
   ],
   providers: [ApiService, GoogleMapsAPIWrapper,],
   bootstrap: [AppComponent]

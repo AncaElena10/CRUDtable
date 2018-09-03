@@ -306,6 +306,7 @@ export class EditProfileComponent implements OnInit {
 
           // console.log(data)
 
+
           if (!data['success']) {
             this.messageClass = 'alert alert-danger';
             this.successMsg = data['message'];
@@ -365,12 +366,36 @@ export class EditProfileComponent implements OnInit {
     this.apiService
       .uploadPicture(fd)
       .subscribe(
-        res => {
-          // response => { // download file
-          //   var blob = new Blob([response.blob()], { type: 'application/pdf' });
-          //   var filename = 'file.pdf';
-          //   saveAs(blob, filename);
-          // this.apiService.resetForm(form);
+        data => {
+          // if (!data['success']) {
+          //   this.messageClass = 'alert alert-danger';
+          //   this.successMsg = data['message'];
+          //   this.apiService.refreshUser();
+          // } else {
+          //   this.messageClass = 'alert alert-success';
+          //   this.successMsg = data['message'];
+          //   setTimeout(() => {
+          //     this.success = false;
+          //     this.successMsg = false;
+          //     this.apiService.refreshUser();
+          //   }, 2000);
+          // }
+          // console.log("aici data " + JSON.stringify(fd))
+          if (typeof (data) != 'object') {
+            // console.log("aici data1 " + typeof(data))
+            this.messageClass = 'alert alert-danger';
+            this.successMsg = "Please select a file."
+            this.apiService.refreshUser();
+          } else {
+            // console.log("aici data2 " + typeof(data))
+            this.messageClass = 'alert alert-success';
+            this.successMsg = "Record successfully updated!"
+            setTimeout(() => {
+              this.success = false;
+              this.successMsg = false;
+              this.apiService.refreshUser();
+            }, 2000);
+          }
         },
       );
     this.isSelectedProfilePic = true;

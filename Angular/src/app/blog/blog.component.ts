@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 import { CommentSectionService } from '../shared/comment-section.service';
 
@@ -21,7 +21,8 @@ export class BlogComponent implements OnInit {
   blogPosts;
   newComment = [];
   enabledComments = [];
-
+  successMsg
+  success: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -141,6 +142,29 @@ export class BlogComponent implements OnInit {
       }
     });
   }
+
+  // onEditComment(form: NgForm) {
+  //   this.success = true;
+
+  //   if (form.value._id != "") {
+  //     this.blogService.putComment(form.value)
+  //       .subscribe((data) => {
+  //         if (!data['success']) {
+  //           this.messageClass = 'alert alert-danger';
+  //           this.successMsg = data['message'];
+  //           this.blogService.refreshComment();
+  //         } else {
+  //           this.messageClass = 'alert alert-success';
+  //           this.successMsg = data['message'];
+  //           setTimeout(() => {
+  //             this.success = false;
+  //             this.successMsg = false;
+  //             this.blogService.refreshComment();
+  //           }, 2000);
+  //         }
+  //       });
+  //   }
+  // }
 
   goBack() {
     window.location.reload();

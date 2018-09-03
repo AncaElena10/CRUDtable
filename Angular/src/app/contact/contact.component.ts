@@ -66,7 +66,7 @@ export class ContactComponent implements OnInit {
     // this.twitterName = data.twitterName;
     // this.gender = data.gender;
     // this.hobby = data.hobby;
-    this.profilePicture = data.profilePicture;
+    // this.profilePicture = data.profilePicture;
     this.birthday = data.birthday;
 
     // console.log("aici" + this.apiService.type)
@@ -79,7 +79,7 @@ export class ContactComponent implements OnInit {
       this.isUndefined = false;
     }
 
-    this.profilePicURL = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + this.profilePicture);
+    // this.profilePicURL = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + this.profilePicture);
     // console.log(this.profilePicURL)
 
     // console.log(this.profilePicture) // ..\uploads\images\save-whatsapp-profile-picture-image3.jpg
@@ -93,6 +93,8 @@ export class ContactComponent implements OnInit {
     this.apiService.resetForm();
     this.apiService.refreshUser();
     this.setCurrentPosition();
+
+    // console.log(typeof(this.apiService.selectedUser.hobby))
   }
 
   // goToGitUrl() {
