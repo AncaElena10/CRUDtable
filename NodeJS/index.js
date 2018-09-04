@@ -52,10 +52,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(cors({
-  origin: ['http://localhost:4500', 'http://192.168.8.36:4500'],
-  credentials: true,
-}));
+// app.use(cors({
+//   // origin: ['http://localhost:4500', 'http://192.168.8.36:4500'],
+//   credentials: true,
+// }));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use(bodyParser.json());
 app.listen(3030, () => console.log('Server started at port: 3030'));
 
