@@ -68,7 +68,7 @@ var schema = new Schema({
   gender: { type: String, required: false },
   bio: { type: String, required: false },
   location: { type: String, required: false },
-  hobby: { type: Array, required: false },
+  hobby: { type: String, required: false },
   twitterName: { type: String, required: false },
   githubName: { type: String, required: false },
   facebookName: { type: String, required: false },
