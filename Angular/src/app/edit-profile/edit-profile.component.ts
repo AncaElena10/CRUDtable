@@ -70,7 +70,6 @@ export class EditProfileComponent implements OnInit {
   showSocial: boolean = false;
 
   selectedFile: File = null;
-  rootURL = "http://localhost:3030/api";
   url = '';
   public editEnabled = true;
   public picurl: string;

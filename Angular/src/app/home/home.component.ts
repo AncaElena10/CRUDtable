@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   lazyLoad: boolean = false;
   width: string = '100%';
 
-  constructor(private apiService: ApiService, private router: Router, private http: HttpClient) {
+  constructor(public apiService: ApiService, private router: Router, private http: HttpClient) {
     this.apiService.user()
       .subscribe(
         data => { this.profileAccess = true, this.extractInfo(data) },

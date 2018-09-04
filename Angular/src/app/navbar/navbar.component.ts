@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     salary: null
   };
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(public apiService: ApiService, private router: Router) {
     // detecteaza schimbarea de ruta
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {

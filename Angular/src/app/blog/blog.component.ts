@@ -26,7 +26,7 @@ export class BlogComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private apiService: ApiService,
+    public apiService: ApiService,
     private blogService: CommentSectionService
   ) {
     this.createNewBlogForm();

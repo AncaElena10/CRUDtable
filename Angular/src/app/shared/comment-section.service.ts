@@ -35,6 +35,7 @@ import { ResponseContentType } from '@angular/http';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { CommentModel } from './comment.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ export class CommentSectionService {
   options;
   // domain = this.apiService.domain;
 
-  rootURL = "http://localhost:3030/blogs";
+  // rootURL = "http://localhost:3030/blogs";
   selectedComment: CommentModel;
 
   constructor(
@@ -59,7 +60,7 @@ export class CommentSectionService {
   // }
 
   newBlog(body: any) {
-    return this.http.post(this.rootURL + '/newBlog', body, {
+    return this.http.post(environment.rootURL + '/blogs/newBlog', body, {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
@@ -67,7 +68,7 @@ export class CommentSectionService {
   }
 
   getAllBlogs() {
-    return this.http.get(this.rootURL + '/allBlogs', {
+    return this.http.get(environment.rootURL + '/blogs/allBlogs', {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
@@ -79,7 +80,7 @@ export class CommentSectionService {
       id: id,
       comment: comment
     }
-    return this.http.post(this.rootURL + '/comment', body, {
+    return this.http.post(environment.rootURL + '/blogs/comment', body, {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
@@ -88,7 +89,7 @@ export class CommentSectionService {
   }
 
   getSingleBlog(id) {
-    return this.http.get(this.rootURL + '/singleBlog/' + id, {
+    return this.http.get(environment.rootURL + '/blogs/singleBlog/' + id, {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
@@ -98,7 +99,7 @@ export class CommentSectionService {
   putComment(comment: CommentModel) {
     // console.log
     // console.log("id user: ", user._id)
-    return this.http.put(this.rootURL + `/${comment._id}`, comment);
+    return this.http.put(environment.rootURL + `/blogs/${comment._id}`, comment);
   }
 
   // refreshComment() {

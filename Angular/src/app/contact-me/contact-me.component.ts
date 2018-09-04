@@ -26,13 +26,16 @@ export class ContactMeComponent implements OnInit {
   messageSengMsg: boolean = false;
   isSubmitted: boolean = false;
 
-  adminFirstname = "Anca";
-  adminLastname = "Moisa";
-  adminLocation = "Strada Solstițiului, Popești-Leordeni 077160, România";
-  adminPhone = "(+40) 749 153 648";
-  adminEmail = "moisa.anca10@gmail.com";
-  adminGithub = "AncaElena10";
-  adminTwitter = "anca_moisa";
+  public adminFirstname = "Anca";
+  public adminLastname = "Moisa";
+  public adminLocation = "Strada Solstițiului, Popești-Leordeni 077160, România";
+  public adminPhone = "(+40) 749 153 648";
+  public adminEmail = "moisa.anca10@gmail.com";
+  public adminGithub = "AncaElena10";
+  public adminTwitter = "anca_moisa";
+  public adminFacebook = "www.facebook.com";
+  public adminYoutube = "www.youtube.com;"
+  public location;
 
   lat: number
   lng: number
@@ -62,7 +65,7 @@ export class ContactMeComponent implements OnInit {
     return this.sendForm.get('messageSender');
   }
 
-  constructor(private apiService: ApiService) {
+  constructor(public apiService: ApiService) {
     this.updateLatLngFromAddress();
     // this.apiService.user()
     //   .subscribe(
@@ -135,11 +138,11 @@ export class ContactMeComponent implements OnInit {
   }
 
   goToFacebookUrl() {
-    window.location.href = "https://www.facebook.com";
+    window.location.href = this.adminFacebook;
   }
 
   goToYoutubeUrl() {
-    window.location.href = "https://www.youtube.com/channel/UCgOMsJs1DKfemuPGqCqAJDw?view_as=subscriber"
+    window.location.href = this.adminYoutube;
   }
 
   send() {

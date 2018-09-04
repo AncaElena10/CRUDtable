@@ -5,6 +5,7 @@ import { User } from './user.model';
 import { NgForm } from '../../../node_modules/@angular/forms';
 import { ResponseContentType } from '@angular/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,7 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
 
-  rootURL = "http://localhost:3030/api";
-  userURL = "http://localhost:3030/users"
+  // rootURL = "http://localhost:3030/api";
   msg: string = null;
   // isLogged: boolean = false;
   // messageSuccess: boolean = false;
@@ -53,7 +53,7 @@ export class ApiService {
   }
 
   userRegister(body: any) {
-    return this.http.post(this.rootURL + '/register', body, {
+    return this.http.post(environment.rootURL + '/api/register', body, {
       observe: 'body',
       headers: new HttpHeaders().append('Content-Type', 'application/json')
     });
@@ -67,7 +67,7 @@ export class ApiService {
   // }
 
   userLogin(body: any) {
-    return this.http.post(this.rootURL + '/login', body, {
+    return this.http.post(environment.rootURL + '/api/login', body, {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
@@ -77,7 +77,7 @@ export class ApiService {
   }
 
   user() {
-    return this.http.get(this.rootURL + '/profile', {
+    return this.http.get(environment.rootURL + '/api/profile', {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
@@ -85,7 +85,7 @@ export class ApiService {
   }
 
   logout() {
-    return this.http.get(this.rootURL + '/logout', {
+    return this.http.get(environment.rootURL + '/api/logout', {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
@@ -93,7 +93,7 @@ export class ApiService {
   }
 
   sendEmail(body: any) {
-    return this.http.post(this.rootURL + '/send', body, {
+    return this.http.post(environment.rootURL + '/api/send', body, {
       observe: 'body',
       headers: new HttpHeaders().append('Content-Type', 'application/json')
     });
@@ -123,7 +123,7 @@ export class ApiService {
 
   uploadPicture(body: any) {
     // console.log(this.type)
-    return this.http.post(this.rootURL + '/upload', body, {
+    return this.http.post(environment.rootURL + '/api/upload', body, {
       // observe: 'body', 
       // observe: 'response',
       responseType: 'blob',
@@ -132,7 +132,7 @@ export class ApiService {
   }
 
   userPic() {
-    return this.http.get(this.rootURL + '/upload', {
+    return this.http.get(environment.rootURL + '/api/upload', {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
@@ -142,7 +142,7 @@ export class ApiService {
   putUser(user: User) {
     // console.log
     // console.log("id user: ", user._id)
-    return this.http.put(this.rootURL + `/${user._id}`, user);
+    return this.http.put(environment.rootURL + `/api/${user._id}`, user);
   }
 
   // getUser() {
@@ -150,7 +150,7 @@ export class ApiService {
   // }
 
   deleteUser(_id: string) {
-    return this.http.delete(this.rootURL + `/${_id}`);
+    return this.http.delete(environment.rootURL + `/api/${_id}`);
   }
 
   refreshUser() {

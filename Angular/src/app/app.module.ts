@@ -25,7 +25,7 @@ import { CompareDirective } from './directives/compare.directive';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
-import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+// import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { GooglePlacesDirective } from './directives/google-places.directive';
@@ -37,7 +37,6 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { NguiMapModule } from '@ngui/map';
 import { SafePipePipe } from './shared/safe-pipe.pipe';
-import { CommentSectionComponent } from './comment-section/comment-section.component';
 import { BlogComponent } from './blog/blog.component';
 import { FooterComponent } from './footer/footer.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -58,8 +57,8 @@ import { SlideshowModule } from 'ng-simple-slideshow';
     ProfileComponent,
     HomeComponent,
     ProfilePictureComponent,
-    FileSelectDirective,
-    FileDropDirective,
+    // FileSelectDirective,
+    // FileDropDirective,
     EditProfileComponent,
     ContactComponent,
     GooglePlacesDirective,
@@ -68,7 +67,6 @@ import { SlideshowModule } from 'ng-simple-slideshow';
     DateTimePickerComponent,
     ContactMeComponent,
     SafePipePipe,
-    CommentSectionComponent,
     BlogComponent,
     FooterComponent,
   ],

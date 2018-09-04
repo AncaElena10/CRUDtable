@@ -14,9 +14,10 @@ import {
 export class SearchComponent implements OnInit {
 
   obj: any = {};
+  public term;
 
   constructor(
-    private employeeService: EmployeeService,
+    public employeeService: EmployeeService,
     private router: Router) {
 
     }

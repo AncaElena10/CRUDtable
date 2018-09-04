@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class ModalComponent implements OnInit {
 
   @Input("selectedObj") selectedObj;
-  constructor(private employeeService: EmployeeService) { }
+  constructor(public employeeService: EmployeeService) { }
   selectedEmployee = {
     _id: "",
     name: "",

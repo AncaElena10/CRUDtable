@@ -18,6 +18,7 @@ export class EmployeeComponent implements OnInit {
   sortedCollection: any[];
   order: string = 'name';
   reverse: boolean = false;
+  p
   // ename = [];
   // eposition = [];
   // eoffice = [];
@@ -26,7 +27,7 @@ export class EmployeeComponent implements OnInit {
   // isLogged: boolean = false;
 
   constructor(
-    private employeeService: EmployeeService, private router: Router, private apiService: ApiService) {
+    public employeeService: EmployeeService, private router: Router, public apiService: ApiService) {
     // this.employeeService.employee()
     //   .subscribe( // data contine toate datele bagate in tabel
     //     data => this.addParameters(data),

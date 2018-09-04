@@ -28,7 +28,7 @@ export class ContactComponent implements OnInit {
   buildUrlTwitter: any = "";
   buildUrlGithub: any = "";
 
-  constructor(private apiService: ApiService, private sanitizer: DomSanitizer) {
+  constructor(public apiService: ApiService, private sanitizer: DomSanitizer) {
     this.apiService.user()
       .subscribe(
         data => {

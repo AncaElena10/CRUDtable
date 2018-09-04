@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   // profileAccess: boolean = true;
   // currentUser: User;
 
-  constructor(private apiService: ApiService, private router: Router, private http: HttpClient) {
+  constructor(public apiService: ApiService, private router: Router, private http: HttpClient) {
     // this.apiService.user()
     //   .subscribe(
     //     data => { this.profileAccess = true, this.addName(data), console.log("data ", data) },

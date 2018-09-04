@@ -21,7 +21,7 @@ export class FooterComponent implements OnInit {
   adminGithub = "AncaElena10";
   adminTwitter = "anca_moisa";
   
-  constructor(private apiService: ApiService) { }
+  constructor(public apiService: ApiService) { }
 
   ngOnInit() {
   }

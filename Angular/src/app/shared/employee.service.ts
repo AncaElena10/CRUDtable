@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Employee } from './employee.model';
 import { NgForm } from '@angular/forms';
+import { environment } from '../../environments/environment';
 
 declare var M: any; // pt mesaje
 
@@ -11,20 +12,19 @@ declare var M: any; // pt mesaje
 export class EmployeeService {
   selectedEmployee: Employee; // folosit pt form (+post, +put(edit), +delete)
   employees: Employee[]; // folosit pt a afisa toti angajatii (+get)
-  readonly baseURL = 'http://localhost:3030/employees';
-  readonly baseURL2 = 'http://localhost3030/bla';
-  rootUrl = "http://localhost:3030/";
+  readonly baseURL = environment.rootURL + '/employees';
+  // rootUrl = "http://localhost:3030/";
   constructor(private http: HttpClient) { }
 
   // returneaza un Observable
   // folosit la form ----- POST -----
   postEmployee(emp: Employee) {
-    return this.http.post(this.baseURL, emp);
+    return this.http.post(environment.rootURL, emp);
   } 
 
   // folosit pt returnare toti angajatii ----- GET -----
   getEmployeeList() {
-    return this.http.get(this.rootUrl + "employees");
+    return this.http.get(this.baseURL);
   }
 
   // folosit pt update ----- PUT -----
@@ -65,7 +65,7 @@ export class EmployeeService {
   }
 
   employee() {
-    return this.http.get(this.rootUrl + 'employees', {
+    return this.http.get(this.baseURL, {
       observe: 'body',
       withCredentials: true,
       headers: new HttpHeaders().append('Content-Type', 'application/json')
