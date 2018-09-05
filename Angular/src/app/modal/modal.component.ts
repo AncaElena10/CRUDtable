@@ -3,7 +3,6 @@ import { EmployeeService } from '../shared/employee.service';
 import { NgForm } from '@angular/forms';
 
 // declare var M: any; // pt mesaje
-
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -31,7 +30,6 @@ export class ModalComponent implements OnInit {
     console.log("MODAL ", this.employeeService.employees)
     // functia asta se leaga de /NodeJS/controllers/employeeController.js -> router.post
     // se creaza o functie in employee.service.ts -> postEmployee
-
     // daca _id este empty, se face insert
     // daca _id nu e empty, se face update
     if (form.value._id == "") { // insert

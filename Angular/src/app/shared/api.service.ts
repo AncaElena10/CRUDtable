@@ -179,7 +179,7 @@ export class ApiService {
       githubName: "",
       facebookName: "",
       youtubeName: "",
-      hobby: null,
+      hobby: "",
       bio: "",
       profilePicture: null,
       birthday: null,

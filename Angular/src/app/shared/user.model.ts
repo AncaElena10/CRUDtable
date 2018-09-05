@@ -11,7 +11,7 @@ export class User {
   githubName: string;
   facebookName: string;
   youtubeName: string;
-  hobby: Array<any>;
+  hobby: string;
   bio: string;
   profilePicture: "blob";
   birthday: Date;

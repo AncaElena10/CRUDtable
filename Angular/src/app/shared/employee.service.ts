@@ -19,7 +19,7 @@ export class EmployeeService {
   // returneaza un Observable
   // folosit la form ----- POST -----
   postEmployee(emp: Employee) {
-    return this.http.post(environment.rootURL, emp);
+    return this.http.post(this.baseURL, emp);
   } 
 
   // folosit pt returnare toti angajatii ----- GET -----
