@@ -14,7 +14,7 @@ import {
 export class SearchComponent implements OnInit {
 
   obj: any = {};
-  public term;
+  term;
 
   constructor(
     public employeeService: EmployeeService,
@@ -28,6 +28,9 @@ export class SearchComponent implements OnInit {
   }
 
   showDetails(item) {
+    // console.log("aici " + JSON.stringify(item))
     this.obj = item;
+
+    // console.log("aici2 " + JSON.stringify(this.obj))
   }
 }
