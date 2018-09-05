@@ -60,6 +60,7 @@ export class CommentSectionService {
   // }
 
   newBlog(body: any) {
+    console.log(environment.rootURL)
     return this.http.post(environment.rootURL + '/blogs/newBlog', body, {
       observe: 'body',
       withCredentials: true,

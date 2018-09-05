@@ -1,54 +1,54 @@
 <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add/Edit User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
-          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="selectedObj._id">
-          <div class="row">
-            <div class="input-field col s12">
-              <label for="recipient-name" class="col-form-label">Name : </label>
-              <input class="form-control" id="recipient-name" type="text" name="name" #name="ngModel" [(ngModel)]="selectedObj.name" placeholder="Enter full name"
-                required>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add/Edit User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="selectedObj._id">
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="recipient-name" class="col-form-label">Name : </label>
+                <input class="form-control" id="recipient-name" type="text" name="name" #name="ngModel" [(ngModel)]="selectedObj.name" placeholder="Enter full name"
+                  required>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <label for="recipient-position" class="col-form-label">Position :</label>
-              <input class="form-control" id="recipient-position" type="text" name="position" #name="ngModel" [(ngModel)]="selectedObj.position"
-                placeholder="Enter position">
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="recipient-position" class="col-form-label">Position :</label>
+                <input class="form-control" id="recipient-position" type="text" name="position" #name="ngModel" [(ngModel)]="selectedObj.position"
+                  placeholder="Enter position">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <label for="recipient-office" class="col-form-label">Office :</label>
-              <input class="form-control" id="recipient-office" type="text" name="office" #name="ngModel" [(ngModel)]="selectedObj.office"
-                placeholder="Enter office location">
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="recipient-office" class="col-form-label">Office :</label>
+                <input class="form-control" id="recipient-office" type="text" name="office" #name="ngModel" [(ngModel)]="selectedObj.office"
+                  placeholder="Enter office location">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <label for="recipient-salary" class="col-form-label">Salary :</label>
-              <input class="form-control" id="recipient-salary" type="text" name="salary" #name="ngModel" [(ngModel)]="selectedObj.salary"
-                placeholder="Enter salary">
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="recipient-salary" class="col-form-label">Salary :</label>
+                <input class="form-control" id="recipient-salary" type="text" name="salary" #name="ngModel" [(ngModel)]="selectedObj.salary"
+                  placeholder="Enter salary">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <button class="btn btn-secondary right" type="button" (click)="employeeService.resetForm(employeeForm)">Reset</button>
-              <button class="btn btn-primary right" type="submit" [disabled]="!employeeForm.valid">Submit</button>
+            <div class="row">
+              <div class="col s12">
+                <button class="btn btn-secondary right" type="button" (click)="employeeService.resetForm(employeeForm)">Reset</button>
+                <button class="btn btn-primary right" type="submit" [disabled]="!employeeForm.valid">Submit</button>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>

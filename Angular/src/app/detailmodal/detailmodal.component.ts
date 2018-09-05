@@ -20,7 +20,7 @@ export class DetailmodalComponent implements OnInit {
   };
 
   constructor(
-    public employeeService: EmployeeService, public apiService: ApiService
+    private employeeService: EmployeeService, public apiService: ApiService
   ) { }
 
   ngOnInit() {

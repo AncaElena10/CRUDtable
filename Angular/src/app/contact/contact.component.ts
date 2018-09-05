@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   profilePicture: any = '';
   profilePicURL: any = "";
   picType: any = "";
-  isUndefined: any = "";
+  isUndefined: boolean = false;
   isNOTUndefined: boolean = false;
 
   addressToDisplay: any = "";
@@ -47,7 +47,7 @@ export class ContactComponent implements OnInit {
   // bio: any = "";
   // gender: any = "";
   // hobby: any = "";
-  // location: any = "";
+  location: any = "";
   // twitterName: any = "";
   // githubName: any = "";
   // userLocation: any = "";
@@ -61,7 +61,7 @@ export class ContactComponent implements OnInit {
     // this.email = data.email;
     // this._id = data._id;
     // this.bio = data.bio;
-    // this.location = data.location;
+    this.location = data.location;
     // this.githubName = data.githubName;
     // this.twitterName = data.twitterName;
     // this.gender = data.gender;
@@ -73,11 +73,13 @@ export class ContactComponent implements OnInit {
     // this.profilePicURL = 'data:' + this.apiService.type + ';base64,' + this.profilePicture;
 
     // console.log(this.profilePicture)
-    if (this.profilePicture == undefined) {
-      this.isUndefined = true;
-    } else {
-      this.isUndefined = false;
-    }
+    // if (this.profilePicture == null) {
+    //   this.isUndefined = true;
+    //   console.log("da" + this.profilePicture)
+    // } else {
+    //   this.isUndefined = false;
+    //   console.log("nu"  + this.profilePicture)
+    // }
 
     // this.profilePicURL = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + this.profilePicture);
     // console.log(this.profilePicURL)
