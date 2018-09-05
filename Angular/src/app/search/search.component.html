@@ -15,7 +15,24 @@
   </div>
 </div> -->
 
-<div class="container">
+<div class="inputColor">
+  <h6>Employee Search</h6>
+  <input type="text" [(ngModel)]="term" class="form-control mr-sm-2">
+  <div *ngIf="term">
+    <ul class="list-group">
+      <div *ngFor="let item of employeeService.employees | filter:term">
+        <div *ngIf="item">
+          <app-detailmodal [selectedObj]="obj"></app-detailmodal>
+        </div>
+        <a class="action-btn" (click)="showDetails(item)">
+          <li data-target="#detail-modal" class="pointer" data-toggle="modal">{{ item.name }}</li>
+        </a>
+      </div>
+    </ul>
+  </div>
+</div>
+
+<!-- <div class="container">
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="term">
   <div *ngIf="term">
     <ul class="list-group">
@@ -29,4 +46,4 @@
       </div>
     </ul>
   </div>
-</div>
+</div> -->
