@@ -46,14 +46,36 @@ app.use(bodyParser.json());
 
 // cors
 app.use(cors({
-  origin: ['http://localhost:4200', 'http://192.168.8.36:4200'],
-  credentials: true,
+    origin: ['http://localhost:4500', 'http://192.168.8.36:4500'],
+    credentials: true,
 }));
+<<<<<<< HEAD
+//app.use(function (req, res, next) {
+ // res.header("Access-Control-Allow-Origin", "*");
+ // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//  next();
+//});
+=======
+>>>>>>> 521c72effcc3932cee73ec843875a1cf71e82587
 
 // server port
 app.listen(3030, () => console.log('Server started at port: 3030'));
 
+<<<<<<< HEAD
+app.use('/employees', employeeController);
+app.use('/bla', test);
+app.use('/api', register);
+app.use('/api', login);
+app.use('/api', profile);
+app.use('/api', upload);
+
+// app.use('/section', comment)
+// app.use('/section', comment_details)
+
+app.use('/blogs', blogs); // Use Blog routes in application
+=======
 // routes
 app.use('/employees', employee);
 app.use('/api', user);
 app.use('/blogs', blogs);
+>>>>>>> 521c72effcc3932cee73ec843875a1cf71e82587
