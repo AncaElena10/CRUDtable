@@ -154,12 +154,12 @@ router.post("/send", (req, res) => {
   `;
 
   let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: 'smtp.example.com',
     port: 587,
     secure: false,
     auth: {
       user: 'test@example.com',
-      pass: 'password;'
+      pass: 'password'
     },
     tls: {
       rejectUnauthorized: false
@@ -167,8 +167,8 @@ router.post("/send", (req, res) => {
   });
 
   let mailOptions = {
-    from: '"Nodemailer Contact" <potatotest10@gmail.com>',
-    to: "ancaem10@gmail.com",
+    from: '"Nodemailer Contact" <test@example.com>',
+    to: "moisa.anca10@gmail.com",
     subject: 'Hello ✔',
     text: 'Hello world?',
     html: output

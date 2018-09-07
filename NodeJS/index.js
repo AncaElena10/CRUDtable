@@ -1,4 +1,4 @@
-const { mongoose } = require('./db.js'); // <--- NU STERGE ASTA!!!
+const { mongoose } = require('./db.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
