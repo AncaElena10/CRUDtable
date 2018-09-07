@@ -46,7 +46,7 @@ app.use(bodyParser.json());
 
 // cors
 app.use(cors({
-    origin: ['http://localhost:4500', 'http://192.168.8.36:4500'],
+    origin: ['http://localhost:4200', 'http://192.168.8.36:4200'],
     credentials: true,
 }));
 
