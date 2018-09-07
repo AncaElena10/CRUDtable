@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
-import { NgModule } from '@angular/core';
-import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
-import { NguiMapModule } from '@ngui/map';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
-import { MapsAPILoader } from '@agm/core';
-// import {} from '@types/googlemaps';
-import { ViewChild, ElementRef, NgZone, } from '@angular/core'
-
-declare var ol: any;
+import { GoogleMapsAPIWrapper } from '@agm/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-me',
@@ -67,31 +58,19 @@ export class ContactMeComponent implements OnInit {
 
   constructor(public apiService: ApiService) {
     this.updateLatLngFromAddress();
-    // this.apiService.user()
-    //   .subscribe(
-    //     data => {
-    //       this.extractInfo(data)
-    //       // console.log("edit profile ", data)
-    //     }
-    //   )
   }
 
-  extractInfo(data) { // data - este un obiect
-    // this.addressToDisplay = data.location;
+  extractInfo(data) {
     this.updateLatLngFromAddress();
   }
 
   updateLatLngFromAddress() {
-    // console.log(this.addressToDisplay)
     this.apiService
       .findFromAddress(this.adminLocation)
       .subscribe(response => {
-        // console.log("LATITUDE " + response.results[0].geometry.location.lat)
         if (response.status == 'OK') {
           this.lat = response.results[0].geometry.location.lat;
           this.lng = response.results[0].geometry.location.lng;
-
-          // console.log("aici lat" + this.lat)
         } else if (response.status == 'ZERO_RESULTS') {
           console.log("eroare1")
           console.log('geocodingAPIService', 'ZERO_RESULTS', response.status);
@@ -118,16 +97,11 @@ export class ContactMeComponent implements OnInit {
 
   ngOnInit() {
     document.body.classList.remove('bg-img-login');
-    // document.body.classList.remove('bg-img-home');
-    // document.body.classList.remove('bg-img-profile');
-    // document.body.classList.remove('bg-img-comment-section');
     document.body.classList.remove('bg-img-register');
-    // document.body.classList.add('bg-img-contact');
     this.setCurrentPosition();
   }
 
   goToGitUrl() {
-    // console.log("here" + this.apiService.selectedUser['githubName'])
     this.buildUrlGithub = "https://github.com/" + this.adminGithub
     window.location.href = this.buildUrlGithub;
   }

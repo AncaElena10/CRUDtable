@@ -1,6 +1,5 @@
 const { mongoose } = require('./db.js'); // <--- NU STERGE ASTA!!!
 const express = require('express');
-// const router = express.Router(); // Creates a new router object.
 const bodyParser = require('body-parser');
 const cors = require('cors');
 var path = require('path');
@@ -9,17 +8,9 @@ var mongoose1 = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var db = mongoose1.connection;
-var employeeController = require('./controllers/employeeController.js');
-var test = require('./controllers/test.js');
-var register = require('./controllers/users.js');
-var login = require('./controllers/users.js');
-var profile = require('./controllers/users.js');
-var upload = require('./controllers/users.js');
-var comment_details = require('./controllers/comments.js');
-const blogs = require('./controllers/comments.js'); // Import Blog Routes
-// var picture = require('./controllers/users.js');
-// var edit = require('./controllers/users.js');
-var comment = require('./controllers/comments.js');
+var employee = require('./controllers/employeeController.js');
+var user = require('./controllers/users.js');
+const blogs = require('./controllers/comments.js');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 
@@ -45,34 +36,24 @@ app.use(passport.session());
 // engine
 app.set('view engine', 'html');
 
-// chestii
+// utils
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
+// cors
 app.use(cors({
   origin: ['http://localhost:4200', 'http://192.168.8.36:4200'],
   credentials: true,
 }));
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 
-app.use(bodyParser.json());
+// server port
 app.listen(3030, () => console.log('Server started at port: 3030'));
 
-app.use('/employees', employeeController);
-app.use('/bla', test);
-app.use('/api', register);
-app.use('/api', login);
-app.use('/api', profile);
-app.use('/api', upload);
-
-// app.use('/section', comment)
-// app.use('/section', comment_details)
-
-app.use('/blogs', blogs); // Use Blog routes in application
+// routes
+app.use('/employees', employee);
+app.use('/api', user);
+app.use('/blogs', blogs);

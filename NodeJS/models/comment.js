@@ -1,116 +1,64 @@
-// var mongoose = require('mongoose');
-// var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const Schema = mongoose.Schema;
 
-// var schema = new Schema({
-//   // created: {
-//   //   type: Date,
-//   //   default: Date.now
-//   // },
-//   title: {
-//     type: String,
-//     default: '',
-//     trim: true,
-//     required: true
-//   },
-//   // content: {
-//   //   type: String,
-//   //   default: '',
-//   //   trim: true
-//   // },
-//   _id_user: {
-//     type: Schema.ObjectId,
-//     required: true
-//   },
-//   comment: {
-//     type: String,
-//     default: '',
-//     trim: true,
-//     required: true
-//   }
-// });
-
-// module.exports = mongoose.model('Comment', schema);
-
-/* ===================
-   Import Node Modules
-=================== */
-const mongoose = require('mongoose'); // Node Tool for MongoDB
-mongoose.Promise = global.Promise; // Configure Mongoose Promises
-const Schema = mongoose.Schema; // Import Schema from Mongoose
-
-// Validate Function to check blog title length
 let titleLengthChecker = (title) => {
-  // Check if blog title exists
   if (!title) {
-    return false; // Return error
+    return false;
   } else {
-    // Check the length of title
     if (title.length < 5 || title.length > 80) {
-      return false; // Return error if not within proper length
+      return false;
     } else {
-      return true; // Return as valid title
+      return true;
     }
   }
 };
 
-// Array of Title Validators
 const titleValidators = [
-  // First Title Validator
   {
     validator: titleLengthChecker,
     message: 'Title must be more than 5 characters but no more than 50'
   },
 ];
 
-// Validate Function to check body length
 let bodyLengthChecker = (body) => {
-  // Check if body exists
   if (!body) {
-    return false; // Return error
+    return false;
   } else {
-    // Check length of body
     if (body.length < 5 || body.length > 500) {
-      return false; // Return error if does not meet length requirement
+      return false;
     } else {
-      return true; // Return as valid body
+      return true;
     }
   }
 };
 
-// Array of Body validators
 const bodyValidators = [
-  // First Body validator
   {
     validator: bodyLengthChecker,
     message: 'Body must be more than 5 characters but no more than 500.'
   }
 ];
 
-// Validate Function to check comment length
 let commentLengthChecker = (comment) => {
-  // Check if comment exists
   if (!comment[0]) {
-    return false; // Return error
+    return false;
   } else {
-    // Check comment length
     if (comment[0].length < 1 || comment[0].length > 200) {
-      return false; // Return error if comment length requirement is not met
+      return false;
     } else {
-      return true; // Return comment as valid
+      return true;
     }
   }
 };
 
-// Array of Comment validators
 const commentValidators = [
-  // First comment validator
   {
     validator: commentLengthChecker,
     message: 'Comments may not exceed 200 characters.'
   }
 ];
 
-// Blog Model Definition
 const blogSchema = new Schema({
   title: { type: String, required: true, validate: titleValidators },
   body: { type: String, required: true, validate: bodyValidators },
@@ -118,9 +66,7 @@ const blogSchema = new Schema({
   createdAt: { type: Date, default: Date.now() },
   comments: [{
     comment: { type: String, validate: commentValidators },
-    // commentator: { type: String }
   }]
 });
 
-// Export Module/Schema
 module.exports = mongoose.model('Blog', blogSchema);

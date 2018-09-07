@@ -1,11 +1,9 @@
-import { Component, OnInit, PipeTransform } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../shared/employee.service';
 import { Employee } from '../shared/employee.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '../../../node_modules/@angular/router';
 import { ApiService } from '../shared/api.service';
-
-declare var M: any;
 
 @Component({
   selector: 'app-employee',
@@ -19,55 +17,10 @@ export class EmployeeComponent implements OnInit {
   order: string = 'name';
   reverse: boolean = false;
   p
-  // ename = [];
-  // eposition = [];
-  // eoffice = [];
-  // eparams = [];
-
-  // isLogged: boolean = false;
 
   constructor(
-    public employeeService: EmployeeService, private router: Router, public apiService: ApiService) {
-    // this.employeeService.employee()
-    //   .subscribe( // data contine toate datele bagate in tabel
-    //     data => this.addParameters(data),
-    //     error => this.router.navigate(['/employees']) // aici refirectez in cazul in care acceseaza /profile dar nu este logat
-    //   )
+    public employeeService: EmployeeService, public apiService: ApiService) {
   }
-
-  // addParameters(data) { // data este un array
-  //   // console.log(data);
-  //   // this.ename = data.name;
-  //   // this.position = data.position;
-  //   // this.office = data.office;
-
-  //   // localStorage.setItem('firstname', this.firstname);
-  //   var i;
-  //   // for (dataObj in data) {
-  //   //   this.ename = dataObj.name;
-  //   //   this.eposition = dataObj.position;
-  //   //   this.eoffice = dataObj.office;
-  //   //   console.log(this.ename);
-  //   // }
-  //   for (i = 0; i < data.length; i++) {
-  //     this.ename.push(data[i].name);
-  //     this.eposition.push(data[i].position);
-  //     this.eoffice.push(data[i].office);
-  //   }
-  //   this.eparams.push(this.ename, this.eposition, this.eoffice);
-  //   // console.log(this.eparams);
-  //   // console.log(this.ename)
-  //   // this.eparams[0].map(function (_, c) { return this.eparams.map(function (r) { return r[c]; }); });
-  //   this.eparams = this.transpose(this.eparams);
-
-  //   // console.log(this.eparams)
-  // }
-
-  // transpose(a) {
-  //   return Object.keys(a[0]).map(function (c) {
-  //     return a.map(function (r) { return r[c]; });
-  //   });
-  // }
 
   selectedEmployee = {
     _id: "",
@@ -79,17 +32,10 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     document.body.classList.remove('bg-img-login');
-    // document.body.classList.remove('bg-img-profile');
-    // document.body.classList.remove('bg-img-comment-section');
-    // document.body.classList.remove('bg-img-contact');
     document.body.classList.remove('bg-img-register');
-    // document.body.classList.add('bg-img-home');
 
     this.employeeService.resetForm();
     this.employeeService.refreshEmployeeList();
-    // console.log(this.apiService.getLoggedIn());
-
-    // console.log(this.apiService.getLoggedIn())
   }
 
   onEdit(emp: Employee) {
@@ -102,7 +48,6 @@ export class EmployeeComponent implements OnInit {
       this.employeeService.deleteEmployee(_id).subscribe((res) => {
         this.employeeService.refreshEmployeeList();
         this.employeeService.resetForm(form);
-        // M.toast({ html: 'Deleted successfully', classes: 'rounded' });
       });
     }
   }
@@ -113,12 +58,4 @@ export class EmployeeComponent implements OnInit {
     }
     this.order = value;
   }
-
-  // checkIfLogged() {
-  //   if (this.apiService.getLoggedIn() == true) {
-  //     this.isLogged = true;
-  //   } else {
-  //     this.isLogged = false;
-  //   }
-  // }
 }

@@ -31,7 +31,6 @@ export class RegisterComponent implements OnInit {
   })
   constructor(private router: Router, private apiService: ApiService) { }
 
-  // sa pot accesa firstname.invalid ... etc
   get firstname() {
     return this.registerForm.get('firstname');
   }
@@ -52,36 +51,8 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('verify');
   }
 
-  // get bio() {
-  //   return this.registerForm.get('bio');
-  // }
-
-  // get gender() {
-  //   return this.registerForm.get('gender');
-  // }
-
-  // get hobby() {
-  //   return this.registerForm.get('hobby');
-  // }
-
-  // get location() {
-  //   return this.registerForm.get('location');
-  // }
-
-  // get twitterName() {
-  //   return this.registerForm.get('twitterName');
-  // }
-
-  // get githubName() {
-  //   return this.registerForm.get('githubName');
-  // }
-
   ngOnInit() {
     document.body.classList.remove('bg-img-login');
-    // document.body.classList.remove('bg-img-home');
-    // document.body.classList.remove('bg-img-profile');
-    // document.body.classList.remove('bg-img-comment-section');
-    // document.body.classList.remove('bg-img-contact');
     document.body.classList.add('bg-img-register');
   }
 
@@ -95,7 +66,6 @@ export class RegisterComponent implements OnInit {
         data => { console.log(data); this.router.navigate(['/login']); },
         error => console.error(error)
       )
-    // console.log(JSON.stringify(this.registerForm.value));
     this.isSubmitted = true;
   }
 

@@ -4,7 +4,6 @@
       <div class="text-center" id="navbarsExample11">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <!-- <a class="nav-link active" id="home-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="true">Home</a> -->
           </li>
           <li class="nav-item">
             <a *ngIf="!apiService.getLoggedIn()" class="nav-link disabled" id="profile-tab" data-toggle="tab" href="#edit-settings" role="tab"
@@ -18,21 +17,12 @@
             <a *ngIf="apiService.getLoggedIn()" class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
               aria-selected="true">Profile</a>
           </li>
-          <!-- <li class="nav-item">
-            <a *ngIf="!apiService.getLoggedIn()" class="nav-link disabled" id="contact_me-tab" data-toggle="tab" href="#contact_me" role="tab"
-              aria-controls="contact_me" aria-selected="false">Contact Me</a>
-            <a *ngIf="apiService.getLoggedIn()" class="nav-link" id="contact_me-tab" data-toggle="tab" href="#contact_me" role="tab"
-              aria-controls="contact_me" aria-selected="false">Contact Me</a>
-          </li> -->
         </ul>
       </div>
     </div>
   </nav>
 
   <div class="tab-content" id="nav-tabContent">
-    <!-- <div class="tab-pane fade show active" id="activity" role="tabpanel" aria-labelledby="home-tab">
-      <app-home></app-home>
-    </div> -->
     <div class="tab-pane fade" id="edit-settings" role="tabpanel" aria-labelledby="profile-tab">
       <app-edit-profile></app-edit-profile>
     </div>
@@ -44,5 +34,3 @@
     </div>
   </div>
 </div>
-
-<!-- <app-footer></app-footer> -->

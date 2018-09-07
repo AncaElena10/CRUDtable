@@ -1,20 +1,12 @@
-import { Component, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-// import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SlideshowModule, IImage } from 'ng-simple-slideshow';
+import { IImage } from 'ng-simple-slideshow';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-
-// @NgModule({
-//   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-// })
 
 export class HomeComponent implements OnInit {
 
@@ -39,7 +31,7 @@ export class HomeComponent implements OnInit {
   lazyLoad: boolean = false;
   width: string = '100%';
 
-  constructor(public apiService: ApiService, private router: Router, private http: HttpClient) {
+  constructor(public apiService: ApiService) {
     this.apiService.user()
       .subscribe(
         data => { this.profileAccess = true, this.extractInfo(data) },
@@ -47,25 +39,16 @@ export class HomeComponent implements OnInit {
       )
   }
 
-  extractInfo(data) { // data - este un obiect
-    // console.log(data)
-    // this.firstname = data.firstname;
-    // localStorage.setItem('firstname', this.firstname);
-    // console.log(this.firstname);
+  extractInfo(data) {
   }
 
   ngOnInit() {
     document.body.classList.remove('bg-img-login');
-    // document.body.classList.remove('bg-img-home');
-    // document.body.classList.remove('bg-img-profile');
-    // document.body.classList.remove('bg-img-contact');
     document.body.classList.remove('bg-img-register');
-    // document.body.classList.add('bg-img-comment-section');
 
     this.apiService.resetForm();
     this.apiService.refreshUser();
 
-    // slideshow
     setTimeout(() => {
       this.imageUrls.push('https://images.pond5.com/top-view-businessman-sitting-office-footage-073318654_prevstill.jpeg');
     }, 2000);
