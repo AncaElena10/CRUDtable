@@ -23,7 +23,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {
 
-    this.API_KEY = 'google_api_key'
+    this.API_KEY = 'AIzaSyB3a71eakX1ji_aFPmQpGf5gWD278RRl4o'
     this.API_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${this.API_KEY}&address=`;
 
   }

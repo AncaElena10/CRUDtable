@@ -72,7 +72,7 @@ import { SlideshowModule } from 'ng-simple-slideshow';
     AppRoutingModule,
     NgMultiSelectDropDownModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: "google_api_key",
+      apiKey: "AIzaSyB3a71eakX1ji_aFPmQpGf5gWD278RRl4o",
       libraries: ["places"]
     }),
     SlideshowModule,
