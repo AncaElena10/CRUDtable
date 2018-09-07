@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../shared/employee.service';
-import { Router } from '@angular/router';
-
-import {
-  debounceTime, distinctUntilChanged, switchMap
-} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -17,20 +12,14 @@ export class SearchComponent implements OnInit {
   term;
 
   constructor(
-    public employeeService: EmployeeService,
-    private router: Router) {
-
-    }
-    
-    ngOnInit() {
-      // console.log(this.employeeService.employees)
+    public employeeService: EmployeeService) {
 
   }
 
-  showDetails(item) {
-    // console.log("aici " + JSON.stringify(item))
-    this.obj = item;
+  ngOnInit() {
+  }
 
-    // console.log("aici2 " + JSON.stringify(this.obj))
+  showDetails(item) {
+    this.obj = item;
   }
 }

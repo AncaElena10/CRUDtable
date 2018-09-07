@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { EmployeeService } from '../shared/employee.service';
 import { NgForm } from '@angular/forms';
 
-// declare var M: any; // pt mesaje
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -25,26 +24,16 @@ export class ModalComponent implements OnInit {
     this.employeeService.refreshEmployeeList();
 
   }
-  
+
   onSubmit(form: NgForm) {
     console.log("MODAL ", this.employeeService.employees)
-    // functia asta se leaga de /NodeJS/controllers/employeeController.js -> router.post
-    // se creaza o functie in employee.service.ts -> postEmployee
-    // daca _id este empty, se face insert
-    // daca _id nu e empty, se face update
-    if (form.value._id == "") { // insert
+    if (form.value._id == "") {
       this.employeeService.postEmployee(form.value).subscribe((res) => {
-        // this.employeeService.resetForm(form);
-        // functie de refresh - se da automat dupa submit
         this.employeeService.refreshEmployeeList();
-        // M.toast({ html: 'Saved successfully', classes: 'rounded' });
       });
-    } else { // update -> PUT
+    } else {
       this.employeeService.putEmployee(form.value).subscribe((res) => {
-        // console.log("form value employee: " + JSON.stringify(form.value))
-        // this.employeeService.resetForm(form);
         this.employeeService.refreshEmployeeList();
-        // M.toast({ html: 'Updated successfully', classes: 'rounded' });
       });
     }
   }

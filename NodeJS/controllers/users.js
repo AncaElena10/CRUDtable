@@ -8,31 +8,6 @@ var fs = require('fs');
 var ObjectId = require('mongoose').Types.ObjectId;
 var _ = require('lodash');
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, callback) {
-//     callback(null, '../uploads/images/');
-//   },
-//   filename: function (req, file, callback) {
-//     callback(null, file.originalname);
-//   }
-// });
-
-// const fileFilter = (req, file, callback) => {
-//   // reject file
-//   if (file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-//     callback(null, true);
-//   } else {
-//     callback(null, false);
-//   }
-// }
-
-// const upload = multer({
-//   storage: storage, limits: {
-//     fileSize: 1024 * 1042 * 5 // 5mb
-//   },
-//   fileFilter: fileFilter
-// });
-
 router.post('/register', function (req, res, next) {
   addToDB(req, res);
 });
@@ -44,18 +19,8 @@ async function addToDB(req, res) {
     email: req.body.email,
     password: req.body.password,
     verify: req.body.verify,
-    // gender: req.body.gender,
-    // bio: req.body.bio,
-    // location: req.body.location,
-    // hobby: req.body.hobby,
-    // profilePicture: req.body.profilePicture,
-    // profilePicture: req.body.contentType,
-    // twitterName: req.body.twitterName,
-    // githubName: req.body.githubName,
-    // birthday: changeDate(req.body.birthday),
   });
 
-  // console.log(user.firstname)
   try {
     doc = await user.save();
     return res.status(201).json(doc);
@@ -78,7 +43,6 @@ router.post('/login', function (req, res, next) {
 });
 
 router.get('/profile', function (req, res, next) {
-  // console.log("profile " + req.user)
   return res.status(200).json(req.user);
 });
 
@@ -87,21 +51,11 @@ router.get('/logout', function (req, res, next) {
   return res.status(200).json({ message: 'Logout Success' });
 })
 
-// function isValidUser(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     next();
-//   } else {
-//     return res.status(401).json({ message: 'Unauthorized Request' });
-//   }
-// }
-
-// update user info
 router.put('/:id', function (req, res, next) {
-  // fetch user
   User.findById(req.params.id, function (err, post) {
     if (err) return next(err);
 
-    _.assign(post, req.body); // update user
+    _.assign(post, req.body);
     post.save(function (err) {
       if (err) return next(err);
       return res.json({ success: true, message: 'Record successfully updated!' })
@@ -123,7 +77,6 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// delete account
 router.delete('/:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).send(`No record with given id: ${req.params.id}`);
@@ -136,24 +89,6 @@ router.delete('/:id', (req, res) => {
     }
   });
 });
-
-// router.post('/upload', upload.single('profilePicture'), (req, res) => {
-//   addProfilePic(req, res);
-// })
-
-// async function addProfilePic(req, res) {
-//   var user = new User({
-//     profilePicture: req.file.path
-//   });
-
-//   try {
-//     doc = await user.save();
-//     return res.status(201).json(doc);
-//   }
-//   catch (err) {
-//     return res.status(501).json(err);
-//   }
-// }
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -177,71 +112,12 @@ var upload = multer({
 
 router.post('/upload', function (req, res) {
   upload(req, res, function (err) {
-
-
-    // console.log("AICI IAR: ", res._id)
-    // console.log("AICI: ", req.file.path)
-
-    // console.log(fs.readFileSync(req.file.path))
-
-    // ID-ul!!!!!
-    // console.log(req.body._id)
-    // console.log(req)
-
-    // -------------
-    // var user = new User;
-    // console.log(user)
-    // // console.log("aici1: " + user.profilePicture.data)
-    // // console.log("aici2: " + user.profilePicture.contentType)
-    // user.profilePicture.data = fs.readFileSync(req.file.path);
-    // user.profilePicture.contentType = req.file.mimetype;
-
-    // User.findById(user, function (err, doc) {
-
-    //   // console.log("aici3" + user)
-
-    //   if (err) return next(err);
-    //   res.contentType(doc.profilePicture.contentType);
-    //   res.send(doc.profilePicture.data);
-    // });
-
-
-    // -------------
-    // var user = User({
-    //   profilePicture: req.file.path
-    // });
-
-    // console.log("here user", user)
-    // user.save()
-    //   .then(item => {
-    //     res.send("picture saved to database");
-    //   })
-    //   .catch(err => {
-    //     res.status(400).send("unable to save picture to database");
-    //   });
-
-
-    // console.log('data:' + req.file.mimetype + ';base64,' + fs.readFileSync(req.file.path))
-    // console.log(fs.readFileSync(req.file.path))
-
-    // -------------
     User.update(
       {
         _id: req.body._id
       },
       {
-        // profilePicture: {
-        //   "$concat": [
-        //     { "$data": req.file.mimetype },
-        //     { "$contentType": fs.readFileSync(req.file.path) }
-        //   ]
-        // }
-        // data: 'data:' + req.file.mimetype + ';base64,',
-        // content: fs.readFileSync(req.file.path),
-        // profilePicture: data + content
         profilePicture: fs.readFileSync(req.file.path)
-        // data: fs.readFileSync(req.file.path),
-        // contentType: req.file.mimetype,
       }, (err) => {
         if (err) {
           if (err.code === 'LIMIT_FILE_SIZE') {
@@ -263,16 +139,6 @@ router.post('/upload', function (req, res) {
   });
 });
 
-// router.post("/upload", function (req, res) {
-//   upload(req, res, function (err) {
-//     var newItem = new User();
-//     console.log(req.params.id)
-//     newItem.profilePicture.data = fs.readFileSync(req.file.path)
-//     newItem.profilePicture.contentType = req.file.mimetype;
-//     newItem.save();
-//   });
-// });
-
 router.post("/send", (req, res) => {
   console.log(req.body)
   const output = `
@@ -292,7 +158,7 @@ router.post("/send", (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: 'test@example.com', // intermediar - cel care trimite mailurile la mine
+      user: 'test@example.com',
       pass: 'password;'
     },
     tls: {
@@ -301,11 +167,11 @@ router.post("/send", (req, res) => {
   });
 
   let mailOptions = {
-    from: '"Nodemailer Contact" <potatotest10@gmail.com>', // intermediar - cel care trimite mailurile la mine
-    to: "ancaem10@gmail.com", // list of receivers // <--- trebuie schimbat cu email user
-    subject: 'Hello ✔', // Subject line
-    text: 'Hello world?', // plain text body
-    html: output // html body
+    from: '"Nodemailer Contact" <potatotest10@gmail.com>',
+    to: "ancaem10@gmail.com",
+    subject: 'Hello ✔',
+    text: 'Hello world?',
+    html: output
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

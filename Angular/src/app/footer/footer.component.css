@@ -12,19 +12,6 @@ section .section-title {
 
 #footer {
   background: #343a40 !important;
-  /* position: fixed;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  color: white; */
-  /* margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline; */
-  /* padding-top: 95px; */
   padding-bottom: 95px;
 }
 
@@ -79,15 +66,10 @@ section .section-title {
 #footer ul.quick-links li:hover {
   padding: 3px 0;
   margin-left: 5px;
-  /* font-weight: 700; */
 }
 
 #footer ul.quick-links li a i {
   margin-right: 5px;
-}
-
-#footer ul.quick-links li:hover a i {
-  /* font-weight: 700; */
 }
 
 @media (max-width:767px) {
@@ -105,7 +87,6 @@ section .section-title {
 
 ul.social_ul {
   position: absolute;
-  /* top: 50%; */
   left: 50%;
   transform: translate(-50%, 25%);
   margin: 0;
@@ -222,18 +203,6 @@ ul.social_ul li.social_li:hover:nth-child(4) a:before {
 ul.social_ul li.social_li:hover:nth-child(4) a:after {
   background: #b1b1b1;
 }
-
-/* ul.social_ul li.social_li:hover:nth-child(5) a {
-  background: #e4405f;
-}
-
-ul.social_ul li.social_li:hover:nth-child(5) a:before {
-  background: #d02d4c;
-}
-
-ul.social_ul li.social_li:hover:nth-child(5) a:after {
-  background: #f1395c;
-} */
 
 p.follow {
   text-align: center;

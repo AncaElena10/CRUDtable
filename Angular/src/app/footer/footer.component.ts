@@ -43,7 +43,6 @@ export class FooterComponent implements OnInit {
   }
 
   goToGitUrl() {
-    // console.log("here" + this.apiService.selectedUser['githubName'])
     this.buildUrlGithub = "https://github.com/" + this.adminGithub
     window.location.href = this.buildUrlGithub;
   }

@@ -19,8 +19,7 @@ export class DetailmodalComponent implements OnInit {
     salary: null
   };
 
-  constructor(
-    private employeeService: EmployeeService, public apiService: ApiService
+  constructor(public apiService: ApiService
   ) { }
 
   ngOnInit() {

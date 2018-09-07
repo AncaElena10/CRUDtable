@@ -17,15 +17,12 @@ export class AppComponent {
     document.body.classList.remove('bg-img-register');
   }
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private router: Router) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        // console.log(event)
         if (event['url'] == '/login' || event['url'] == '/register') {
-          // console.log("DA")
           this.showHeadFoot = false;
         } else {
-          // console.log("NU")
           this.showHeadFoot = true;
         }
       }

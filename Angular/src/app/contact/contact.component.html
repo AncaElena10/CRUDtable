@@ -4,9 +4,7 @@
     <div class="jumbotron">
       <div class="row">
         <div class="col-md-4 ml-auto d-flex align-items-center">
-          <!-- <img *ngIf="profilePicture == null" [src]="'https://pbs.twimg.com/media/C8QlKN7V0AA3zlG.jpg'" height="200"> -->
           <div id="avatar-card" class="avatar-card">
-            <!-- <img *ngIf="isUndefined" [src]="'https://pbs.twimg.com/media/C8QlKN7V0AA3zlG.jpg'" height="200"> -->
             <img [src]="'data:image/png;base64,' + apiService.selectedUser.profilePicture" onError="this.src='https://pbs.twimg.com/media/C8QlKN7V0AA3zlG.jpg'"
               height="200">
           </div>
@@ -19,14 +17,12 @@
 
         <div class="col-md-4 d-flex align-items-center">
           <ul class="list-unstyled">
-            <!-- <li *ngIf="apiService.selectedUser.location != ''"> -->
             <li [hidden]="!apiService.selectedUser.location">
               <svg aria-hidden="true" class="svg-icon" style="color: #6a737c;" width="18" height="18" viewBox="0 0 18 18">
                 <title>Location</title>
                 <path d="M8.1 17.7S2 9.9 2 6.38A6.44 6.44 0 0 1 8.5 0C12.09 0 15 2.86 15 6.38 15 9.91 8.9 17.7 8.9 17.7c-.22.29-.58.29-.8 0zm.4-8.45a2.75 2.75 0 1 0 0-5.5 2.75 2.75 0 0 0 0 5.5z"></path></svg>
               {{ apiService.selectedUser.location }}
             </li>
-            <!-- <li *ngIf="apiService.selectedUser.githubName != ''"> -->
             <li [hidden]="!apiService.selectedUser.githubName">
               <svg aria-hidden="true" class="svg-icon iconGitHub" width="18" height="18" viewBox="0 0 18 18">
                 <title>Github Account</title>
@@ -34,7 +30,6 @@
               <a (click)="goToGitUrl()" rel="me" class="url" title="https://github.com/{{apiService.selectedUser.githubName}}"> {{
                 apiService.selectedUser.githubName }} </a>
             </li>
-            <!-- <li *ngIf="apiService.selectedUser.twitterName != ''"> -->
             <li [hidden]="!apiService.selectedUser.twitterName">
               <svg aria-hidden="true" class="svg-icon iconTwitter" width="18" height="18" viewBox="0 0 18 18">
                 <title>Twitter Account</title>
@@ -44,7 +39,6 @@
                 apiService.selectedUser.twitterName }}
               </a>
             </li>
-            <!-- <li *ngIf="apiService.selectedUser.facebookName != ''"> -->
             <li [hidden]="!apiService.selectedUser.facebookName">
               <i class="fa fa-facebook-official" style="color:#29487d" title="Facebook Account"></i>
               <a (click)="goToFacebookUrl()" rel="me" class="url pointer" title="{{ apiService.selectedUser.facebookName }}">
@@ -52,19 +46,16 @@
               </a>
             </li>
 
-            <!-- <li *ngIf="apiService.selectedUser.youtubeName != ''"> -->
             <li [hidden]="!apiService.selectedUser.youtubeName">
               <i class="fa fa-youtube-play" style="color:red" title="Youtube Channel"></i>
               <a (click)="goToYoutubeUrl()" rel="me" class="url pointer" title="{{ apiService.selectedUser.youtubeName }}">
                 youtube
               </a>
             </li>
-            <!-- <li *ngIf="apiService.selectedUser.hobby != null"> -->
             <li [hidden]="!apiService.selectedUser.hobby">
               <i class="fa fa-gamepad" width="18" height="18" viewBox="0 0 18 18" title="Hobbies"></i>
               {{ apiService.selectedUser.hobby }}
             </li>
-            <!-- <li *ngIf="apiService.selectedUser.birthday != null"> -->
             <li [hidden]="!apiService.selectedUser.birthday">
               <div *ngIf="apiService.selectedUser.publicBirthday">
                 <i class="fa fa-birthday-cake" width="18" height="18" viewBox="0 0 18 18" title="Birthday"></i>

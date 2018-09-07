@@ -1,53 +1,17 @@
 <div class="container">
-
-  <!-- <div style="display:block;" [style.width]="width">
-    <slideshow #slideshow [imageUrls]="imageUrls" [height]="height" [arrowSize]="arrowSize" [showArrows]="showArrows" [disableSwiping]="disableSwiping"
-      [autoPlay]="autoPlay" [stopAutoPlayOnSlide]="stopAutoPlayOnSlide" [debug]="debug" [showDots]="showDots" [dotColor]="dotColor"
-      [lazyLoad]="lazyLoad">
-    </slideshow>
-  </div> -->
-
   <div class="row" style="background-color:#ffffff;
         border: 1px solid #dadada;">
     <div class="col-sm-12">
-      <!-- TODO: modifica alert la login -->
-      <!-- <div *ngIf="apiService.getLoggedIn()">
-            <div class="alert alert-success alert-dismissible" role="alert" style="text-align: center" data-dismiss="alert">
-              <strong>You have successfully logged in!</strong>
-            </div>
-          </div> -->
     </div>
-    <!-- <div *ngIf="!profileAccess" class="col-sm-12"> -->
     <div *ngIf="!apiService.getLoggedIn()" class="col-sm-12">
-      <!-- <div class="jumbotron"> -->
       <h1 class="align-items-center text-center">Hello, guest!</h1>
-      <!-- <p class="lead">You must be logged in to post a comment.</p> -->
       <div class="alert alert-danger" role="alert">
         You must be logged in to post a comment.
       </div>
-      <!-- </div> -->
     </div>
-    <!-- <div *ngIf="profileAccess" class="col-sm-12"> -->
     <div *ngIf="apiService.getLoggedIn()" class="col-sm-12">
-      <!-- <div class="jumbotron"> -->
-      <!-- <h1 class="display-4">Hello, {{ firstname }}!</h1> -->
       <h1 class="align-items-center text-center">Hello, {{ apiService.selectedUser.firstname }}!</h1>
-      <!-- <p class="lead">You have successfully logged in to our system.</p> -->
-      <!-- </div> -->
     </div>
-    <!-- <div *ngIf="!profileAccess" class="col-sm-12"> -->
-
-
-
-
-
-    <!-- ---------------------------- COMMENTS SECTION --------------------------------- -->
-
-    <!-- <div class="jumbotron"> -->
     <app-blog></app-blog>
-    <!-- </div> -->
-
   </div>
 </div>
-
-<!-- <app-footer></app-footer> -->

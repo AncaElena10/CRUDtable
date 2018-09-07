@@ -69,9 +69,6 @@
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary right" type="submit">Submit</button>
-                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
-                  {{ successMsg }}
-                </div> -->
                   <div class="row show-hide-message" *ngIf="successMsg && success">
                     <div [ngClass]="messageClass">
                       {{ successMsg }}
@@ -90,8 +87,6 @@
                 </div>
                 <div class="form-group">
                   <label for="datePickerArea">Birthday</label>
-                  <!-- <gijgo-datepicker #datepicker [configuration]="configuration" name="birthday" id="datePickerArea"></gijgo-datepicker> Selected Date: {{ date }} -->
-                  <!-- <input id="datePickerArea" name="birthday" #name="ngModel" [(ngModel)]="birthday" class="form-control" type="date"> -->
                   <div>
                     <input type="date" id="datePickerArea" name="birthday" [ngModel]="birthday | date:'yyyy-MM-dd'" (ngModelChange)="birthday=$event"
                       [value]="birthday | date:'yyyy-MM-dd'" class="form-control">
@@ -100,9 +95,6 @@
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary right" type="submit">Submit</button>
-                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
-                  {{ successMsg }}
-                </div> -->
                   <div class="row show-hide-message" *ngIf="successMsg && success">
                     <div [ngClass]="messageClass">
                       {{ successMsg }}
@@ -112,37 +104,6 @@
               </form>
             </div>
 
-            <!-- <div *ngIf="showProfilePic">
-            <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload()">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <h2>Profile Picture Upload</h2>
-              <img *ngIf="!isSelectedProfilePic" [src]="'https://pbs.twimg.com/media/C8QlKN7V0AA3zlG.jpg'" height="200">
-              <img *ngIf="isSelectedProfilePic" [src]="url" height="200">
-              <input type="file" (change)="onFileSelected($event)" name="profilePicture">
-              <button type="submit">Upload</button>
-            </form>
-          </div> -->
-
-            <!-- <div *ngIf="showProfilePic">
-            <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload()">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <h2>Profile Picture Upload</h2>
-              <img [src]="imageUrl" height="200">
-              <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" name="profilePicture">
-              <button type="submit">Upload</button>
-            </form>
-          </div> -->
-
-            <!-- <div *ngIf="showProfilePic">
-            <form #userFormProfilePicture="ngForm">
-              <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-              <h2>Profile Picture Upload</h2>
-              <img [src]="imageUrl" height="200">
-              <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" name="profilePicture">
-              <button type="submit" (click)="onUpload(_id)">Upload</button>
-            </form>
-          </div> -->
-
             <div *ngIf="showProfilePic">
               <form #userFormProfilePicture="ngForm" (ngSubmit)="onUpload(userFormProfilePicture)">
                 <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
@@ -150,9 +111,6 @@
                 <img [src]="imageUrl" height="200">
                 <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files, _id)" name="profilePicture">
                 <button class="btn btn-primary right" type="submit">Upload</button>
-                <!-- <div *ngIf="success" class="alert alert-success" role="alert">
-                {{ successMsg }}
-              </div> -->
                 <div class="row show-hide-message" *ngIf="successMsg && success">
                   <div [ngClass]="messageClass">
                     {{ successMsg }}
@@ -189,11 +147,6 @@
                     <i class="fa fa-phone"></i>
                   </label>
                   <div class="inner-addon left-addon">
-                    <!-- <input type="tel" maxlength="9" class="form-control mr-sm-2" id="exampleFormControlInput10" name="phoneNumber" #name="ngModel"
-                      [(ngModel)]="phoneNumber"> -->
-                    <!-- <input type="text" value="(+40)" class="form-control mr-sm-1" disabled style="max-width: 30%;">
-                  <input type="tel" id="exampleFormControlInput10" maxlength="9" name="phoneNumber" style="max-width: 70%; vertical-align:top;" class="form-control" pattern="[0-9]{9}" />
-                  <span class="validity"></span> -->
                     <div class="form-row">
                       <input type="text" value="(+40)" class="form-group form-control" disabled style="max-width: 24%;">
                       <input type="number" id="exampleFormControlInput10" name="phoneNumber" style="max-width: 75%;" class="form-group form-control"
@@ -201,46 +154,10 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- <form #userFormHobby="ngForm" [formGroup]="hobbyForm" (ngSubmit)="onEditInfo(userFormHobby)">
-                <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="_id">
-                <div class="form-group">
-                  <label class="mr-sm-2" for="exampleFormControlInput9">Hobbies
-                    <i class="fa fa-gamepad"></i>
-                  </label>
-                  <input type="text" formControlName="hobby" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput9" [(ngModel)]="userHobby"
-                    name="hobby" placeholder="e.g. cycling">
-                  <div *ngIf="userHobby">
-                    <div class="hobbylist">
-                      <ul class="list-group pointer">
-                        <li (click)="selectValue(hobbyItem)" *ngFor="let hobbyItem of hobbyList | filter : userHobby" class="list-group-item list-group-item-action"
-                          (click)="saveUserHobby($event)">
-                          {{ hobbyItem }}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary right" type="submit">Submit</button>
-                </div>
-              </form> -->
-
                 <div class="form-group">
                   <label class="mr-sm-2" for="exampleFormControlInput9">Programming language
                     <i class="fa fa-gamepad"></i>
                   </label>
-                  <!-- <input type="text" maxlength="100" class="form-control mr-sm-2" id="exampleFormControlInput9" [(ngModel)]="selectedHobby"
-                  name="hobby">
-                <div *ngIf="selectedHobby">
-                  <div class="hobbylist">
-                    <ul class="list-group pointer">
-                      <li *ngFor="let hobbyItem of hobbyList | filter : selectedHobby" class="list-group-item list-group-item-action" (click)="saveUserHobby($event)">
-                        {{ hobbyItem }}
-                      </li>
-                    </ul>
-                  </div>
-                </div> -->
                   <ng-multiselect-dropdown name="hobby" [placeholder]="'e.g. Python'" [data]="hobbyList" [(ngModel)]="selectedHobby" [settings]="hobbySettings"
                     (onSelect)="saveUserHobby($event)">
                   </ng-multiselect-dropdown>
@@ -248,9 +165,6 @@
 
                 <div class="form-group">
                   <button class="btn btn-primary right" type="submit">Submit</button>
-                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
-                  {{ successMsg }}
-                </div> -->
                   <div class="row show-hide-message" *ngIf="successMsg && success">
                     <div [ngClass]="messageClass">
                       {{ successMsg }}
@@ -299,9 +213,6 @@
 
                 <div class="form-group">
                   <button class="btn btn-primary right" type="submit">Submit</button>
-                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
-                  {{ successMsg }}
-                </div> -->
                   <div class="row show-hide-message" *ngIf="successMsg && success">
                     <div [ngClass]="messageClass">
                       {{ successMsg }}
@@ -320,9 +231,6 @@
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary right" type="submit">Submit</button>
-                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
-                  {{ successMsg }}
-                </div> -->
                   <div class="row show-hide-message" *ngIf="successMsg && success">
                     <div [ngClass]="messageClass">
                       {{ successMsg }}
@@ -347,9 +255,6 @@
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary right" type="submit">Submit</button>
-                  <!-- <div *ngIf="success" class="alert alert-success" role="alert">
-                  {{ successMsg }}
-                </div> -->
                   <div class="row show-hide-message" *ngIf="successMsg && success">
                     <div [ngClass]="messageClass">
                       {{ successMsg }}
@@ -367,29 +272,9 @@
               <a *ngIf="!blockDelete" data-toggle="modal" data-target="#delete-account" class="btn btn-danger disabled">Delete</a>
               <a *ngIf="blockDelete" data-toggle="modal" data-target="#delete-account" class="btn btn-danger" (click)="onDelete(_id)">Delete</a>
             </div>
-
-            <!-- <div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to permanently delete this account?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <button routerLink="/employees" class="btn btn-outline-primary" (click)="onDelete(_id)" data-dismiss="modal">Yes</button>
-                  <button class="btn btn-outline-secondary" data-dismiss="modal">No</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- <app-footer></app-footer> -->

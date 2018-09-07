@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 import { CommentSectionService } from '../shared/comment-section.service';
 
@@ -76,7 +76,6 @@ export class BlogComponent implements OnInit {
     this.form.get('body').disable();
   }
 
-  // Validation for title
   alphaNumericValidation(controls) {
     const regExp = new RegExp(/^[a-zA-Z0-9 ]+$/);
     if (regExp.test(controls.value)) {
@@ -122,7 +121,6 @@ export class BlogComponent implements OnInit {
     }
 
     this.blogService.newBlog(blog).subscribe(data => {
-      // console.log("aici " + data['message'])
       if (!data['success']) {
         this.messageClass = 'alert alert-danger';
         this.message = data['message'];
@@ -142,29 +140,6 @@ export class BlogComponent implements OnInit {
       }
     });
   }
-
-  // onEditComment(form: NgForm) {
-  //   this.success = true;
-
-  //   if (form.value._id != "") {
-  //     this.blogService.putComment(form.value)
-  //       .subscribe((data) => {
-  //         if (!data['success']) {
-  //           this.messageClass = 'alert alert-danger';
-  //           this.successMsg = data['message'];
-  //           this.blogService.refreshComment();
-  //         } else {
-  //           this.messageClass = 'alert alert-success';
-  //           this.successMsg = data['message'];
-  //           setTimeout(() => {
-  //             this.success = false;
-  //             this.successMsg = false;
-  //             this.blogService.refreshComment();
-  //           }, 2000);
-  //         }
-  //       });
-  //   }
-  // }
 
   goBack() {
     window.location.reload();
@@ -210,7 +185,9 @@ export class BlogComponent implements OnInit {
       this.enableCommentForm();
       this.commentForm.reset();
       this.processing = false;
-      if (this.enabledComments.indexOf(id) < 0) this.expand(id); // Expand comments for user on comment submission
+      if (this.enabledComments.indexOf(id) < 0) {
+        this.expand(id);
+      }
     });
   }
 }

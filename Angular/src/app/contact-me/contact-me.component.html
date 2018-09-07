@@ -59,36 +59,9 @@
               </form>
             </div>
             <div class="col-md-6" style="margin-top: 20px;">
-              <!-- <iframe width="100%" height="350" frameborder="0" scrolling="no" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=aqua%20soft%20bucharest+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe> -->
-              <!-- <iframe width="100%" height="350" frameborder="0" scrolling="no" [src]="googleMapsUrl | safe"></iframe> -->
-
               <agm-map [latitude]="lat" [longitude]="lng" [zoom]=13>
                 <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
               </agm-map>
-
-              <!-- ------------------------------------------ Afisare locatia curenta ---------------------------------------------------- -->
-              <!-- <agm-map style="width: 100%; height: 350px" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom"
-              [fullscreenControl]="true" [mapTypeId]="'hybrid'">
-              <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-            </agm-map>
-            <div class="row">
-              <div class="form-group">
-                <label for="text">Lat:</label>
-                <input type="password" class="form-control" placeholder=" {{ latitude}}" disabled="true">
-              </div>
-              <div class="form-group">
-                <label for="text">Lng:</label>
-                <input type="text" class="form-control" placeholder=" {{ longitude}}" disabled="true">
-              </div>
-            </div> -->
-              <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-
-              <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-
-
-
-              <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-
             </div>
           </div>
         </div>
@@ -136,7 +109,6 @@
           <div class="col-md-6">
             <ul class="list-unstyled">
               <h3>Contact</h3>
-              <!-- <li *ngIf="location != ''"> -->
               <li>
                 <i class="material-icons" style="font-size: inherit;" title="Location">location_on</i>
                 <strong>{{ adminLocation }}</strong>
@@ -160,5 +132,3 @@
     </div>
   </div>
 </div>
-
-<!-- <app-footer></app-footer> -->
