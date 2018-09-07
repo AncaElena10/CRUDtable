@@ -12,11 +12,11 @@ import { environment } from '../../environments/environment';
 
 export class ApiService {
 
+  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
   msg: string = null;
   loginMessage: boolean = false;
   selectedUser: User;
   type: any = "";
-  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
 
   API_KEY: string;
   API_URL: string;
